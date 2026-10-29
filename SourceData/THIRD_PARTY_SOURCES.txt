@@ -1,0 +1,21 @@
+Original product access points
+
+Global Mangrove Watch v4.1.12: https://doi.org/10.5281/zenodo.21346457
+Global Urban Boundaries 2018: https://data-starcloud.pcl.ac.cn/iearthdata/14
+SSP urban-land projections (1 km, v1.00): https://doi.org/10.7927/1z4r-ez63
+Landsat Collection 2: https://www.usgs.gov/landsat-missions/landsat-collection-2
+JRC Global Surface Water: https://global-surface-water.appspot.com
+ERA5-Land hourly data: https://doi.org/10.24381/cds.e2161bac
+NEX-GDDP-CMIP6: https://www.nccs.nasa.gov/data-collections/nex-gddp-cmip6
+Permanent Service for Mean Sea Level: https://psmsl.org/data/obtaining
+C3S sea level: https://cds.climate.copernicus.eu/datasets/satellite-sea-level-global
+AR6 regional sea-level projections: https://doi.org/10.5281/zenodo.6382554
+FABDEM v1.2: https://data.bris.ac.uk/data/dataset/s5hqmjcdj8yo2ibzi9b4ew3sn
+Natural Earth: https://www.naturalearthdata.com/
+
+The manuscript and Supplementary Methods specify the versions, selection rules
+and transformations. Coverage definitions and required GMW tile identities are
+in urban_coverage/coverage_protocol.json. Obtain upstream satellite and forcing
+archives from their providers under the applicable terms.
+
+Copernicus attribution: Contains modified Copernicus Climate Change Service information retrieved in 2026. Neither the European Commission nor ECMWF is responsible for any use that may be made of the Copernicus information or data it contains.

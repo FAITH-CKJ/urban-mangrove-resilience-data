@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+type: dataset
+title: "Source data for Urbanization erodes resilience in global mangroves"
+message: "Please cite this dataset and the associated manuscript when reusing these data."
+authors:
+  - family-names: Cao
+    given-names: Kangjie
+  - family-names: Fang
+    given-names: Tao
+  - family-names: Luo
+    given-names: Xin
+  - family-names: Shen
+    given-names: Xiaoxue
+  - family-names: Qiu
+    given-names: Guoyu
+  - family-names: Li
+    given-names: Ruili
+version: 1.2.4
+date-released: 2026-10-30
+url: "https://github.com/FAITH-CKJ/urban-mangrove-resilience-data"
+license: CC-BY-4.0

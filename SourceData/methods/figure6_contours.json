@@ -1,0 +1,226 @@
+{
+  "definition": "Analytical fields and exact habitat configurations evaluated from the UMRI definition.",
+  "renderer": "../SupplementarySoftware/code/figure6_contours.py",
+  "original_slices": [
+    "figure_story/Fig6_retention_boundary.csv",
+    "figure_story/Fig6_reconnection_control.csv"
+  ],
+  "analytical_fields": "figure_story/Fig6_analytical_fields.npz",
+  "exact_configurations": "figure_story/Fig6_three_configurations.csv",
+  "derivation": {
+    "C": "m*q",
+    "R_max": "w_r*m+w_g",
+    "p_star": "[w_h*h+w_T*T(C)+G(C,h)*(w_r*m+w_g)]/w_d",
+    "T_prime": "2*C0/(C+C0)^2",
+    "p_m_at_fixed_C": "G*w_r/w_d >= 0; strictly positive where G > 0",
+    "p_m_at_fixed_q": "[q*T_prime*(w_T+R_max*I_structure_limiting)+G*w_r]/w_d",
+    "p_q_at_fixed_m": "m*T_prime*(w_T+R_max*I_structure_limiting)/w_d",
+    "compensation_margin": "M_comp=p_star(m,C,h)-p; S <= w_d*M_comp",
+    "margin_partial_p": "-1",
+    "margin_partial_m_at_fixed_C": "G*w_r/w_d >= 0",
+    "margin_partial_C": "T_prime*(w_T+R_max*I_structure_limiting)/w_d > 0",
+    "margin_partial_h": "(w_h+R_max*I_moisture_limiting)/w_d > 0",
+    "urbanization_interpretation": "Rising exposure lowers the margin directly; loss of retained habitat or connected capacity lowers the ceiling against which exposure is assessed. The arrows are conditional endpoint examples, not observed urban trajectories.",
+    "structural_response_derivative": "dS/dC=T_prime*(w_T+R_plus*I_structure_limiting); the gate adds to direct structural sensitivity in the structure-limited regime.",
+    "switch": "h=T(C), equivalently C*=C0*(1+h)/(1-h)",
+    "updated_balance_h": "[wd*p-wT*T(C)-Rplus*(1+T(C))]/wh, where structure limits G",
+    "fixed_balance_h": "[wd*p-wT*T(C)-Rplus*(1+T(CI))]/wh, where h>=T(CI)",
+    "balance_window_width": "Rplus*(T(C)-T(CI))/wh",
+    "balance_window_width_at_C_0_7": 0.026256410256410234,
+    "delta_gate": "max(0,min(h,T(C))-min(h,T(C_I))) on C>=C_I and T(C)<0",
+    "delta_S": "R_plus * [G(C,h)-G(C_I,h)]",
+    "mapped_extra": "N(S_dynamic)-N(S_frozen)",
+    "mapped_max_for_fixed_delta": "2*delta_S/(2*lambda+delta_S) at S_dynamic=-S_frozen",
+    "nominal_total_gain_UMRI": 0.14800039862263709,
+    "nominal_fixed_gain_UMRI": 0.1255538141270877,
+    "nominal_extra_gain_UMRI": 0.022446584495549402,
+    "endpoint_ridge_h": 0.13046153846153852,
+    "endpoint_ridge_extra_UMRI": 0.10481823477496519,
+    "original_definition_and_derivation_sources": [
+      "Main manuscript",
+      "Supplementary Information, analytical derivations",
+      "figure_story/Fig6_theory_methods.json"
+    ]
+  },
+  "exact_geometries": {
+    "III": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "I": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "II": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "B": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "external_link": [
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "historical_cells_removed_II_to_III": [
+      [
+        0,
+        1
+      ],
+      [
+        5,
+        1
+      ]
+    ]
+  },
+  "controls": {
+    "m": 0.7,
+    "p": 0.2,
+    "r": 0.2,
+    "g": 0.1,
+    "C0": 0.8,
+    "C_I": 0.5
+  },
+  "ecological_evidence_labels": {
+    "equal_capacity": "Equal C",
+    "structural_moisture_boundary": "Limit changes",
+    "dynamic_scaling": "Constraint relaxes",
+    "fixed_scaling": "Held fixed",
+    "regions": [
+      "Structure limits",
+      "Limiting condition changes",
+      "Moisture limits"
+    ]
+  }
+}

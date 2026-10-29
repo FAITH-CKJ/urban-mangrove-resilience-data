@@ -1,0 +1,382 @@
+{
+  "cartography/ne_110m_admin_0_countries.cpg": {
+    "bytes": 5,
+    "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+  },
+  "cartography/ne_110m_admin_0_countries.dbf": {
+    "bytes": 531808,
+    "sha256": "1fee677cd4e03b367876e03861eb10197e4022a846bf92060e0313432863785b"
+  },
+  "cartography/ne_110m_admin_0_countries.prj": {
+    "bytes": 147,
+    "sha256": "3259f0e55290a82b1350646f604e8a7ee1e2136c0320a40fad838ab40819fff8"
+  },
+  "cartography/ne_110m_admin_0_countries.shp": {
+    "bytes": 180924,
+    "sha256": "08e341606e8391e458c3f08deb312de664b56bfae376064c5aa0aee6681a5f55"
+  },
+  "cartography/ne_110m_admin_0_countries.shx": {
+    "bytes": 1516,
+    "sha256": "8b0be2ad97dd484aee5c2ebc98697d5372e832b8ae58a35a661aeef6b985668d"
+  },
+  "cartography/ne_110m_admin_0_countries_provenance.json": {
+    "bytes": 1157,
+    "sha256": "03d9b7ca77e2ac9cc5ab69a37b138a70d1a922e97c0abd0cbc124a24d9953d5b"
+  },
+  "cartography/ne_110m_land.cpg": {
+    "bytes": 5,
+    "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+  },
+  "cartography/ne_110m_land.dbf": {
+    "bytes": 3431,
+    "sha256": "db7cf6d2de2811df09bd7fcc6f243ab78a715b83571a0cb7b36b4e2af3297caa"
+  },
+  "cartography/ne_110m_land.prj": {
+    "bytes": 147,
+    "sha256": "3259f0e55290a82b1350646f604e8a7ee1e2136c0320a40fad838ab40819fff8"
+  },
+  "cartography/ne_110m_land.shp": {
+    "bytes": 89504,
+    "sha256": "8689e6932b8e370e2ca4587cf3ba21e460b1235db37b6ed3c172c35b4a6088de"
+  },
+  "cartography/ne_110m_land.shx": {
+    "bytes": 1116,
+    "sha256": "2719254764a70262a34333581d582d503b8af5d6626e6da4eb2b5f86e7316faa"
+  },
+  "cartography/ne_50m_land.cpg": {
+    "bytes": 5,
+    "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+  },
+  "cartography/ne_50m_land.dbf": {
+    "bytes": 69709,
+    "sha256": "d082add78c82e01b9bf422df3143ad6fbe43ca1bcb798d12a334f9e001b67bc0"
+  },
+  "cartography/ne_50m_land.prj": {
+    "bytes": 143,
+    "sha256": "98aaf3d1c0ecadf1a424a4536de261c3daf4e373697cb86c40c43b989daf52eb"
+  },
+  "cartography/ne_50m_land.shp": {
+    "bytes": 1050332,
+    "sha256": "140d1419f7ace66bf0ea8ceb068cab544d413170f4e8c48e0a11bde6c978b319"
+  },
+  "cartography/ne_50m_land.shx": {
+    "bytes": 11460,
+    "sha256": "c1b93ee40fe83d6322197251517c141c2c91970915ac61d7bf7a4821fc2a68d7"
+  },
+  "cartography/ne_50m_land_provenance.json": {
+    "bytes": 1219,
+    "sha256": "e26222314e8d6945cb705231a909703e9fecc17b53db823153de1f9a877da0b0"
+  },
+  "cartography/README.txt": {
+    "bytes": 579,
+    "sha256": "899e53008b401139aa3bfe92efc9f2fcf724388f3f7da47ce49a35db12e37e40"
+  },
+  "code/capacity_support.py": {
+    "bytes": 1201,
+    "sha256": "91fca0e9a4f926546143dbb73e2fef7af724b099f93d7c9af02e08e95701307b"
+  },
+  "code/compute_urban_mangrove_coverage.py": {
+    "bytes": 14969,
+    "sha256": "2f7c42439fc11881e0eaff9adbe421a7b81d8c9ab6746793da4bad7aabe489cf"
+  },
+  "code/derive_endpoint_overlap.py": {
+    "bytes": 5809,
+    "sha256": "536c1b70af4288883aded6c9fc9437b0d6b218fd36e95f8ba0b51a566aae6d55"
+  },
+  "code/derive_figure4_local_effects.py": {
+    "bytes": 6451,
+    "sha256": "8c4e646558f49981107a869366a4041c8333ae9913cf8b5b6cb0227e03bd1e79"
+  },
+  "code/derive_figure4_relative_values.py": {
+    "bytes": 4465,
+    "sha256": "35689b8a46591f653db87c2b09ed27d3f367b4193e8d9900a15c4e96c858bb0f"
+  },
+  "code/derive_figure5_annual.py": {
+    "bytes": 4175,
+    "sha256": "f36e740d288141600d0ebaaa31f03a234943cf22dd1690d2c134c07f87e100af"
+  },
+  "code/derive_retention_reconnection_limit.py": {
+    "bytes": 2559,
+    "sha256": "aabc59571df87e80b1d1612fff89f2b01754e90eafd35ad9792cc6f7e87d8e1e"
+  },
+  "code/endpoint_reporting.py": {
+    "bytes": 8960,
+    "sha256": "5abcca33f6f4f66a82eaf0324a44f89f95db0c90799e42f60cca9fa459cc4854"
+  },
+  "code/figure4_reference_rows.py": {
+    "bytes": 27769,
+    "sha256": "5845504fc1a1ac4bb682f382eedea39fd8012f1524619aacabb24e967979b7a9"
+  },
+  "code/figure5_equal_construction.py": {
+    "bytes": 8957,
+    "sha256": "87a9378996fd2180e05834f65ea08c66981b100e5fb7037003a697b78d166c3c"
+  },
+  "code/figure5_protection.py": {
+    "bytes": 16065,
+    "sha256": "4f0721eef4bbadc9bf2265b06f4918887f367bcc5362dea28aab7e0421c62322"
+  },
+  "code/figure5_regional_supplement.py": {
+    "bytes": 15822,
+    "sha256": "fc65e65a8e44dc4d0b68d5a2057cf90561afcfb0d569bf92e830f86a7d398c5d"
+  },
+  "code/figure6_contours.py": {
+    "bytes": 30275,
+    "sha256": "adaa2159a12b689ca42375ecc9655fec6ed627731f79d604339d8fc389c38d34"
+  },
+  "code/naturemag.bst": {
+    "bytes": 34942,
+    "sha256": "e1c96cb5d1aa0d7c0f06fafa6bca14c06336b726caad5488b2dfe0846dd0ca66"
+  },
+  "code/prepare_urban_mangrove_buffers.py": {
+    "bytes": 1884,
+    "sha256": "f1bd16b90282f3eb1e78cc888083ee5a73f02e5d5181a2e60a82695b4da4355d"
+  },
+  "code/references.bib": {
+    "bytes": 24894,
+    "sha256": "702903cd931295a6caae8f6a76faebcae3602596b34e1e7ae1f579871943baf6"
+  },
+  "code/render_future_process.py": {
+    "bytes": 19551,
+    "sha256": "9b7123ed22f5641501752c0af1dea72f9e60c4dd6aeff0b719865b85b96130d7"
+  },
+  "code/render_supplementary_b.py": {
+    "bytes": 13972,
+    "sha256": "288b55664fbfc805d059a642218a0f5574ef6ed99c08614a21163e7a69e9a478"
+  },
+  "code/reproduce_compensation_supplement.py": {
+    "bytes": 27358,
+    "sha256": "9c21cdc576fd94b26830e752b6f989c8128db4375433eaab36dd2a91f077b515"
+  },
+  "code/reproduce_figure6.py": {
+    "bytes": 202,
+    "sha256": "28f6ec057b26be53d2fb097db239d6c849ffba5330ea2566a71ad23ee32c5c55"
+  },
+  "code/reproduce_figure_story.py": {
+    "bytes": 41560,
+    "sha256": "808b4c58f3280fb8f7ce24ff09635aa704b431bacb6cf21439331a1f028dec6e"
+  },
+  "code/reproduce_forecast_demo.py": {
+    "bytes": 1666,
+    "sha256": "2ec97e336f5089b961883ae8f2af944cb718b85c99f8aeff1987f84f6967fece"
+  },
+  "code/reproduce_full_histories.py": {
+    "bytes": 7459,
+    "sha256": "8d6d645105f2af71252fa261c3355842b7ae26298ce7d2ac58340dfe59946ce6"
+  },
+  "code/reproduce_main_figures.py": {
+    "bytes": 31401,
+    "sha256": "3c675262fa32260fe4e65fb7895640b17f53b16bbfb942586dcf844322b4e4b7"
+  },
+  "code/reproduce_supplementary.py": {
+    "bytes": 20530,
+    "sha256": "2910b95d9d39b64ca0449a02586f947ac8cf364b86a00315c101f3be07106e82"
+  },
+  "code/supplementary_body.tex": {
+    "bytes": 185242,
+    "sha256": "8b0b6290c82b365e69fb9cd300cdd9ea34606e2047be41fa615e843944777571"
+  },
+  "code/umri_core.py": {
+    "bytes": 3105,
+    "sha256": "a4ea7eef79db4b7cedd774d0ab2c60c3560fa499cb3851d5d3cd64f4988ba4f3"
+  },
+  "code/umri_reporting.py": {
+    "bytes": 9483,
+    "sha256": "a816d2b021c1e2863d75c19e7f907cee183dd13e56519306bedd0de65bf8f757"
+  },
+  "code/verify_figure6_fields.py": {
+    "bytes": 6246,
+    "sha256": "2536cc408cda00a464b39ec02d7a347a0906a2147ae7c13540335d86f88e8a63"
+  },
+  "code/verify_figure_story.py": {
+    "bytes": 30474,
+    "sha256": "e296fdd5ddc55637384faeab47b797443dc27518cd10a035b9592dd1ed2d33a0"
+  },
+  "code/verify_neighbourhood_observations.py": {
+    "bytes": 2495,
+    "sha256": "737148dd3e728e97e49014de4439cccac267875c1e9ca17eacf449b63352fc15"
+  },
+  "code/verify_reporting.py": {
+    "bytes": 6911,
+    "sha256": "f32d11656fd01886e2d6dfd906e25bd5a6f2307b546ceaa069e76263b687437c"
+  },
+  "code/verify_table5.py": {
+    "bytes": 6434,
+    "sha256": "3aeab11e2d49278145a1030cea3c2559b1dcbb346353bb5a34c6ad64a1418af1"
+  },
+  "code/verify_urban_mangrove_coverage.py": {
+    "bytes": 3164,
+    "sha256": "d88783b7c0ce9f1fbf3252d943d10a4a5c9f08652aa003c6d65800116c5638b0"
+  },
+  "DEMO_RUNTIME.txt": {
+    "bytes": 642,
+    "sha256": "bc7a6b66e00bf5fe18f3be18e22f8387ea14a5daad5091e0299586725e64bf6b"
+  },
+  "ecological_model/code/capacity_support.py": {
+    "bytes": 1554,
+    "sha256": "d1fd7536207004f214d8bc0f178615b0880525b5684c28f38dea9f7900c246b5"
+  },
+  "ecological_model/code/model_data.py": {
+    "bytes": 10654,
+    "sha256": "fd3fb1ebf6b3aeeb305e398e84ad1f783742d62f83b0081c746c1d21f2696341"
+  },
+  "ecological_model/code/model_networks.py": {
+    "bytes": 8599,
+    "sha256": "9936a10324bb5bf7feceec571439246d316fbf47f1fc4cdedea77345aacc5a97"
+  },
+  "ecological_model/code/model_predict.py": {
+    "bytes": 8587,
+    "sha256": "2ab13792c3a006ac3af9e784eafa0ace7028c318a2049e7453ff4d926c1a5e1f"
+  },
+  "ecological_model/code/train_models.py": {
+    "bytes": 24326,
+    "sha256": "467a75795f9122f533740d1499bc62d034309632aa800d25acb706fde600af06"
+  },
+  "ecological_model/demo/expected_fixed2025.npz": {
+    "bytes": 59017,
+    "sha256": "f60bc141cc93024c73172e6dd0dceb1f8f06d3e2f197a164991690f8a6ce0b0a"
+  },
+  "ecological_model/demo/expected_growth.npz": {
+    "bytes": 86692,
+    "sha256": "864c43e3a7e23fea6f354f8584b4a939769675c74e4bf28f44f61415fb881c39"
+  },
+  "ecological_model/demo/expected_protected.npz": {
+    "bytes": 59224,
+    "sha256": "ebc42c5232002235b1feae7fd3a63550620ce2a29aa069d68ba6c9ef2c441d3f"
+  },
+  "ecological_model/demo/input_fixed2025.npz": {
+    "bytes": 13453,
+    "sha256": "35e804013ed05b061e0aeae8079a63f55c0041133831a752b5389683e87b614a"
+  },
+  "ecological_model/demo/input_growth.npz": {
+    "bytes": 31364,
+    "sha256": "ed3de4e5adec6d8f6cc77de96c9fcaf74d88f6d0007a2889a7b64f68bbc1829a"
+  },
+  "ecological_model/demo/input_protected.npz": {
+    "bytes": 14112,
+    "sha256": "64c14dd19da1dd656d7e91fde4ab4096f3b4a99d04afdf63ca162b5e4c308c97"
+  },
+  "ecological_model/demo/metadata.json": {
+    "bytes": 2262,
+    "sha256": "4a99489a369f80b6af4b9f8cc378be0d368c7d2b499cbcbb42edbf95284357d9"
+  },
+  "ecological_model/models/bootstrap1.joblib": {
+    "bytes": 919157,
+    "sha256": "baab35ccf3c8b5cf178dc6c50baa8720fcc66440418b602f8e927d3450fa4833"
+  },
+  "ecological_model/models/bootstrap2.joblib": {
+    "bytes": 915644,
+    "sha256": "928d933439cb06fc48e94fb491028e792e3b62e7568c8c273aea78ea474a3155"
+  },
+  "ecological_model/models/central.joblib": {
+    "bytes": 920950,
+    "sha256": "8b719d6a136e08bcacb7c52d59b6b4333ea2e68826f18ecb7db370956d2fdcca"
+  },
+  "landcover_model/code/application.py": {
+    "bytes": 2604,
+    "sha256": "0298e738de7a51d102a6a5a78755f52195e6e6862c422656837cc68685f2f958"
+  },
+  "landcover_model/code/dataset.py": {
+    "bytes": 1916,
+    "sha256": "8ce68dbe875fa86c5fe1a8a2187a5b6d8ec1dc626327c756e7a9d352b1d52139"
+  },
+  "landcover_model/code/evaluate_checkpoints.py": {
+    "bytes": 2324,
+    "sha256": "69e5c194d55b7e9720050f096266ac9c6a2bf5fc041fb7d34165053525a7010c"
+  },
+  "landcover_model/code/inference_ensemble.py": {
+    "bytes": 5703,
+    "sha256": "bf738f6b53e558674abc519bc8bc4ef989d992acf8f1243754141f926bfead79"
+  },
+  "landcover_model/code/model.py": {
+    "bytes": 2432,
+    "sha256": "41907a239c5d3df0cf628f79e7cbf68c48781592080057e00cf5aa8d35b97b76"
+  },
+  "landcover_model/code/train.py": {
+    "bytes": 5895,
+    "sha256": "312e01eaaa604f457f7dd2ace5be77c5e39196fcf909e3710a070d8353d29268"
+  },
+  "landcover_model/LICENSE_CODE.txt": {
+    "bytes": 1112,
+    "sha256": "f3fcd3d8b0e8f6f345e17fc1fdcc865049efd43aa3b96a608ea8a398b1884460"
+  },
+  "landcover_model/LICENSE_DATA.txt": {
+    "bytes": 1048,
+    "sha256": "723af8b97a324b8093254fd9b053459ddcff1fe18e57548482ec2dc6bb255198"
+  },
+  "landcover_model/models/0_new_model_parameters.pth": {
+    "bytes": 393555,
+    "sha256": "ca478dfdf834578b47c463cea255da6d6cfbefcbfa96c24b75bf53a7945f2a0e"
+  },
+  "landcover_model/models/1_new_model_parameters.pth": {
+    "bytes": 390483,
+    "sha256": "ecbae2dc54bcb17fb825a1996acbd0ee41f12a1e60eac2d9cec44c4d936021d9"
+  },
+  "landcover_model/models/2_new_model_parameters.pth": {
+    "bytes": 391507,
+    "sha256": "6a08404dc01ca732d0f22287f4ef49d06fa8476d288e9a722150aeeb4d7d2ce9"
+  },
+  "landcover_model/models/3_new_model_parameters.pth": {
+    "bytes": 390483,
+    "sha256": "a5298279111134d3d5b8b806749d49712da48cf687005645f5e1e07315ac92b2"
+  },
+  "landcover_model/models/4_new_model_parameters.pth": {
+    "bytes": 390483,
+    "sha256": "fbca464b5aa8b500769cf5a6758a1ab3fc30bccbc4315d98706edf5b2183e2b3"
+  },
+  "landcover_model/models/5_model_parameters.pth": {
+    "bytes": 398555,
+    "sha256": "90c1d329a7afe72bbf66962c7c0d9d31d56db1e63ea47714c7703b18e6b9d16f"
+  },
+  "landcover_model/models/6_model_parameters.pth": {
+    "bytes": 398555,
+    "sha256": "393565848a9abf6c70c06175054d6c8cea752ada78e861bc7ec3dd4a5b4143c5"
+  },
+  "landcover_model/models/CHECKPOINTS.csv": {
+    "bytes": 1800,
+    "sha256": "8332408f7c79dde3e7f5f240ddbc9ffb69c99c6aaeec0ce1301680bc0f7a0403"
+  },
+  "landcover_model/requirements.txt": {
+    "bytes": 62,
+    "sha256": "99ea1dd942b15d9be30eeebad33d8dfb7e296a10fa37163cc311c0c56444dfbd"
+  },
+  "landcover_model/training_data/predictor_value_summary.csv": {
+    "bytes": 3231,
+    "sha256": "4355035a5418e7ff8f8e88cc493bfd72047203ae3fd4153c587763366b96b92d"
+  },
+  "landcover_model/training_data/sample_overview.json": {
+    "bytes": 1872,
+    "sha256": "2ef9b0e1c5b043a490f06d25587dd681cf66fe5acdfd8e7853b676a14a51f2f2"
+  },
+  "landcover_model/training_data/test.csv.gz": {
+    "bytes": 1141583,
+    "sha256": "232d5a3ad0d1744c4973a5cd7969811cf74b89eb6b54a64786b5759845fdc4f6"
+  },
+  "landcover_model/training_data/train.csv.gz": {
+    "bytes": 4525421,
+    "sha256": "855bd1e00a917987ca6b316479482ca2290551e29690038c559b134dfa855ee5"
+  },
+  "MODEL_CARD.txt": {
+    "bytes": 6045,
+    "sha256": "3d53abd25259aef5c9c3bb23775e8d6b9b8255e72cf2fcaa2f13ae839bba9245"
+  },
+  "README.txt": {
+    "bytes": 11789,
+    "sha256": "05239b45068d552742f13a4a39527f1f44ae2dd5413cf82ad9b7ccc9425e1168"
+  },
+  "requirements-coverage.txt": {
+    "bytes": 113,
+    "sha256": "383682467b059201f8293f3a140499fe731d9f052e1ad92e4b65ea5ea5bd830c"
+  },
+  "requirements-model.txt": {
+    "bytes": 129,
+    "sha256": "0ae1706cd427407596c6b23517df90758a62b4d29216d19e644a36f259babed0"
+  },
+  "requirements.txt": {
+    "bytes": 147,
+    "sha256": "e2eda591204295442c4a9ea69ec39ce7ec4c0f784b71c4474647ecddfd116576"
+  },
+  "tested_environment.json": {
+    "bytes": 353,
+    "sha256": "ddc86b977f7c244b1f6b71747305385888d53a28e965f47d599fc3b55d631cbe"
+  }
+}

@@ -1,0 +1,395 @@
+{
+  "identity": "urban-mangrove-resilience-v1.0.0",
+  "endpoint_year": 2100,
+  "reference_n": 934814,
+  "valid_n": 926220,
+  "unknown_n": 8594,
+  "reference_area_km2": 841.3326,
+  "pixel_area_km2": 0.0009,
+  "crs": "EPSG:6933",
+  "centre_identity": "Unique (block_id, centre_index); centre_index alone is block-local.",
+  "source_statistic": "Memberwise growth-minus-fixed2025 difference at each centre, followed by the median of 15 paired members.",
+  "numerical_precision": "Endpoint medians are stored as float32; exceedance counts and area arithmetic use float64 and retain all stored negative values.",
+  "unanimous_subset": "Median loss exceeds t and all 15 members have negative direction. This is not evidence that all 15 losses exceed t.",
+  "plotted_uncertainty": "No uncertainty band is assigned to the pixelwise-median exceedance curve.",
+  "rows": 3236,
+  "figure": 4,
+  "definition": "At each final UMRI threshold t>=0, count valid reference centres with pixelwise paired-member median DeltaUMRI<-t, and divide by the full fixed reference.",
+  "cumulative_unit": "UMRI-years",
+  "habitat_unit": "Relative percent, 100*(growth-fixed2025)/fixed2025, for m or C; each denominator is the same member and region (or overall) in 2100.",
+  "asinh_parameters": {
+    "c_UMRI": 0.01,
+    "map_colour_UMRI": 0.01,
+    "e_percent": 5.0
+  },
+  "curve_evaluation": "Exact empirical counts at 801 asinh-spaced thresholds plus named checkpoints and each conditional median; connecting lines interpolate the displayed samples without density smoothing.",
+  "maximum_plot_threshold_UMRI": 1.6,
+  "exceedance_rows": 3236,
+  "summary_rows": 4,
+  "summary_quantiles": "Conditional distribution of positive final UMRI loss among affected reference centres, using NumPy's default linear quantile interpolation.",
+  "source_sha256": {
+    "main_figures/Fig4_urban_paired_annual.csv": "056aa390403d8f754757db69f62779c240fba9e17985b3b79d1d0c6c9857227a",
+    "main_figures/Fig4_urban_paired_cumulative.csv": "ecf8e9bff2fd3d93c87bdddd60628acfe72f7bf6b61f28e45819a3dfc50b3423",
+    "main_figures/Fig3_urban_UMRI_contributions_2100.csv": "4821e5961f3c465d1cf0a52941cf87474e68f671b88a2a0387bab498da067900",
+    "main_figures/Fig2_reference_distribution_1deg.csv": "4942b63a5b42d63c815879c9c0be1cafe911044a61a7ca9cb0628edc1718153d",
+    "endpoint_2100/pixelwise_median_negative_area_2100.csv": "59e7a377c9251dc253428ab38fc298c939874e61daa62a4c686705602b328182",
+    "endpoint_2100/paired_habitat_2100_summary.csv": "4e2bf8e7a7be91fc7fef23ca248da278e46756004756397f3f492cc92105a247",
+    "figure_story/Fig4_loss_intensity_exceedance.csv": "ebd5f68ccb820f7f083433ca76c9e748ecf897fcafe1b82828513bcd906fab49",
+    "figure_story/Fig4_loss_intensity_summary.csv": "99d7ae69ce2c93195a733d66b3e9a73eb509829d29be96899200b9b9d8e80a8e",
+    "figure_story/Fig4_local_urban_effect_1deg.csv": "d61df4625b7773a8417a0de506133fd650f1837fd122910877bf502ed506b509",
+    "endpoint_2100/paired_habitat_2100_member.csv": "9b43d8400533ca9e31c3f0d4505176709922cf6badc3794fe6a1b27b71068ce8",
+    "reporting/primary_paired_contributions_UMRI.parquet": "52c8aeb7cd6d4c82abfb7effcbf81c14646a866fe0c0526147aa76760ec3a59e",
+    "figure_story/Fig4_relative_habitat_2100.csv": "5acd0653543a33142aa7bc48280bf038b58580c969bbebbf00b76834de5fa21d",
+    "figure_story/Fig4_relative_contributions_2100.csv": "a6ff201ef64f6ccb54ffd7678d056e516b265580367bc07a69d13af30553525f"
+  },
+  "annual_source": "main_figures/Fig4_urban_paired_annual.csv",
+  "cumulative_source": "main_figures/Fig4_urban_paired_cumulative.csv",
+  "habitat_source": "endpoint_2100/paired_habitat_2100_summary.csv",
+  "area_source": "endpoint_2100/pixelwise_median_negative_area_2100.csv",
+  "reproduction": "SupplementarySoftware/code/reproduce_main_figures.py --figures 4",
+  "verification": "SupplementarySoftware/code/verify_figure_story.py",
+  "score_unit": "UMRI = N(S) = S/(lambda+abs(S)); dimensionless states in (-1,1); paired differences in (-2,2).",
+  "linear_axes": [
+    "b",
+    "b cumulative inset",
+    "d"
+  ],
+  "map_source": "figure_story/Fig4_local_urban_effect_1deg.csv",
+  "map_rows": 292,
+  "map_cells_per_scenario": 73,
+  "map_statistic": "Mean of within-centre 15-member median paired UMRI effects over valid equal-area reference centres in each region-specific 1-degree display cell.",
+  "map_projection": "Plate Carree",
+  "map_extent": [
+    -112,
+    180,
+    -42,
+    34
+  ],
+  "map_zero_handling": "Hollow grey circles for exact-zero valid-centre effects where no nonzero map symbol overlaps. Zero rows hidden by nonzero symbols remain in Source Data. Unknown centres are never recoded.",
+  "map_colour_range": [
+    -0.8,
+    0
+  ],
+  "component_source": "reporting/primary_paired_contributions_UMRI.parquet",
+  "component_mean_source": "main_figures/Fig3_urban_UMRI_contributions_2100.csv",
+  "habitat_member_source": "figure_story/Fig4_relative_habitat_2100.csv",
+  "component_statistic": "Shares of total additional urban loss within each member: 100 times each signed component change divided by the negative total change. Positive shares increase loss; negative shares offset loss; each five-component budget sums to 100 percent. All 300 values retain exact categorical-only offsets.",
+  "component_budget": [
+    {
+      "scenario": "ssp126",
+      "mean_delta_UMRI": -0.032359054146073235,
+      "urban_pressure": -0.027348927405212647,
+      "habitat_structure": -0.004173080690261757,
+      "other_ecology": -0.0008370460505988634,
+      "ecological_share_percent": 15.482920848811641,
+      "component_means": {
+        "d": -0.027348927405212647,
+        "T": -0.004173080690261757,
+        "r": -0.00010587743362321113,
+        "g": -0.00022023024553176346,
+        "h": -0.0005109383714438888
+      }
+    },
+    {
+      "scenario": "ssp245",
+      "mean_delta_UMRI": -0.09473205959846163,
+      "urban_pressure": -0.07509312803659783,
+      "habitat_structure": -0.017525759008318566,
+      "other_ecology": -0.0021131725535452595,
+      "ecological_share_percent": 20.731029859486707,
+      "component_means": {
+        "d": -0.07509312803659783,
+        "T": -0.017525759008318566,
+        "r": -0.0002690268146752713,
+        "g": -0.0007641224825409119,
+        "h": -0.0010800232563290763
+      }
+    },
+    {
+      "scenario": "ssp370",
+      "mean_delta_UMRI": -0.055450912343174,
+      "urban_pressure": -0.04511342413494834,
+      "habitat_structure": -0.008874435045296844,
+      "other_ecology": -0.0014630531629288106,
+      "ecological_share_percent": 18.64259355057879,
+      "component_means": {
+        "d": -0.04511342413494834,
+        "T": -0.008874435045296844,
+        "r": -0.0002660712763975648,
+        "g": -0.0004612127797831622,
+        "h": -0.0007357691067480835
+      }
+    },
+    {
+      "scenario": "ssp585",
+      "mean_delta_UMRI": -0.16429131941540534,
+      "urban_pressure": -0.12049325989141364,
+      "habitat_structure": -0.04014850394555904,
+      "other_ecology": -0.003649555578432679,
+      "ecological_share_percent": 26.658778856872974,
+      "component_means": {
+        "d": -0.12049325989141364,
+        "T": -0.04014850394555904,
+        "r": -0.0004297352099864179,
+        "g": -0.0015169558577584293,
+        "h": -0.0017028645106878318
+      }
+    }
+  ],
+  "habitat_member_counts": {
+    "regional": 600,
+    "overall": 60
+  },
+  "contribution_member_points": 300,
+  "habitat_member_summary": [
+    {
+      "scenario": "ssp126",
+      "members": 15,
+      "convex_envelope_vertices": [
+        [
+          -0.5390057570639906,
+          -0.708985678721833
+        ],
+        [
+          -0.7130916724574368,
+          -0.42384045480364174
+        ],
+        [
+          -1.0662133157038363,
+          -0.4628306049479009
+        ],
+        [
+          -1.1840429504358998,
+          -0.5172544244482478
+        ],
+        [
+          -1.1809929744530205,
+          -0.5808304947386456
+        ],
+        [
+          -1.1582576721672122,
+          -0.6423471381759027
+        ],
+        [
+          -0.8201505826605635,
+          -0.7572326077327413
+        ],
+        [
+          -0.6846597722154911,
+          -0.7726803681702394
+        ]
+      ],
+      "minimum": [
+        -1.1840429504358998,
+        -0.7726803681702394
+      ],
+      "maximum": [
+        -0.5390057570639906,
+        -0.42384045480364174
+      ]
+    },
+    {
+      "scenario": "ssp245",
+      "members": 15,
+      "convex_envelope_vertices": [
+        [
+          -3.2616672618165645,
+          -2.441087342159103
+        ],
+        [
+          -4.071871483801293,
+          -3.3825674984220186
+        ],
+        [
+          -2.8320145895587254,
+          -3.167403863553358
+        ],
+        [
+          -2.6678466633123312,
+          -3.1388719335315556
+        ],
+        [
+          -3.031487240556352,
+          -2.5649380991855004
+        ],
+        [
+          -3.1126275180252723,
+          -2.507322453231014
+        ]
+      ],
+      "minimum": [
+        -4.071871483801293,
+        -3.3825674984220186
+      ],
+      "maximum": [
+        -2.6678466633123312,
+        -2.441087342159103
+      ]
+    },
+    {
+      "scenario": "ssp370",
+      "members": 15,
+      "convex_envelope_vertices": [
+        [
+          -1.7376026013992059,
+          -0.8554244272073773
+        ],
+        [
+          -1.83903156439523,
+          -0.8544166922800728
+        ],
+        [
+          -1.8660193198734094,
+          -0.8798453085459921
+        ],
+        [
+          -2.1228463580499657,
+          -1.4339127749007874
+        ],
+        [
+          -2.0385637926920097,
+          -1.4484659633408927
+        ],
+        [
+          -1.1874462146415528,
+          -1.2102157647132017
+        ],
+        [
+          -1.6306282725464076,
+          -0.9187634520393875
+        ]
+      ],
+      "minimum": [
+        -2.1228463580499657,
+        -1.4484659633408927
+      ],
+      "maximum": [
+        -1.1874462146415528,
+        -0.8544166922800728
+      ]
+    },
+    {
+      "scenario": "ssp585",
+      "members": 15,
+      "convex_envelope_vertices": [
+        [
+          -6.07493513848005,
+          -7.545824224744514
+        ],
+        [
+          -6.258817264710557,
+          -6.367763762326055
+        ],
+        [
+          -6.321918752992137,
+          -6.400136180117366
+        ],
+        [
+          -7.091428277543635,
+          -6.915343578366654
+        ],
+        [
+          -7.860748131724959,
+          -7.453596272976858
+        ],
+        [
+          -8.270031802478014,
+          -7.931212738892397
+        ],
+        [
+          -8.01908882083683,
+          -7.909867088393538
+        ]
+      ],
+      "minimum": [
+        -8.270031802478014,
+        -7.931212738892397
+      ],
+      "maximum": [
+        -6.07493513848005,
+        -6.367763762326055
+      ]
+    }
+  ],
+  "native_habitat_scope": "Panel d shows 600 regional and 60 Overall memberwise 100*(growth-fixed2025)/fixed2025 habitat changes. Each branch uses the same spatial support before ratios; all denominators are positive. Coloured polygons enclose the 15 Overall member points in each pathway; larger markers combine the two marginal medians. Envelopes are not confidence regions.",
+  "conditional_median_marker_position": "Conditional median positive loss among affected centres; ordinate is the exact exceedance at that loss.",
+  "crs_role": "Equal-area source-reference grid; map display uses the separately recorded map_projection.",
+  "component_member_source": "figure_story/Fig4_relative_contributions_2100.csv",
+  "habitat_overall_relative_percent": [
+    {
+      "variable": "m",
+      "scenario": "ssp126",
+      "median": -0.9741173239168157,
+      "q17": -1.1232808167111292,
+      "q83": -0.6954638943074305,
+      "unit": "percent relative to fixed2025"
+    },
+    {
+      "variable": "C",
+      "scenario": "ssp126",
+      "median": -0.6085833707355315,
+      "q17": -0.6985119434056295,
+      "q83": -0.48390879448966695,
+      "unit": "percent relative to fixed2025"
+    },
+    {
+      "variable": "m",
+      "scenario": "ssp245",
+      "median": -3.116917284618901,
+      "q17": -3.4839917945588286,
+      "q83": -3.005261560549021,
+      "unit": "percent relative to fixed2025"
+    },
+    {
+      "variable": "C",
+      "scenario": "ssp245",
+      "median": -2.8956382373493903,
+      "q17": -3.156561730145073,
+      "q83": -2.590996151864155,
+      "unit": "percent relative to fixed2025"
+    },
+    {
+      "variable": "m",
+      "scenario": "ssp370",
+      "median": -1.776050525369496,
+      "q17": -1.9737124951976155,
+      "q83": -1.6311691755061892,
+      "unit": "percent relative to fixed2025"
+    },
+    {
+      "variable": "C",
+      "scenario": "ssp370",
+      "median": -1.0381565768268683,
+      "q17": -1.2296257180371897,
+      "q83": -0.889898464487023,
+      "unit": "percent relative to fixed2025"
+    },
+    {
+      "variable": "m",
+      "scenario": "ssp585",
+      "median": -6.698422816206645,
+      "q17": -7.805395284191417,
+      "q83": -6.306253241103578,
+      "unit": "percent relative to fixed2025"
+    },
+    {
+      "variable": "C",
+      "scenario": "ssp585",
+      "median": -7.166058256326882,
+      "q17": -7.510777603072805,
+      "q83": -6.564768532411611,
+      "unit": "percent relative to fixed2025"
+    }
+  ],
+  "habitat_relative_reference": "fixed2025 branch at 2100, within each member after spatial pooling",
+  "contribution_share_sum": 100,
+  "relative_derivation": "SupplementarySoftware/code/derive_figure4_relative_values.py",
+  "relative_derivation_input_sha256": {
+    "endpoint_2100/paired_habitat_2100_member.csv": "9b43d8400533ca9e31c3f0d4505176709922cf6badc3794fe6a1b27b71068ce8",
+    "reporting/primary_paired_contributions_UMRI.parquet": "52c8aeb7cd6d4c82abfb7effcbf81c14646a866fe0c0526147aa76760ec3a59e"
+  },
+  "habitat_relative_formula": "100*(x_growth-x_fixed2025)/x_fixed2025, x=m or C; spatial pooling within each branch before ratios; ensemble summaries after ratios",
+  "contribution_relative_formula": "100*delta_component_UMRI/delta_UMRI; common total denominator per member; all 60 totals are negative; positive shares increase loss and negative shares offset loss",
+  "absolute_sources_retained": true,
+  "absolute_habitat_source_unit": "Percentage points, 100*(growth-fixed2025), retained in endpoint_2100/paired_habitat_2100_member.csv and paired_habitat_2100_summary.csv."
+}

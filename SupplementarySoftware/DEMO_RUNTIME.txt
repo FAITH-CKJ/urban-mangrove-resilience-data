@@ -1,0 +1,9 @@
+Measured forecast demonstration runtime: 7.213 seconds.
+Command: python code/reproduce_forecast_demo.py
+System: Windows, Python 3.11.7; AMD Ryzen Threadripper PRO 5995WX; 128 GB RAM.
+Execution: 2 CPU threads, 16 centres, 75 years, 3 paired urban branches.
+Timing includes Python imports, model loading, predictions, comparisons and writes.
+All outputs matched the original archived production values within 1e-7.
+The ecological states matched exactly; the largest score-related difference
+was below 3.0e-8, consistent with stored float32 production arrays.
+Runtime on other computers varies with hardware and installed dependencies.

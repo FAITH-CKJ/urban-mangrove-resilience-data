@@ -1,0 +1,12 @@
+Author-generated data in this repository are licensed under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0).
+
+License text: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+Copyright 2026 Kangjie Cao, Tao Fang, Xin Luo, Xiaoxue Shen, Guoyu Qiu and Ruili Li.
+
+Give appropriate credit, provide a link to the license and indicate changes.
+Original third-party products and their source catalogues retain their providers'
+licenses. Their inclusion or identification does not transfer those rights.
+See THIRD_PARTY_SOURCES.txt for product access points.

@@ -1,0 +1,30 @@
+{
+  "inputs": {
+    "main_figures/Fig5_allocation_regional_annual.csv": "79e298773d6229d223dfef3894b93c39122b0a0168a6f82181cc0b55e4863127",
+    "main_figures/Fig5_protection_paired_annual.csv": "663104e9d6012564956f2a0557eaab03d4f3b9fafec01aea2ebf5516b0edae93",
+    "endpoint_2100/paired_habitat_2100_member.csv": "9b43d8400533ca9e31c3f0d4505176709922cf6badc3794fe6a1b27b71068ce8",
+    "reporting/primary_paired_member_annual.parquet": "9fbaabb671934e8e498684260733d9b62083802ed3785c021ff8877d8934d0cd",
+    "reporting/primary_paired_contributions_UMRI.parquet": "52c8aeb7cd6d4c82abfb7effcbf81c14646a866fe0c0526147aa76760ec3a59e",
+    "figure_story/Fig4_relative_habitat_2100.csv": "5acd0653543a33142aa7bc48280bf038b58580c969bbebbf00b76834de5fa21d"
+  },
+  "panels": [
+    "a",
+    "b",
+    "c"
+  ],
+  "regional_member_count": 300,
+  "local_member_count": 30,
+  "local_component_shares": 150,
+  "quantiles": "17th, 50th and 83rd percentiles of 15 paired members; linear interpolation",
+  "display_transforms": {
+    "benefit_asinh_scale_UMRI": 0.001,
+    "habitat_asinh_scale_percentage_points": 0.05,
+    "component_colour_asinh_scale_UMRI": 0.002,
+    "component_colour_limits_UMRI": [
+      -0.6,
+      0.6
+    ]
+  },
+  "local_share_transform": "asinh(percent / 0.2), native percentage ticks",
+  "reproduction": "SupplementarySoftware/code/reproduce_figure_story.py --figures S5"
+}

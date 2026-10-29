@@ -1,0 +1,1298 @@
+\tableofcontents
+\clearpage
+
+\section{Supplementary Methods}
+
+\paragraph{From ecological resilience to an observational formulation.}
+Ecological resilience concerns the persistence of ecosystems and their capacity to recover under disturbance and changing environmental conditions\cite{ref035,ref042,Scheffer2001}. Following the framework developed in the main text, the Urban Mangrove Resilience Index (UMRI) connects these capacities to three observable relationships in urban mangrove landscapes: the pressure imposed by development, the responses of mangrove vegetation, and the habitat and canopy conditions supporting those responses. Urban exposure measures nearby built land, contact with the historical forest boundary and occupation of former mangrove sites. Confirmed recovery of mangrove cover and canopy greenness describe vegetation responses. Canopy moisture and the amount and connected arrangement of historical habitat describe the conditions in which those responses develop.
+
+The formulation follows the ecological roles of these observations. Recovered mangrove area is part of the habitat currently occupied, linking recovery to the amount remaining. In the formulation, canopy condition and habitat structure scale the contributions of recovery and positive canopy change to the resilience balance. Health and structure also describe ecological states in their own right. These relationships give the five components and their shared compensation factor. Their weighted balance is calculated at each location, and a fixed, sign-preserving normalization places the result on a common scale across years and development scenarios. Positive and negative states identify the balance of the measured contributions; changes in that balance track improvement or deterioration.
+
+The historical habitat reference keeps the geographical population fixed through mangrove persistence, loss and recovery. Annual observations supply the components, and future scenarios apply the same formulation to predicted ecological states and allocated urban land. The following methods specify the observations, spatial and temporal support, component relationships, aggregation and evaluation. Supplementary Methods~8--10 and the Supplementary Discussion derive their structural meaning and connect the calculations to the historical and planning results.
+
+\subsection{1. Study area, annual observations and locations followed}
+
+The analysis follows historical mangrove locations associated with large urban areas. We used the 2018 Global Urban Boundaries polygons with area greater than 100~km$^2$ and their 2-km surroundings\cite{ref086}. The study domain intersects this urban selection with the footprint of the original 2023 land-cover mosaic, retaining all land-cover classes within that footprint. Global Mangrove Watch (GMW) v4.1.12 supplies annual mangrove presence\cite{GMW2026}. Its 41-band time series represents 1985--2025; bands 16--41 correspond to the 26 years used here. The source product integrates optical and radar information with temporal filtering and gap filling. We used the annual presence maps supplied by the product.
+
+Let $M_t$ denote mapped mangrove presence in year $t$. Within the selected domain, the historical reference is
+\begin{equation}\label{eq:si_reference}
+B=\bigcup_{t=2000}^{2004}M_t.
+\end{equation}
+The reference contains 934,814 centres on a 30-m EPSG:6933 grid. Each centre represents 900~m$^2$ of historical reference area, giving 841.3326~km$^2$ in total. Of 148 processing blocks, 141 contain eligible reference centres; the other seven do not enter the reporting population. The ten macroregions, centre counts and forecast-support weights are listed in Supplementary Table~\ref{tab:si_population}. Blocks organize data access and computation, whereas the primary estimator weights valid reference centres directly.
+
+The union reference fixes the historical extent over five years, whereas each annual retention value describes occupancy in one year. Consequently, a reference pixel need not be occupied in 2000 to belong to $B$, and baseline-period retention need not equal one. The annual canopy and capacity baselines are medians of the five annual measurements, rather than measurements on a single map of the union. This distinction preserves the separate meanings of historical habitat extent, annual occupancy and baseline ecological condition.
+
+Each local measurement uses a circular neighbourhood of 500~m ground radius. Neighbourhood construction accounts for local ground distance on the projected grid; surrounding pixels provide the land-cover context needed for exposure and connectivity. These overlapping windows retain the local ecological context of fixed reference locations, with shared observational support among nearby centres. The 30-m grid expresses reference locations and land allocation, while city projections, climate and sea-level data retain their coarser independent information scales.
+
+Historical scores retain annual observation validity. There are 24,016,461 valid centre-years among 24,305,164 possible combinations, or 98.81\%. The full historical estimates pool the valid centres in each year. A separate future support contains 926,220 centres valid across all 150 scenario combinations: four pathways with growth and fixed-urban branches, two additional protected branches, and 15 members per branch. The intersection of that support with valid historical scores in 2025 contains 925,774 centres. Historical--future trajectory plots use this matched support; earlier historical years continue to use their observed validity masks within it. Differences among these supports are retained in Source Data.
+
+We assessed the influence of observation availability by following two fixed sets of locations from the matched-2025 population. One contains the 925,579 centres observed in both 2000 and 2025; the other contains the 876,841 centres observed in every year from 2000 through 2025. Missing observations in intermediate years remain missing in the first set. Supplementary Fig.~\ref{fig:si_support}a,b compares these records, annual completeness and the distribution of historical changes after excluding individual study areas or regions. Regional analysis weights are given in Supplementary Table~\ref{tab:si_population}; Supplementary Fig.~\ref{fig:si_full_histories} shows all 26 annual estimates for the overall domain and ten regions on identical $[-1,+1]$ axes. Source Data retain every annual estimate without temporal smoothing.
+
+
+
+
+\subsubsection{Global coverage of historical mangrove habitat associated with large cities}
+We quantified geographic coverage using the same historical habitat and urban selection rules as the study reference. The global urban selection, $\mathcal U$, is the union of the 2018 Global Urban Boundaries polygons with the supplied \texttt{urbanArea} attribute strictly greater than 100~km$^2$, including their 2-km buffers. This selects 1,029 urban polygons worldwide. To reproduce the study-domain geometry, polygons were transformed to EPSG:6933, simplified with a 30-m tolerance while preserving topology, and buffered by 2,000 projected metres with two segments per quadrant. The buffered geometry includes each polygon's interior. These projected city-selection distances are distinct from the 500-m ground-radius ecological neighbourhoods used to measure UMRI components.
+
+Let $D$ denote the global baseline support on the same 30-m grid, with grid-line origin $(0,0)$ in EPSG:6933. Using the complete GMW v4.1.12 annual raster product, we calculated
+\[
+D=\mathcal U\cap\bigcup_{t=2000}^{2004}M_t,
+\qquad
+f_{\mathrm{coverage}}=\frac{A(B\cap D)}{A(D)},
+\]
+where $B$ is the actual fixed study reference and $A$ sums the 900-m$^2$ equal-area cells. Bands 16--20 provide the five baseline years. Presence was combined by Boolean union and sampled to the target grid by nearest neighbour; urban membership was determined at cell centres. Overlapping urban buffers and source tiles therefore contribute each target cell once. The global denominator was evaluated independently of the original study mosaic extent.
+
+The global support contains 1,204,702 unique cells (1,084.2318~km$^2$) across 222 non-empty blocks. All 934,814 actual study-reference cells belong to this support, with no duplicate coordinates or unmatched cells. Thus
+\[
+f_{\mathrm{coverage}}
+=\frac{934{,}814}{1{,}204{,}702}
+=\frac{841.3326}{1{,}084.2318}
+=0.7759711530,
+\]
+giving 77.60\% coverage and 242.8992~km$^2$ of same-definition habitat outside the study reference. The global denominator omits the original land-cover-mosaic footprint restriction and therefore measures the full global population under the same city and historical-habitat definitions. The percentage describes representation of the fixed 2000--2004 habitat baseline associated with large cities worldwide. Annual observation completeness and the locations shared by historical observations and future projections are reported separately above. Source Data provide the exact counts, block totals, city buffers and unique grid coordinates; Supplementary Software provides the corresponding spatial selection and area calculation. 
+
+\subsubsection{Reference locations, neighbourhoods and observation support}
+The reference cell and its ecological neighbourhood have complementary roles. The cell fixes a geographical location and its 900-m$^2$ reporting weight. The neighbourhood defines the surrounding habitat and coastal mosaic used to measure the five components. At each centre, $B_i$ contains the historical reference pixels inside that circle, and the annual intersection $B_i\cap M_{it}$ identifies retained habitat. Both habitat loss and recovery are therefore followed at the same reference locations. Current mangrove cover outside the reference enters the patch geometry and can provide structural connectivity among retained patches, while the reporting area remains the historical reference.
+
+The processing grid assigns each reference centre a unique block and within-block identifier. The same identifiers link the habitat series, land-cover observations, climate cells, sea-level support and model outputs. Neighbourhood calculations use surrounding raster context across the reporting-block boundary. Inside each circle, connected components are built from known mangrove pixels, and boundary edges are accepted when both endpoints are within the circle and have known habitat support. Known-support coverage and edges adjoining unknown support are retained as diagnostic fields. The historical validity mask also retains the common observation support used in the comparison of component definitions, followed by the requirement that the five primary components are finite.
+
+The forecast population is formed by intersecting valid support across every member and branch. A centre enters that population when its static references, historical drivers, final observed habitat state and complete future driver sequence support the recursion. Conditional canopy observations receive their own presence masks. This distinction allows a known absence of mangroves to enter the forecast while retaining the separate observation status of its canopy. Intersecting the forecast population with valid 2025 historical scores then supplies the common anchor for the historical--future trajectories.
+
+\subsubsection{Geographic representation in the study map}
+Figure~2a groups the 934,814 reference centres into 73 region-specific $1^\circ$ longitude--latitude display cells. Each symbol is located at the mean coordinates of its contributing centres. For a display unit $g$ containing $n_g$ reference centres, its historical reference area is
+\[
+A_g=900n_g\ \mathrm{m}^{2}=0.0009n_g\ \mathrm{km}^{2}.
+\] Four size classes distinguish areas of $\leq1$, 1--10, 10--50 and $>50$~km$^2$. Regional colours and letters connect these display units to the corresponding trajectories. The Florida enlargement shows all 11 Northern America display units, representing 290,329 reference centres. Geographic aggregation is used for display; the regional and overall estimates retain the individual reference centres and their equal-area weights.
+
+The background depicts the global distribution of mangroves in 2025 from the GMW v4.1.12 vector release\cite{GMW2026}, represented by the $0.05^\circ$ cells intersecting those polygons. The main Robinson map and Florida enlargement retain every study location. Natural Earth land polygons supply geographic context. Source Data provide the reference and display coordinates, regional identities, counts and areas.
+
+\subsubsection{Observed forest condition through time}
+Figure~3b follows $p$, $m$ and $C$ at the same 925,583 centres in the full-history population with valid observations in both 2000 and 2025. For each centre, these quantities are calculated from its local 500-m neighbourhood; the reported value is the equal-weight mean of the resulting centre-level quantities. Multiplication by 100 expresses the dimensionless state as a percentage, and subtraction between the two years gives percentage-point change. These percentages describe local habitat condition; the reference cells provide the separate physical-area accounting. The estimate of recovered habitat in 2025 uses all 925,801 historical centres with valid observations. Recovery is confirmed by documented loss followed by two-year persistence, so confirmation begins in 2007. Earlier zeros follow this eligibility rule.
+
+Figure~3b shows the 2000 and 2025 means for historical habitat retention $m$, connected capacity $C$ and urban pressure $p$ in separate columns, using open and filled symbols, respectively. Small grey points show the 2025 means of the 141 spatial processing blocks; regional and overall means give each reference centre equal weight. Diamonds in the third column show the mean 2000--2025 change in patch concentration $q=C/m$, in percentage points, across 921,921 neighbourhoods with positive retention and valid $q$ in both years; their lines extend to zero. Canopy differences in Fig.~3c are current EVI or corrected NDMI minus their respective local 2000--2004 values. They use the spectral observations directly at 922,143 locations with retained forest and valid historical reference values in 2025. The remaining locations comprise 3,658 known complete local absences and 9,013 centres with jointly invalid observations; their canopy changes retain absent or missing status, respectively. Supplementary Fig.~\ref{fig:si_native} also follows locations observed throughout the historical record and shows the joint 2025 distribution of $g$ and $T$, each measured relative to its local historical value. The greening--capacity proportions describe the same locations with retained forest. The quantity $q=C/m$ is evaluated where $m>0$, so its change between the two years uses locations with forest in both years. Nearby reference centres have overlapping neighbourhoods and share some of the same observations.
+
+\subsection{2. Spectral harmonization and classification inputs}
+
+Landsat Collection~2 Tier~1 Level~2 observations\cite{Landsat45C2L2,Landsat7C2L2,Landsat89C2L2} were filtered with the pixel quality and radiometric-saturation flags. Bits 0--5 of the pixel quality field exclude fill, dilated cloud, cirrus, cloud, cloud shadow and snow. For each pixel and year, we select the observation with the highest clamped NDVI among those with valid six-band reflectance; timestamp and scene-index ordering resolve ties. All spectral bands and the thermal field use that same selected observation. Surface reflectance is
+\begin{equation}\label{eq:si_reflectance}
+\rho=2.75\times10^{-5}\,\mathrm{DN}-0.2.
+\end{equation}
+The original observation identity is preserved during subsequent harmonization. For Landsat~8/9, each surface-reflectance band is transformed to an ETM+ reference as
+\begin{equation}\label{eq:si_harmonization}
+\rho_{\mathrm{ETM+},b}=a_b\rho_{\mathrm{OLI},b}+b_b,
+\end{equation}
+using the published OLI-to-ETM+ coefficients\cite{Roy2016} in Supplementary Table~\ref{tab:si_coefficients}. Landsat~5/7 use unit slopes and zero intercepts in this implementation. The Landsat~9 application uses the OLI-family coefficients\cite{Gross2023}. Corrected band values supply the canopy indices
+\begin{align}
+\mathrm{EVI}&=2.5\,\frac{\rho_{\mathrm{NIR}}-\rho_{\mathrm{red}}}
+ {\rho_{\mathrm{NIR}}+6\rho_{\mathrm{red}}-7.5\rho_{\mathrm{blue}}+1},\label{eq:si_evi}\\
+\mathrm{NDMI}&=\frac{\rho_{\mathrm{NIR}}-\rho_{\mathrm{SWIR1}}}
+ {\rho_{\mathrm{NIR}}+\rho_{\mathrm{SWIR1}}}.\label{eq:si_ndmi}
+\end{align}
+The EVI definition follows its established spectral formulation\cite{Huete2002}. Non-finite values and singular denominators are missing observations. Harmonization changes the spectral inputs to the resilience components while retaining the selected annual observation, mangrove masks and classified coastal mosaic. Classification uses the original classifier's feature definitions and input scale.
+
+The annual spectral state combines two stages of sampling: selecting one clear observation at each pixel, then averaging accepted index values over the retained historical mangroves in the neighbourhood. Pixels within one neighbourhood can therefore contribute observations acquired on different dates in the same year. EVI and NDMI refer to the same selected reflectance observation at each pixel, preserving their within-pixel correspondence, while their validity rules determine their respective contributions to the neighbourhood mean. The annual state is consequently tied to this maximum-NDVI observation rule. Interannual differences compare states constructed by that same rule, with the local historical reference calculated from the annual neighbourhood means.
+
+The six coastal classes are mangrove (1), water (2), other vegetation (3), tidal flat (4), urban land (5) and aquaculture (6). The pretrained seven-model multilayer-perceptron ensemble uses red, green, blue, near-infrared, SWIR1 and SWIR2 reflectance; land-surface temperature; NDVI, EVI, NDBI, NDPI, BSI, NDWI, MNDWI, CMRI and MMRI; and distance to water. The primary distance-to-water layer uses JRC Global Surface Water v1.4\cite{Pekel2016}, with occurrence of at least 90\% over 1984--2021 defining the water seeds. Distance is calculated in native JRC grid-pixel units, with a 1,024-pixel search radius, and sampled to the analysis grid by nearest neighbour. Locations without a known nearest seed inside the search radius remain invalid. This feature gives a fixed distance-to-water context for the classifier. A missing required feature leaves the classification input invalid.
+
+\begin{samepage}
+\subsubsection{Classification feature definitions}
+The classifier receives a 17-element vector in a fixed order: red, green, blue, near-infrared, SWIR1 and SWIR2 reflectance; land-surface temperature; nine spectral indices; and distance to water. Land-surface temperature in degrees Celsius is $0.00341802\,\mathrm{DN}+149.0-273.15$. Write the six reflectances as $R,G,B,N,S_1,S_2$. In addition to EVI in Supplementary Equation~\eqref{eq:si_evi}, the classification indices are
+\begin{align*}
+\mathrm{NDVI}&=\frac{N-R}{N+R}, &
+\mathrm{NDBI}&=\frac{S_1-N}{S_1+N},\\
+\mathrm{NDWI}&=\frac{G-N}{G+N}, &
+\mathrm{MNDWI}&=\frac{G-S_1}{G+S_1},\\
+\mathrm{NDPI}&=-\mathrm{MNDWI}, &
+\mathrm{BSI}&=\frac{(S_1+R)-(N+B)}{(S_1+R)+(N+B)},\\
+\mathrm{CMRI}&=\mathrm{NDVI}-\mathrm{NDWI}, &
+\mathrm{MMRI}&=\frac{|\mathrm{MNDWI}|-|\mathrm{NDVI}|}
+ {|\mathrm{MNDWI}|+|\mathrm{NDVI}|}.
+\end{align*}
+\end{samepage}
+These features use the scaled surface reflectance of the selected observation on the original classifier's input scale. The canopy-state calculation uses the harmonized bands of that same observation. Thus, annual observation selection is shared, while the two calculations retain their respective spectral transformations. A feature ratio is evaluated when its inputs are finite and its denominator is non-zero; a mathematically undefined ratio remains missing. All 17 required entries must be finite before the ensemble assigns a land-cover class.
+
+The ensemble contains six class-specific models and one all-class model. Each predictor is a multilayer perceptron with two 256-unit hidden layers, ReLU activations and six output scores. The model-specific input subsets refer to the feature order above: mangrove uses features 1--9 and 15--17; water uses 1--7, 12 and 17; other vegetation uses 1--9 and 17; tidal flat uses 1--7, 13 and 14; urban land uses 1--7, 10 and 12; and aquaculture and the all-class predictor each use all 17 features.
+
+The classification decision rule begins with the highest-scoring class from the all-class predictor. It then applies four class-specific assignments in order: water when the water predictor selects class 2, mangrove when its predictor selects class 1, tidal flat when its predictor selects class 4, and aquaculture when its predictor selects class 6. A later applicable assignment replaces an earlier one. The other-vegetation and urban models are included in the seven-model ensemble; the final decision rule uses the all-class result and the four stated assignments. The validation comparison applies this identical rule to the archived and reconstructed feature vectors.
+
+\subsubsection{Assessment of reconstructed classification inputs on the same records}
+
+Classification transfer was evaluated on identical archived records for the original sample features and the reconstructed raster inputs. Of 10,657 archived records, 4,587 lay outside acquisition crops, 2,144 outside the required support, 62 in halo-only areas, six had incomplete or rejected features, and one lacked an optical observation. The remaining 3,857 records classified with both input sets comprise 890 records from 2000, 750 from 2010, 967 from 2020 and 1,250 from 2023. Ten records occur in required background support without a macroregion assignment. All accuracy statistics weight archived records equally.
+
+For the pressure calculation, classes are grouped into urban (5), vegetation (1 and 3) and other mapped cover (2, 4 and 6). Rows and columns of the six-class confusion matrices were collapsed accordingly. Reconstructed inputs correctly classify 3,512/3,857 records in these three groups (91.0552\%); original sample inputs correctly classify 3,592/3,857 (93.1294\%). The corresponding six-class accuracies are 2,953/3,857 (76.5621\%) and 3,189/3,857 (82.6808\%). Source Data contain the two group matrices and sample accounting. The records represent 3,783 distinct pixel-years; 148 records occur in duplicated pixel-years, and 11 pixel-years overlap the archived training set. The same archived records show how reconstructed inputs affect land-cover classification.
+
+
+\subsection{3. Five components, compensation and fixed calibration}
+
+Supplementary Table~\ref{tab:si_components} brings together the ecological meaning, observations, spatial and temporal support, transformations, fixed weights and principal uncertainty sources for all five components.
+
+All component quantities below refer to one reference-centred neighbourhood. Let $B_i$ be the historical habitat within that neighbourhood and $M_{it}$ its current mangrove mask. Urban pressure is
+\begin{align}
+p_{it}&=\max(P_{\mathrm{area},it},P_{\mathrm{interface},it},P_{\mathrm{occupation},it}),\label{eq:si_pressure}\\
+d_{it}&=-p_{it}.\nonumber
+\end{align}
+The area channel is $P_{\mathrm{area}}=U/(U+V+Q)$, where $U$, $V$ and $Q$ are urban, vegetated and unclassified study-pixel counts. Vegetation includes mangrove and other vegetation. A fully classified neighbourhood with $U=V=0$ has zero area-channel exposure. Including unknown cover in the denominator gives the measured fraction a lower-bound interpretation. The interface channel measures urban contact along a fixed historical mangrove boundary with a baseline-defined landward denominator. If that landward interface is absent, the fixed all-direction interface is used; an unavailable interface remains unknown. The occupation channel measures the fraction of $B_i$ that has lost mangroves and is currently urban. Taking the maximum represents the strongest measured channel without adding overlapping exposures.
+
+\subsubsection{Fixed boundary and exposure calculations}
+The interface calculation starts from the boundary between $B_i$ and its surrounding non-reference pixels. Each undirected horizontal or vertical pixel adjacency is counted once. The shared edge length is the local ground spacing perpendicular to that adjacency: horizontal neighbours contribute an edge of length $d_y$, and vertical neighbours contribute an edge of length $d_x$. Both endpoints must fall within the circular neighbourhood and the known habitat domain. This construction gives a fixed reference boundary whose geometry persists through subsequent habitat change.
+
+The landward subset is determined from the non-reference endpoint of each boundary edge. At least three of the five baseline years must have a valid coastal class, and a strict majority of those valid years must belong to terrestrial classes 1, 3, 5 or 6. Baseline ties, insufficient observations and water or tidal-flat majorities are recorded separately. For the selected edge set $\mathcal{E}_i$, with physical lengths $\ell_e$, annual interface exposure is
+\[
+P_{\mathrm{interface},it}=
+\frac{\sum_{e\in\mathcal{E}_i}\ell_e\,
+\mathbf{1}\{\text{at least one endpoint of }e\text{ is urban at }t\}}
+{\sum_{e\in\mathcal{E}_i}\ell_e}.
+\]
+The denominator is fixed across years. When no baseline landward edge is identified, $\mathcal{E}_i$ becomes the fixed all-direction boundary. An empty all-direction boundary yields an unavailable interface value. A known urban endpoint contributes to exposure even when the opposite endpoint's current class is unknown.
+
+The observation records also retain exposure upper bounds. For area exposure, the upper numerator is $U+Q$ over the same denominator $U+V+Q$. For interface exposure, the upper numerator adds the lengths of edges with an unknown class endpoint and no identified urban endpoint. For direct occupation, the upper numerator adds historical pixels with mangrove loss and unknown current land cover. The reported pressure combines the lower values of the three channels. These companion fields retain the amount of unresolved land-cover support alongside the measured urban exposure.
+
+\subsubsection{Confirmed recovery and canopy state}
+
+Confirmed recovery is the fraction of historical habitat with recovered mangrove cover after documented loss:
+\begin{equation}\label{eq:si_recovery}
+r_{it}=\frac{\left|\{x\in B_i:\exists u\in[2005,t-2],\ x\notin M_{iu};\ x\in M_{i,t-1}\cap M_{it}\}\right|}{|B_i|}.
+\end{equation}
+Each pixel is counted once in a year and leaves the recovered stock if it is subsequently lost. The first possible confirmation is 2007. 
+
+Annual spectral means are calculated over $B_i\cap M_{it}$. EVI means use finite observations in $[0,1]$; values outside this range are excluded rather than clipped. NDMI uses finite near-infrared and SWIR1 reflectances in $[0,1]$ with a positive sum, giving index values in $[-1,1]$. Historical NDMI means use the harmonized values on support valid in both the original and harmonized bands. For EVI, NDMI and connected capacity, the local baseline is the median of 2000--2004, with at least three finite annual values required. Growth, health and structural trajectory are
+\begin{align}
+g_{it}&=\frac{\mathrm{EVI}_{it}-\mathrm{EVI}_{i0}}
+ {\mathrm{EVI}_{it}+\mathrm{EVI}_{i0}},\label{eq:si_growth}\\
+h_{it}&=\frac{\mathrm{NDMI}_{it}-\mathrm{NDMI}_{i0}}
+ {2+\mathrm{NDMI}_{it}+\mathrm{NDMI}_{i0}},\label{eq:si_health}\\
+T_{it}&=\frac{C_{it}-C_{i0}}{C_{it}+C_{i0}}.\label{eq:si_trajectory}
+\end{align}
+The health expression is the symmetric relative change of $(\mathrm{NDMI}+1)/2$. A known zero-to-zero relative change is zero; otherwise a non-positive or non-finite denominator is invalid.
+
+For each spectral state, the annual numerator is the sum of accepted index values over retained historical habitat and the denominator is the corresponding valid-observation count. EVI and NDMI retain their own observation counts and coverage fields. Their local reference values are then obtained from the five annual means, using the stated median and minimum-three-year rule. This sequence gives each available baseline year one place in the reference distribution and records the fraction of current habitat contributing spectral information.
+
+\subsubsection{Retention, patch configuration and common validity}
+
+To calculate connected capacity, all current mangrove pixels in the neighbourhood are grouped using four-neighbour adjacency. If connected component $j$ contains $n^B_{j,it}$ retained historical pixels, then
+\begin{equation}\label{eq:si_capacity}
+C_{it}=\frac{\sqrt{\sum_j(n^B_{j,it})^2}}{|B_i|}.
+\end{equation}
+For a fixed retained area, capacity is greatest when retained habitat belongs to a single connected patch. Current mangroves outside $B_i$ can connect its retained patches; the numerator counts historical pixels within those connected patches. Consequently $0\leq C_{it}\leq m_{it}$, where $m_{it}=|B_i\cap M_{it}|/|B_i|$ is historical habitat retention.
+
+Mapped absence is a known ecological state: if $|B_i\cap M_{it}|=0$, then $r_{it}=g_{it}=0$, $h_{it}=-1$ and $C_{it}=0$. Structural trajectory continues to follow Supplementary Equation~\eqref{eq:si_trajectory}, and urban pressure is retained. Unknown observations retain missing status. A reported score requires all five components to be finite on the common valid support and uses their fixed weights.
+
+The component calculation follows a fixed sequence. First, annual masks identify reference habitat, retained habitat and the observed surrounding mosaic. Second, the three pressure channels, confirmed recovered stock, canopy means and connected capacity are computed from their respective counts or edge lengths. Third, the baseline-relative transformations yield $g$, $h$ and $T$, and the known-absence rule is applied. The common valid mask then selects the centre-years used by all five weighted contributions. This shared support preserves the identity between the weighted intermediate sum and $S$.
+
+The calculation distinguishes three observation situations. When retained mangroves are present and canopy observations are valid, their measured spectral state enters the index. When all historical mangroves in the neighbourhood are known to be absent, the specified absence values enter the ecological balance. When habitat or a required component is unknown, that centre-year is excluded from the aggregate score. An observed zero recovery stock additionally has a temporal meaning: no habitat currently meets the documented-loss and two-year-presence criteria, including the years before confirmation is possible. Neither a zero recovered stock nor zero measured urban exposure implies missing data. The indicators and component masks preserve these distinctions when the annual record is used for modelling.
+
+\subsubsection{Compensation, weighted contributions and calibration}
+
+Health and structure regulate compensation through
+\begin{align}
+G_{it}&=1-\max(0,-h_{it},-T_{it}),\label{eq:si_gate}\\
+r^\ast_{it}&=r_{it}G_{it},\qquad
+g^\ast_{it}=\min(g_{it},0)+G_{it}\max(g_{it},0).\label{eq:si_effective}
+\end{align}
+The fixed weights are $(w_d,w_r,w_g,w_h,w_T)=(0.25,0.15,0.10,0.25,0.25)$. They specify the contribution balance and remain identical in historical and future calculations. The weighted sum used to calculate UMRI is
+\begin{equation}\label{eq:si_score}
+S_{it}=0.25d_{it}+0.15r^\ast_{it}+0.10g^\ast_{it}+0.25h_{it}+0.25T_{it}.
+\end{equation}
+Define its five weighted intermediate terms as $c_{k,it}$. Their positive and adverse amounts are separated before aggregation:
+\begin{equation}\label{eq:si_gross}
+P_{it}=\sum_k\max(c_{k,it},0),\quad
+N_{it}=\sum_k\max(-c_{k,it},0),\quad
+A_{it}=P_{it}+N_{it},\quad S_{it}=P_{it}-N_{it}.
+\end{equation}
+Separating the signs at each centre preserves opposing contributions that cancel in $S$. Gross totals are subsequently aggregated on the common support.
+
+Compensation is applied at each reference centre before spatial aggregation. For one year and its common valid population $\mathcal I$, let $\omega_i=a_i/\sum_{j\in\mathcal I}a_j$ be the normalized spatial weight, with $\sum_{i\in\mathcal I}\omega_i=1$. Write $\bar r=\sum_i\omega_i r_i$ and $\bar G=\sum_i\omega_i G_i$. The mean recovery contribution is $w_r\sum_i\omega_i r_iG_i$, and
+\[
+\overline{rG}=\bar r\,\bar G+\operatorname{Cov}_{\omega}(r,G),\qquad
+\operatorname{Cov}_{\omega}(r,G)=\sum_i\omega_i(r_i-\bar r)(G_i-\bar G).
+\]
+The same identity holds for $g_+=\max(g,0)$. The covariance describes the spatial association of a vegetation response with the conditions supporting it. Computing the effective terms locally retains that association and allows canopy moisture to determine compensation at some locations and habitat structure at others. The resulting mean contributions enter the common normalization.
+
+UMRI is calculated as $V=\mathcal{N}(S)$, where $S$ and its weighted components $c_k$ are computational intermediates. All UMRI states, changes, component contributions and prediction errors use this common scale; cumulative differences are expressed in UMRI-years. The fixed normalization is
+\begin{equation}\label{eq:si_normalization}
+\mathcal{N}(S)=\frac{S}{\lambda+|S|},\qquad \lambda=0.05934161890467785.
+\end{equation}
+The calibration sample comprises 577 preselected centres in 30 blocks across the ten regions. Sampling used seed 20261014, selecting three distinct non-empty historical-habitat blocks per region where possible and up to 20 centres uniformly within each assigned regional block stratum, with seeded filling from remaining blocks when needed. Calibration used the 500-m neighbourhood and the same corrected components and weights. For baseline year $t$, block $b$ and region $r$, let $\mathcal{I}_{brt}$ be the valid centres and $\mathcal{B}_{rt}$ the contributing blocks. Then
+\begin{equation}\label{eq:si_lambda}
+\lambda=\frac{1}{5}\sum_{t=2000}^{2004}\frac{1}{10}\sum_{r=1}^{10}
+\frac{1}{|\mathcal{B}_{rt}|}\sum_{b\in\mathcal{B}_{rt}}
+\frac{1}{|\mathcal{I}_{brt}|}\sum_{i\in\mathcal{I}_{brt}}A_{it}.
+\end{equation}
+The annual valid-centre counts are 575, 575, 566, 575 and 576, giving 2,867 centre-years from 576 distinct centres. The arithmetic mean of the five annual balanced gross magnitudes gives the scale parameter in Supplementary Equation~\eqref{eq:si_normalization}; the annual calibration values are retained in Source Data.
+
+The mapping is continuous, odd and strictly increasing, preserves sign and ordering, and gives finite UMRI states in $(-1,1)$. It maps the intermediate values $S=\pm\lambda$ to $\pm0.5$ UMRI. Equal-magnitude positive and negative values of $S$ therefore map to equal-magnitude UMRI states on opposite sides of zero. Zero is the balance of weighted contributions. Negative UMRI denotes a degraded state of suppressed resilience, with adverse contributions exceeding positive gains; positive values indicate the reverse balance. A downward trajectory indicates deterioration, including deeper suppression when values are already negative. An upward trajectory that remains below zero indicates partial relief within continued suppression. The same calibration and weights apply across years, regions, radii and scenarios. The region- and block-balanced calibration fixes the common UMRI mapping; the primary spatial estimator below determines the habitat population represented by each estimate.
+
+
+Health and structure describe the condition of the forest and the support available for recovery and canopy gains. Their state terms and their role in compensation express these two relationships. Supplementary Methods~8 and~9 derive the structural meaning and illustrate how canopy condition and habitat structure regulate positive responses using mathematical examples.
+
+Calibration and spatial reporting have different tasks. The geographically balanced calibration sample fixes the scale parameter using baseline gross contribution magnitude. Subsequent area weighting determines which historical habitat population the reported mean represents. The fixed calibration gives a common scale to the component balances observed in different regions, years and scenarios. A zero score consistently identifies balanced weighted contributions. The schematic ridge in Fig.~1 represents the transition between regimes in the conceptual resilience landscape.
+
+\subsection{4. Regional and overall estimates of urban effects}
+
+For reporting population $\mathcal{I}_t$, the primary estimator is
+\begin{equation}\label{eq:si_primary}
+\bar S_t=\frac{\sum_{i\in\mathcal{I}_t}a_iS_{it}}{\sum_{i\in\mathcal{I}_t}a_i},
+\qquad V_t=\mathcal{N}(\bar S_t),\qquad a_i=900~\mathrm{m}^2.
+\end{equation}
+The overall estimate pools centres from all ten regions. Regional estimates restrict $\mathcal{I}_t$ to one region. Equal-area reference cells give equal weight to each valid centre even after local habitat loss. Averaging individual UMRI values would be a different estimator because $\mathcal{N}$ is nonlinear. Every weighted intermediate $c_k$ is aggregated using the same centres and weights, so that their means sum to $\bar S_t$. The resulting $V_t$ is the UMRI state on the common scale.
+
+The units distinguish the ecological measurements from their contributions to the index. Retention $m$, capacity $C$, recovery $r$ and urban exposure $p$ are dimensionless; multiplying them by 100 expresses a percentage, and the difference between two such percentages is a percentage-point change. EVI and NDMI differences remain in their original dimensionless index units. Their transformed responses $g$ and $h$ enter the weighted sum before conversion to UMRI. For example, the overall 2025 EVI increase of 0.0451 is a change in canopy index; the $+0.0277$ UMRI growth contribution to the 2000--2025 UMRI change also reflects baseline-relative scaling, local compensation, weighting and normalization. The two quantities therefore describe different stages of the same calculation.
+
+Two alternative estimators provide weighting sensitivities. The first computes a valid-centre mean within each region and then gives the ten regional $S$ values equal weight. The second averages centres within blocks, gives blocks equal weight within regions, and gives regions equal weight. Both normalize only after aggregating $S$. These sensitivities compare geographic weighting schemes. The balanced estimators require all ten regions to contribute.
+
+For scenario $s$, year $t$ and joint member $j$, the effects of urban expansion and protection are
+\begin{align}
+\Delta V^{\mathrm{urban}}_{sjt}&=V^{\mathrm{growth}}_{sjt}-V^{\mathrm{fixed2025}}_{sjt},\label{eq:si_urban_effect}\\
+\Delta V^{\mathrm{protection}}_{sjt}&=V^{\mathrm{protected}}_{sjt}-V^{\mathrm{growth}}_{sjt}.\label{eq:si_protection_effect}
+\end{align}
+Both branches share spatial support, climate model, sea-level path and ecological model fit. Quantiles at 0.17, 0.50 and 0.83 are calculated from the 15 differences, using linear interpolation between ordered values. Each member supplies its own branch difference before the distribution is summarized.
+
+The fixed-urban comparison holds the urban footprint and its associated exposure and landward-space inputs at their observed 2025 values while climate, relative sea level and ecological states continue to evolve. It provides a common environmental trajectory against which the additional effects of urban expansion are measured. Protection is evaluated against the corresponding expanding footprint, so its benefit includes the ecological consequences of the altered allocation. Comparisons among SSPs combine their respective climate, sea-level and urban-development assumptions; the within-pathway branch contrasts retain the common environmental conditions needed to interpret the urban effect. Cumulative effects are
+\begin{equation}\label{eq:si_cumulative}
+D_{sj}=\sum_{t=2026}^{2100}\Delta V_{sjt},
+\end{equation}
+followed by member quantiles. Their unit is UMRI-year, with one-year spacing. These integrals measure the accumulated difference on the resilience coordinate. Supplementary Fig.~\ref{fig:si_urban_regions}a shows annual regional effects and their member ranges; Source Data also provide endpoint and cumulative effects.
+
+\subsubsection{Meaning and calculation of the reported estimates}
+An annual historical estimate is $V_t=\mathcal{N}(\bar S_t)$, obtained by averaging the weighted intermediate scores over the observed historical habitat in that year and then applying the fixed normalization. A future estimate describes the same state under one development pathway, urban-land choice and climate--sea-level--model combination. Comparing expanding and unchanged urban footprints gives the additional urban loss; comparing protected and unprotected development gives the protection benefit. Both comparisons use the same locations and environmental conditions. A positive benefit describes improvement relative to unprotected development, while the resilience state shows the balance of adverse and positive contributions under each choice. Summing annual differences within each projection gives the cumulative effect. The data tables identify each of these calculations.
+
+For the cumulative calculation, the sum contains 75 annual differences, from 2026 through 2100 inclusive. Each complete member trajectory supplies one cumulative value, and the reported median and range summarize those 15 values. The five-component analysis assigns the complete UMRI change to the corresponding ecological and pressure changes within each projection under the same environmental conditions, preserving their signs and exact sum in UMRI units.
+
+\subsubsection{State composition and change contributions in UMRI units}
+
+Let $\bar c_k$ denote the spatially averaged weighted intermediate for component $k$, with $\bar S=\sum_k\bar c_k$. Its contribution to the UMRI state is
+\[
+C_k=\frac{\bar c_k}{\lambda+|\bar S|},\qquad \sum_kC_k=V.
+\]
+For the change from state 0 to state 1, use the common secant of the UMRI mapping,
+\[
+\alpha(S_0,S_1)=
+\begin{cases}
+[\mathcal{N}(S_1)-\mathcal{N}(S_0)]/(S_1-S_0),&S_1\ne S_0,\\
+\lambda/(\lambda+|S_0|)^2,&S_1=S_0.
+\end{cases}
+\]
+The contribution of component $k$ is $A_k=\alpha(\bar S_0,\bar S_1)(\bar c_{k,1}-\bar c_{k,0})$, giving $\sum_kA_k=V_1-V_0$ exactly. The derivative continuation retains offsetting component changes when the total intermediate is unchanged. Numerically, writing $a=|S_0|$ and $b=|S_1|$, the secant is $\lambda/[(\lambda+a)(\lambda+b)]$ for endpoints on the same side of zero and $[\lambda+2ab/(a+b)]/[(\lambda+a)(\lambda+b)]$ for endpoints on opposite sides. These expressions evaluate the same mapping without subtractive cancellation.
+
+Historical contributions use 2000 as the common reference year, with the valid annual support of the stated historical estimator. This change reference is distinct from the 2000--2004 baseline used to construct ecological components and calibrate $\lambda$. Figure~3a reports $A_k(t;2000)$. For the 2013--2025 interval described in Supplementary Discussion, the same expression uses 2013 as its starting state.
+
+Future contributions are calculated within each joint member, after spatial aggregation and before ensemble averaging. For the urban-growth minus fixed-2025 comparison,
+\begin{equation}\label{eq:si_decomposition}
+\overline{\Delta V}^{\mathrm{urban}}_{st}=\sum_{k=1}^5\overline{A_k}^{\mathrm{urban}}_{st},\qquad
+f_{\mathrm{eco},st}=\frac{\sum_{k\in\{r,g,h,T\}}\overline{A_k}^{\mathrm{urban}}_{st}}
+ {\overline{\Delta V}^{\mathrm{urban}}_{st}}.
+\end{equation}
+The overbar denotes the arithmetic mean across the 15 model combinations. The overall component shares supplied in Source Data express each component mean as a percentage of the mean final-UMRI urban effect, $100\overline{A_k}^{\mathrm{urban}}/\overline{\Delta V}^{\mathrm{urban}}$, for the four pathways in 2100. All five overall contributions deepen loss in these cases, so their percentages sum to 100\%. The complete regional contributions remain in Source Data. A zero denominator leaves the share undefined. Total UMRI effects in Fig.~4b and Supplementary Figs.~\ref{fig:si_urban_regions}b and \ref{fig:si_protection}a are summarized with medians and 17th--83rd percentiles. Supplementary Table~\ref{tab:si_ledger} applies the same exact decomposition to the protected-minus-growth contrast in two regional cases with identical cumulative construction. It reports the mean total benefit and the shares of the mean pressure and combined ecological contributions, using the mean total benefit as denominator. The median and 17th--83rd percentiles of the 15 total benefits are reported separately. Figure~4e instead shows component shares within each overall member: $100\Delta\mathrm{UMRI}_k/\Delta\mathrm{UMRI}$. All total urban effects are negative; positive shares add to urban loss and negative shares offset it, with the five shares summing to 100\% within every member. 
+
+For the gross 2025 state budget, the centre-level positive and adverse amounts in Supplementary Equation~\eqref{eq:si_gross} are spatially averaged first. Their UMRI contributions are $P_V=\bar P/(\lambda+|\bar S|)$ and $N_V=\bar N/(\lambda+|\bar S|)$, with $P_V-N_V=V$. The common factor preserves the adverse share $N_V/(N_V+P_V)=\bar N/(\bar N+\bar P)$. Source Data report the five final state contributions $C_k$ and their net UMRI; the gross positive and adverse totals are reported in the historical component summary below.
+
+The primary UMRI estimator gives the same weight to each unit of historical reference habitat. Equal-region and equal-block alternatives instead emphasize geographic balance among the included units. These alternatives evaluate spatial representation using the same centre-level ecological calculations. Forecast evaluation uses block- and region-balanced errors to describe predictive performance across the ten regions. Reporting and model evaluation therefore retain the weighting scheme appropriate to each stated question.
+
+\subsubsection{Display of effects spanning different magnitudes}
+Figure~4d shows relative changes in habitat retention and connected capacity on linear axes: $100(x_{\mathrm{growth}}-x_{\mathrm{fixed}})/x_{\mathrm{fixed}}$, where $x=m,C$. Spatial means are calculated within each branch before pairing; denominators are the corresponding member and region, or overall, in the fixed-2025 urban-footprint branch at 2100. Ensemble summaries follow these memberwise ratios. Figure~4 map colours and the horizontal axis in Fig.~4c use $x\mapsto\operatorname{asinh}(x/0.01)$ in UMRI units. The vertical axis in Fig.~4e uses $\operatorname{asinh}(x/5)$ in percentage units. Tick labels retain original values; Fig.~4b remains linear.
+
+Figure~5d applies the corresponding protected-minus-growth ratio, $100(x_{\mathrm{protected}}-x_{\mathrm{growth}})/x_{\mathrm{growth}}$, to branchwise spatial means in 2100. Its linear axes retain all 300 regional and 30 overall member pairs.
+
+Supplementary Fig.~\ref{fig:si_protection}a aligns the ten regional construction accounts, UMRI benefits, exact component budgets and habitat changes. Benefit positions use $\operatorname{asinh}(x/0.001)$ in UMRI units; habitat positions use $\operatorname{asinh}(x/0.05)$ in percentage points. Symbols and intervals summarize the median and 17th--83rd percentiles, with faint points retaining all members. Component colours show arithmetic means in UMRI units using $\operatorname{asinh}(x/0.002)$. The monotone displays preserve sign, exact zero and ordering, with original-unit tick labels. Central America under SSP5--8.5 has a true zero benefit and no construction target; its construction percentage remains undefined. Supplementary Fig.~\ref{fig:si_protection}b,c retains the 30 members of the two equal-construction cases. Ecological and individual component shares divide the corresponding within-member contributions by that member's positive total benefit; these ratios differ from the shares of ensemble means in Supplementary Table~\ref{tab:si_ledger}.
+
+\subsubsection{Spatial extent at 2100 and avoided urban loss}
+
+The principal future endpoint is 2100. We quantify the spatial extent of resilience deficits using the sign of the 15-member median UMRI at each reference cell. For additional urban losses, we first subtract the fixed-2025 branch from the growth branch within each member and then take the median of those differences at that cell. Let $V_{ij}^{\mathrm{growth}}$ and $V_{ij}^{\mathrm{fixed2025}}$ be the endpoint states, in UMRI units, for reference cell $i$ and member $j$. The two affected areas are
+\[
+\begin{aligned}
+A_{\mathrm{deficit}}&=a\sum_{i\in\mathcal I}\mathbf{1}\!\left[\operatorname{median}_j V_{ij}^{\mathrm{growth}}<0\right],\\
+A_{\mathrm{urban}}&=a\sum_{i\in\mathcal I}\mathbf{1}\!\left[\operatorname{median}_j\bigl(V_{ij}^{\mathrm{growth}}-V_{ij}^{\mathrm{fixed2025}}\bigr)<0\right],
+\end{aligned}
+\]
+where $a=0.0009$~km$^2$ and $\mathcal I$ is the common valid forecast support. The areas count distinct 30-m EPSG:6933 reference cells; each cell's index describes its 500-m ecological neighbourhood. The denominator is the complete fixed historical reference of 934,814 cells, or 841.3326~km$^2$. Forecasts cover 926,220 of these cells (833.5980~km$^2$); 8,594 cells (7.7346~km$^2$, 0.9193\%) are unknown and remain in the total-area denominator. These statistics describe the reference footprint classified by its local resilience state or change. Source Data retain negative, positive, zero and unknown classes separately, together with percentages relative to valid support and the matched-2025 companion.
+
+The spatial overlap counts reference cells for which both medians are negative. We report its area in square kilometres and as a percentage of the area with additional urban loss. Both conditions refer to the same reference cell in 2100; the urban contrast compares development choices under common future environmental conditions.
+
+Signs are evaluated from stored single-precision $S$, using the monotonicity of the fixed UMRI mapping; normalization and subtraction between development choices are evaluated in double precision. Equality at stored precision is recorded as zero. The median at a cell summarizes member effects that may differ in sign. To summarize variation among members, we also calculate each member's negative area before taking its 17th, 50th and 83rd percentiles. These member-area quantiles are reported as a separate companion to the area of the pixelwise-median map (Supplementary Table~\ref{tab:si_endpoint_area}).
+
+A regional UMRI estimate and an affected-area estimate answer complementary questions. The regional state summarizes the magnitude and balance of weighted contributions across reference centres. The affected area counts the reference locations with a negative state or negative urban effect, giving each qualifying cell its physical area regardless of the magnitude of the deficit. A small strongly affected part of a region and a broad weakly affected part can therefore contribute differently to its mean state and its affected area. Likewise, taking a median at each cell before counting negative cells describes a consensus spatial pattern, whereas counting negative cells within each member before taking quantiles describes variation in total affected area. The two spatial summaries retain their respective orders of calculation.
+
+Figure~4c resolves the intensity of local additional loss using the same cell-level median differences. For each UMRI threshold $t\geq0$, the exceedance percentage is $100\,\#\{i\in\mathcal I: \operatorname{median}_j(V_{ij}^{\mathrm{growth}}-V_{ij}^{\mathrm{fixed2025}})<-t\}/934{,}814$. Its value at zero equals the percentage of the historical reference area affected by additional urban loss. Positive-loss medians condition on affected cells; their plotted ordinates are the exact exceedance percentages at those medians. Unknown cells remain in the fixed denominator. Counts use the pixelwise medians at 801 asinh-spaced thresholds plus named checkpoints and the conditional medians. Connecting lines interpolate these samples; no smoothing or ensemble band is applied to the exceedance profiles.
+
+Changes in habitat amount and structure are calculated at the same reference locations. We average $m$ and $C$ within each development choice, subtract those means within each model combination, and multiply by 100 to report percentage points. We then calculate quantiles across the resulting differences. For each protection pathway, member $j$ and year $t$ from 2026 to 2100, the UMRI states are likewise calculated at the same forecast locations before comparing development choices. In UMRI units, additional urban loss, protection benefit and protected residual are $L_{jt}=V_{jt}^{\mathrm{fixed2025}}-V_{jt}^{\mathrm{growth}}$, $B_{jt}=V_{jt}^{\mathrm{protected}}-V_{jt}^{\mathrm{growth}}$ and $R_{jt}=L_{jt}-B_{jt}$. The avoided percentage is calculated within each member as
+\[
+F_{jt}^{\mathrm{avoided}}=100\,B_{jt}/L_{jt}.
+\]
+A zero denominator leaves the percentage undefined; all 2,250 member--year denominators in these two pathways are positive. Figure~5b places each member's annual avoided-loss percentage against the construction accommodated under protection, expressed as a percentage of the cumulative unprotected construction target. Thin curves retain all 15 members and bold curves show annual medians; symbols identify 2026, 2050 and 2100. The avoided fraction refers to additional urban loss; Supplementary Fig.~\ref{fig:si_urban_regions}b reports the absolute annual protection benefit in UMRI units.
+
+Endpoint and annual regional counts answer different questions. At 2100, nine of ten regional median states are negative under every pathway on both supports. Over the complete annual series, the minimum is eight: this occurs under SSP3--7.0 in 2075--2084 on the forecast support and in 2075--2086 on the matched-2025 support, when Eastern Africa and Southern Asia both have positive regional medians. The annual curves and Source Data retain these intermediate states.
+
+\subsection{5. Historical and scenario drivers}
+
+Supplementary Table~\ref{tab:si_datasets} identifies the driver products and spatial information scales. Historical climate is ERA5-Land over 2000--2025\cite{ERA5Land2021,ERA5LandHourlyData}, mapped from 252 cells on the distributed 0.1-degree grid to the reference centres. We used the Google Earth Engine daily and monthly aggregates of the upstream hourly data, \href{https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR}{\nolinkurl{ECMWF/ERA5_LAND/DAILY_AGGR}} and \href{https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_MONTHLY_AGGR}{\nolinkurl{ECMWF/ERA5_LAND/MONTHLY_AGGR}}, respectively. Future drivers use NASA NEX-GDDP-CMIP6 v2.0 at 0.25 degrees\cite{ref054,NEXGDDPCMIP6Data}, retaining the original grid and source calendar. Daily mean temperature, daily maximum temperature and precipitation are available for all four SSPs. Eligibility required a common version, complete variable coverage and the same ensemble realization, r1i1p1f1. Five climate models were selected from seven candidates to represent the ten regions' warming and precipitation responses, retaining ACCESS-CM2 as an initial anchor. Screening used 2000--2004 and SSP5--8.5 in 2096--2100; the full driver construction uses the longer reference period described below. The selected models are ACCESS-CM2, ACCESS-ESM1-5, CanESM5, MPI-ESM1-2-LR and IPSL-CM6A-LR.
+
+For model selection, each candidate supplies a 20-element response vector: the warming difference and log precipitation ratio for each of ten macroregions between the two screening periods. Native-cell annual climate is weighted by the number of study centres within each region. The precipitation entry is $\log[(P_{2096\text{--}2100}+1)/(P_{2000\text{--}2004}+1)]$, using annual totals in millimetres. Each vector dimension is standardized across the eligible models. Among all five-model subsets containing ACCESS-CM2, the selected subset minimizes the mean squared standardized distance from each candidate to its nearest selected model. The ten regions and the two climate responses receive equal weight in this selection criterion.
+
+All climate adjustments use the common historical reference 2000--2014. Daily mean temperature receives the difference between ERA5-Land and model monthly climatological means. Daily maximum temperature receives the difference between their mean historical annual 95th percentiles. Daily precipitation is normally multiplied by the ratio of reference monthly totals. When the model's reference monthly total is below 1~mm, the monthly difference is distributed over the source month's days and adjusted daily values are truncated at zero. The adjusted series provide annual mean temperature, the annual 95th percentile of daily maximum temperature, annual precipitation, precipitation summed over the fixed three historically driest calendar months, and the longest annual run of days with precipitation below 1~mm. Dry-season months remain fixed in the projections. Daily processing preserves each model's actual calendar, including no-leap calendars where present.
+
+\subsubsection{Daily climate adjustment and annual summaries}
+For a given climate support unit and calendar month, let $\bar T^E_m$ and $\bar T^G_m$ denote the ERA5-Land and GCM mean-temperature reference climatologies, and let $\bar P^E_m$ and $\bar P^G_m$ denote their mean monthly precipitation totals over 2000--2014. The adjusted daily values are
+\[
+T^*_{d}=T^G_{d}+\bar T^E_m-\bar T^G_m,
+\qquad
+P^*_{d}=
+\begin{cases}
+\max\{0,P^G_d\,\bar P^E_m/\bar P^G_m\}, & \bar P^G_m\geq1~\mathrm{mm},\\
+\max\{0,P^G_d+(\bar P^E_m-\bar P^G_m)/n_m\}, & \bar P^G_m<1~\mathrm{mm},
+\end{cases}
+\]
+where $n_m$ is the number of days in the source month's calendar. The daily maximum-temperature offset is the difference between the ERA5-Land and GCM reference means of annual 95th percentiles. Applying this constant to daily maximum temperatures and recomputing the annual percentile preserves the definition used in the historical predictor.
+
+Annual mean temperature is calculated across all daily values, so months contribute in proportion to their actual day counts. Annual precipitation is their daily sum. Dry-season precipitation sums the adjusted values in the three fixed reference dry months. Consecutive dry days are counted in chronological order within each calendar year, resetting the run whenever adjusted precipitation reaches 1~mm. Native cell identifiers and source calendars remain attached to each derived series, and each centre is joined to its historical and future forcing support through these identifiers.
+
+\subsubsection{Relative sea-level observations, proxies and scenario alignment}
+
+Historical relative sea level uses annual Revised Local Reference (RLR) records from PSMSL\cite{Holgate2013,PSMSL2026}. A qualifying gauge lies within 25~km of the support location and has at least eight usable annual values during 2000--2025, including at least three in the 2000--2014 reference period. Missing years and locations use a flagged proxy combining C3S vDT2024 ocean sea-level anomalies\cite{C3SSeaLevel2018} with one regional background component. The latter preferentially comes from the baseline trend in the difference between qualifying tide-gauge and ocean anomalies; otherwise it uses the AR6 background assessment. This retains the distinction between directly observed relative sea level and an ocean-plus-background proxy.
+
+Future relative sea level uses AR6 regional total projections at the 17th, 50th and 83rd percentiles\cite{AR6SL2021,IPCC2021Chapter9,Kopp2023}. For path $q$, the aligned series is
+\begin{equation}\label{eq:si_rsl}
+L_q(t)=L_{\mathrm{hist}}(2025)+[L_{\mathrm{AR6},q}(t)-L_{\mathrm{AR6},q}(2025)].
+\end{equation}
+Annual values are linearly interpolated between official decade nodes; annual rates interpolate the supplied decade rates. The total AR6 projection supplies the future change with its background contribution included once. Local topography uses FABDEM v1.2 with the EGM2008 vertical reference\cite{Hawker2022,FABDEM12}. Relative elevation is the neighbourhood median minus the median elevation over its historical mangrove reference, supplemented by slope. Landward connected area, urban blockage and classification coverage are calculated from the coastal mosaic and urban allocation.
+
+A usable tide-gauge year has a finite RLR value, a complete annual record and no attention flag. Observations are expressed relative to the station's mean over available 2000--2014 reference years. At a support location with a qualifying gauge, the background term is fitted from the difference between gauge and ocean anomalies during those reference years. Observed gauge anomalies supply the annual value in years with usable records. At a location with a qualifying gauge, years without a usable gauge record use the ocean anomaly plus this fitted background. Locations without a qualifying gauge use the ocean anomaly plus the assessed AR6 background term. Historical sea-level rates are backward annual differences in millimetres per year. The year-2000 rate uses the observed 1999 ocean level and the selected background term. The source flag records whether each annual value comes from a gauge or the corresponding proxy.
+
+The future alignment in Supplementary Equation~\eqref{eq:si_rsl} makes the 2025 historical state the common origin of every sea-level path. The AR6 total increment supplies the subsequent change, including its assessed background contribution. Sea-level values and rates are handled as separate supplied variables: total values are converted from millimetres to metres, whereas the interpolated rate retains millimetres per year. This preserves the units expected by the two sea-level predictors.
+
+\subsubsection{Observed landward space and urban land budgets}
+The landward-space predictors use the same 500-m circle as the ecological states. Potential terrestrial space consists of known non-reference pixels with at least three valid baseline class years and a strict majority in classes 1, 3, 5 or 6. In each subsequent year, pixels in classes 1, 3 or 6 form the available set. A four-neighbour search begins at available pixels sharing an in-circle edge with $B_i$ and follows available pixels within that circle. The reachable count multiplied by 900~m$^2$ gives connected landward area. Urban blockage is the current class-5 count divided by the fixed potential-land count, accompanied by the fraction with known current classes. The baseline direction-coverage field records the fraction of surrounding non-reference pixels with a sufficiently observed and untied baseline direction.
+
+These 500-m predictors quantify the observed local setting used in model fitting and prediction. The protection scenario additionally defines a 2-km connected-space intervention from the 2025 mosaic. 
+
+Urban budgets use the Global 1-km Downscaled Urban Land product v1.00\cite{ref051,GaoUrbanData}. For source cell $c$, projected annual urban fraction $f_{sc}(t)$ is linearly interpolated from the supplied scenario years. Its native land-area denominator, $A_c^{\mathrm{land}}$, converts fractions to area. Irreversible cumulative demand relative to 2025 is
+\begin{equation}\label{eq:si_budget}
+Q_{sc}(t)=A_c^{\mathrm{land}}\max\left\{0,\max_{2025\leq u\leq t}[f_{sc}(u)-f_{sc}(2025)]\right\}.
+\end{equation}
+Negative increments in the source fractions are retained in the input ledger, while the allocation retains existing built land. Conversion to 30-m pixels introduces discrete 900-m$^2$ steps; rounding and unmet amounts are recorded. The annual balance checks realized allocation plus unmet demand against the requested budget plus its rounding difference.
+
+Urban placement is ranked using historical five-year land-cover transitions. Features are starting class, distance to urban land and water, urban fractions within 500~m and 2~km, 500-m classification coverage and latitude. Inverse sampling weights recover the frequency of actual candidate pixels. Temporal holdout ROC AUC and average precision are 0.854 and 0.316; joint spatial--temporal holdout values are 0.880 and 0.427. After testing, the ranking model is fitted through 2025. Future ranks remain fixed at the 2025 state and scenario budgets determine conversion timing. Known water and tidal flats are ineligible for new construction. The rank controls placement, while the externally supplied scenario controls demand.
+
+The spatial allocator gives each complete urban-demand source cell one owner. Eligible new-construction pixels have observed 2025 classes 1, 3 or 6. Within a source cell, they are ordered by the fitted transition probability, with a deterministic coordinate-based tie break. The cumulative demand is divided by 0.0009~km$^2$ and rounded to the nearest integer pixel count. The resulting discrepancy is at most 0.00045~km$^2$ per source cell. The first required pixels in the fixed ranking are assigned the first year in which the cumulative allocated count reaches them. This conversion-year map preserves existing urban cover and makes later allocation cumulative. Requested growth beyond mapped eligible capacity enters the unmet-demand field of the unprotected allocation account.
+
+\subsubsection{Urban branches and local protected allocation}
+
+Each SSP has growth and fixed-2025-urban branches. The fixed branch holds urban pressure and landward-space-related inputs at their 2025 values, with the same evolving climate and sea-level drivers as its growth counterpart. Protected branches are additionally evaluated for SSP2--4.5 and SSP5--8.5. They protect historical habitat $B$ and connected available land within 2~km, retain existing urban pixels, and allocate remaining demand first within the original source cell. Residual demand may move to eligible cells in the same macroregion within 10~km between cell centres, with capacity reserved for each destination's own future growth. Remaining demand is explicitly unserved. Regional ledger identities are
+\begin{equation}\label{eq:si_protection_ledger}
+Q^{\mathrm{growth}}=Q^{\mathrm{within}}+Q^{\mathrm{relocated}}+Q^{\mathrm{unserved}},\qquad
+Q^{\mathrm{protected}}=Q^{\mathrm{within}}+Q^{\mathrm{relocated}}.
+\end{equation}
+Here $Q^{\mathrm{growth}}$ denotes the realized unprotected growth used as the protected-branch target. Ledger values at each year are cumulative additions since 2025, so summing the ledger over years would double-count construction. Supplementary Table~\ref{tab:si_ledger} reports the 2100 accounts. Among regions with a positive construction target, four of ten under SSP2--4.5 and three of nine under SSP5--8.5 accommodate the full target. Elsewhere, the effect combines changed placement with a reduction in the growth accommodated locally. Central America has no SSP5--8.5 target, so its unserved percentage is undefined.
+
+
+The protected mask combines the fixed historical reference with 2025 non-urban terrestrial pixels connected to it within 2~km. Existing urban pixels retain their observed status. The within-cell protected allocation follows the same ranking and demand schedule after removing protected pixels from the candidate set. For each original source cell, the difference between realized unprotected growth and this within-cell protected allocation becomes the relocation requirement.
+
+The relocation reserve excludes every pixel already scheduled for a receiving cell's own protected growth through 2100. Each year, source cells are processed in descending order of their remaining unmet requirement, with source-cell identity resolving ties. Candidate receiving cells must lie in the same macroregion and within a great-circle distance of 10~km between source-cell centres. Receiving cells are visited in increasing distance order; within a receiving cell, the historical transition ranking orders its available pixels. Every selected pixel receives one conversion year and is removed from the remaining reserve. Unserved source requirements are carried forward to the next year's allocation step.
+
+Two accounts therefore accompany the intervention. The original source-budget account tracks SSP demand, rounding and the capacity of the unprotected allocation. The protection account uses the construction realized in that unprotected branch as its target and divides it among within-cell allocation, nearby relocation and additional unserved growth. The identities in Supplementary Equation~\eqref{eq:si_protection_ledger} apply to the second account. Source accounts retain the origin of each displaced construction requirement, while destination locations determine its local exposure and landward-space effects.
+
+
+\subsubsection{Spatial illustration of protection and reallocation}
+Figure~5a displays the SSP2--4.5 allocation through 2100. The 2025 context combines the historical reference, GMW mangrove extent, classified construction and other cover, and connected available landward space. Current mangroves take precedence over the small number of overlaps with classified construction; all original layers are retained in Source Data. Unbuilt historical habitat includes known non-urban historical sites, including mapped water or tidal cover. Future construction overlays this context. Relocated construction comprises pixels added by the final 10-km protected-allocation stage relative to the same-source-cell protected allocation, rather than pixels obtained by differencing the growth and protected branches.
+
+The example is selected by construction amount and map coverage. Source cells with positive construction demand, an actual protection exclusion and positive relocated construction are ordered by absolute distance from their median unprotected construction amount (0.0846~km$^2$), breaking ties by cell identifier. A window includes the source cell, its actual receiver-cell centres and 1.5~km of surrounding context. The first candidate with at least 90\% known classification, at least 99.9\% owned coverage and all three habitat classes is retained; the criteria retain known land-cover context and complete allocation coverage. The final figure uses a tighter common crop of the selected raster, retaining the source cell and both receiving-cell centres without resampling its native pixels. Both maps use nearest-neighbour reprojection to local UTM zone 56S at 30~m, a shared extent and equal metric aspect. Area statistics and construction ledgers use the original equal-area grid. The maps show scenario construction over the observed 2025 forest and land-cover mosaic.
+
+\subsection{6. State prediction, model selection and holdout evaluation}
+
+The five predicted states are $\mathbf{x}_{it}=(m_{it},C_{it},r_{it},\mathrm{EVI}_{it},\mathrm{NDMI}_{it})$. Urban pressure is derived from the scenario allocation rather than predicted as an ecological state. The model panel has 65,144 centres and 1,693,744 annual rows, of which 1,683,699 have valid additive scores. The 57,898 uniformly selected centres define the evaluation panel; 7,246 further centres enrich rare training states. There are 30,178 known-absent rows and 63,164 missing state values. Missingness is represented by causal filling from available history and explicit state masks.
+
+\subsubsection{Training panel, masks and causal history}
+Each centre contributes its complete 26-year row sequence, retaining missing state entries and their masks. The five masks identify which state targets are observed; the EVI and NDMI masks also require mangrove presence. For input construction, a missing state value is carried forward from the preceding available history. Before any earlier value is available, the initialization vector is $(1,C_{i0},0,\mathrm{EVI}_{i0},\mathrm{NDMI}_{i0})$. The fill is performed along the full observed sequence before selecting the final five history years. Consequently, a valid canopy observation preceding the five-year window can supply its initial carried value, while the original masks retain the observation status used by the model.
+
+Training sequences pair the five-year history ending in year $t$ with the external drivers for year $t+1$. The target for state $k$ is its annual increment, $x_{i,t+1,k}-\widetilde{x}_{itk}$, where the tilde denotes the causally prepared input history. Each state regressor uses rows with an observed target for that state. Dynamic and static variables are centred and scaled using means and standard deviations from the fitting partition; standard deviations below $10^{-5}$ are replaced by one. Those fitted transformations are reused for the associated validation or test prediction.
+
+Centre sampling weights are normalized within each block, and blocks receive equal total weight within their macroregion. This gives the regions a common contribution to fitting while retaining the relative sampling weights of the uniform and rare-state records. The same centre weights are used for its annual training windows. Whole-block holdouts are excluded when the fitting statistics and weights are prepared. The uniform evaluation subset then supplies the reported predictive errors.
+
+ Holding all years of a spatial block out together retains a geographically distinct evaluation set even though centres within a block can share neighbourhood observations.
+
+\subsubsection{Inputs, candidate models and temporal selection}
+
+The predictor uses a five-year history of states and dynamic variables, target-year external drivers and static attributes. Supplementary Table~\ref{tab:si_features} lists the 13 dynamic and nine static variables. With five states and five state masks for each of five historical years, 13 dynamic drivers for each of those years and the target year, and nine static variables, the tree model receives 137 input features.  Climate information retains the native-cell scale described in Supplementary Table~\ref{tab:si_datasets}.
+
+Candidate families were a gated recurrent unit model, a Temporal Fusion Transformer\cite{ref053} and a LightGBM state model\cite{Ke2017}. Training target years were 2006--2015; validation target years were 2016--2020; final test years were 2021--2025. Ten complete spatial blocks were excluded from fitting during validation and testing. Selection used regional balance in five-year $S$ error together with regional change direction and state errors. A residual scaling coefficient was chosen from the predefined validation grid. The selected LightGBM family and coefficient $\alpha=0.25$ were fixed before the final tests and used for future projections.
+
+The validation comparison evaluates recursive predictions of 2016--2020 from the observed history ending in 2015. The selection rule requires a lower regional $S$ error than state persistence, regional direction accuracy at least as high as persistence, and normalized mean state error no larger than persistence. For the normalized state comparison, the state-specific errors are placed on their respective ranges and averaged:
+\[
+\mathrm{MAE}_{\mathrm{state}}=\frac{1}{5}\left(\mathrm{MAE}_m+\mathrm{MAE}_C+\mathrm{MAE}_r+\mathrm{MAE}_{\mathrm{EVI}}+\frac{\mathrm{MAE}_{\mathrm{NDMI}}}{2}\right).
+\]
+The four states with range $[0,1]$ retain their scale, and NDMI uses its range of two. Each state error follows the observation masks and spatial weighting specified below. The residual coefficient is evaluated on the fixed grid $\{0.25,0.50,0.75,1.00\}$; state persistence supplies the zero-increment reference. The eligible family and coefficient with the lowest temporal-validation $S$ error are retained. Scaling is applied to every annual predicted increment before state projection, with the fitted presence classifier retained. 
+
+None of the unscaled candidates met all three selection conditions. On the specified increment-scaling grid, LightGBM with $\alpha=0.25$ was the only combination to improve both the regional $S$ error and normalized mean state error relative to persistence while also meeting the direction criterion. Correct regional directions increased from seven to eight of ten. The TFT candidate with the same coefficient had a lower aggregate $S$ error but a higher normalized mean state error than persistence, so it did not meet the joint rule. Source Data report the complete validation metrics for all twelve family--coefficient combinations and persistence. Subsequent predictive evaluation uses the separate 2021--2025 observations in Supplementary Table~\ref{tab:si_validation}.
+
+\subsubsection{Annual state update and recursive forecasting}
+
+The selected model fits a separate one-year increment regressor for each state and a presence classifier. Each tree ensemble uses 180 estimators, 15 leaves, maximum depth five, learning rate 0.035, minimum child size 50, L2 regularization parameter three and random seed 2100. The presence classifier uses every eligible training window and its centre weight, with zero for known habitat absence and one for records not marked as known absence. Each state regressor additionally requires its own observed-target mask. The annual recursion is
+\begin{equation}\label{eq:si_model}
+\widehat{\mathbf{x}}_{i,t+1}=\Pi\!\left[\widehat{\mathbf{x}}_{it}+0.25\,\mathbf{f}(\mathbf{H}_{it},\mathbf{D}_{i,t+1},\mathbf{z}_i)\right],
+\end{equation}
+where $\mathbf{H}$ contains the five-year history and masks, $\mathbf{D}$ the target-year drivers, $\mathbf{z}$ static features, and $\Pi$ the state projection. The state projection enforces
+\begin{equation}\label{eq:si_constraints}
+0\leq m\leq1-P_{\mathrm{occupation}},\qquad
+L_i(m)\leq C\leq m,\qquad 0\leq r\leq m,\qquad
+0\leq\mathrm{EVI}\leq1,\qquad -1\leq\mathrm{NDMI}\leq1.
+\end{equation}
+Here $H_i=|B_i|$ is the number of fixed historical reference pixels within the same 500-m neighbourhood, and $K_{B_i}$ is the number of four-neighbour components of that reference. The necessary joint lower bound is
+\begin{equation}\label{eq:si_capacity_support}
+L_i(m)=\max\!\left\{\frac{m}{\sqrt{H_i}},\,
+\frac{m}{\sqrt{K_{B_i}+3H_i(1-m)}}\right\}.
+\end{equation}
+For an observed pixel configuration, removing $H_i(1-m)$ reference pixels can increase the component count by at most three per removed pixel on a four-neighbour grid. Adding current mangroves outside the reference can join retained components. The number $n$ of current components containing retained reference pixels therefore satisfies $n\leq\min\{H_i,K_{B_i}+3H_i(1-m)\}$. Cauchy's inequality gives $C\geq m/\sqrt n$, yielding Supplementary Equation~\eqref{eq:si_capacity_support}. Both lower-bound functions are convex over $0\leq m\leq1$, so the inequalities also hold for conditional mean states. They supply necessary support constraints for the continuous predictions. In particular, positive retention requires positive capacity, and $m=0$ gives $L_i(m)=C=0$. The counts $H_i$ and $K_{B_i}$ are fixed geometric metadata used for projection; the model's 137 fitted input features remain as listed above. The same projection is applied to validation candidates, recursive tests, persistence and future projections.
+
+The predicted habitat states are continuous fractions and capacities at reference-centred neighbourhoods. The bounds keep these states consistent with the available historical habitat and its necessary geometric support at every annual step. The urban allocation specifies individual conversion pixels, whereas the ecological prediction specifies neighbourhood habitat states. Connecting these two representations through occupation and habitat constraints allows the urban scenario to reduce the area available to mangroves while preserving the meaning of $m$, $C$ and $r$. The exact pixel configurations in Supplementary Methods~9 illustrate the structural relations used by these constraints.
+
+When presence probability is below 0.5, $m$, $C$ and $r$ are set to zero and spectral masks indicate absence. Predicted values and masks are then passed to the next year's history. The recursion allows mapped mangrove presence in a subsequent year. The reported forecasts recompute UMRI from the constrained states, external pressure, fixed component weights and fixed normalization. A separately fitted direct-$S$ model is retained as a diagnostic comparison.
+
+At the first forecast step, the history contains 2021--2025 observations and their masks, and the external input supplies 2026 drivers. The five regressors predict annual increments, the scaled increments update the latest state, and the projection in Supplementary Equation~\eqref{eq:si_constraints} enforces the relationships among occupation, retention, connected capacity and recovered habitat. The presence classifier is then applied. The updated state and target-year drivers enter the history, its oldest year is removed, and the next step predicts 2027. Repeating this procedure produces the 75-year sequence through 2100.
+
+The three habitat-state masks are known after each predicted update. The conditional spectral masks indicate whether predicted retained habitat is present. A subsequent year can predict recovery of mangrove cover from that updated history and its drivers. At every step, the score calculation reconstructs urban pressure, baseline-relative growth, health and structural trajectory, then applies the fixed compensation rule, weights and normalization. The same ecological model is used for all urban development choices, so their trajectories differ through the branch-specific external urban and landward-space inputs and the resulting state history.
+
+\subsubsection{Recursive tests and evaluation statistics}
+
+For $S$, predicted and observed scores were first averaged within blocks for each year, then equally across blocks within regions. Absolute differences between these regional means were averaged equally over years and regions. UMRI errors apply the fixed normalization to the regional mean scores before differencing. State-specific errors are first computed at centres and then averaged over years, centres within blocks, blocks within regions and regions. These evaluation metrics give regions and their blocks balanced representation. The historical and scenario estimates use the equal-area reference-centre estimator defined in Supplementary Methods~4.
+
+The five-year tests recursively predict 2021--2025. The ten-year tests begin from the earlier origin and evaluate the terminal 2021--2025 segment, allowing comparison over the same observation years. Supplementary Table~\ref{tab:si_validation} compares absolute errors with persistence and reports direction accuracy and false absences. The selected model has lower final UMRI error in all four comparisons. The ten-year tests also have lower error in $S$. Regional direction accuracy varies across tests, and false absences exceed those of persistence in three of the four comparisons.
+
+The persistence comparator begins with the same final observed ecological state as the corresponding recursive test. That state is held through the forecast, subjected to the same annual occupation and joint habitat-support bounds, and scored using the same annual external urban inputs. This reference therefore measures the predictive gain associated with updating ecological states. The five-year test starts from the observed 2020 state; the ten-year test starts in 2015, recursively predicts 2016--2025 and evaluates errors over the terminal 2021--2025 segment.
+
+For both final tests, regional direction concerns the change from 2020 to 2025 on centres with valid observations at both endpoints. In the five-year test, the predicted and observed changes share the observed 2020 origin. In the ten-year test, predicted change is the difference between the recursively predicted 2025 and 2020 scores, compared with observed change over those same two years. Regional scores use the stated block-balanced estimator. Changes with absolute magnitude at most $10^{-8}$ in $S$ receive zero direction. False absence counts identify records with observed retained habitat but a predicted retained fraction of zero.
+
+Errors in $S$ and UMRI describe prediction on two related scales. The transformation slope, $\lambda/(\lambda+|S|)^2$, is greatest near balance and smaller for large positive or negative scores. As a result, equally sized errors in $S$ can have different magnitudes in UMRI units depending on the observed and predicted states. Reporting both metrics shows predictive performance for the weighted ecological balance and for the normalized resilience coordinate. State-specific errors locate discrepancies in the underlying habitat and canopy variables; the direction and absence diagnostics additionally describe whether the model reproduces regional change and the persistence of occupied habitat.
+
+\subsubsection{Model refitting and the scenario ensemble}
+
+The final model fit uses the historical record through 2025, including previously held-out spatial blocks only after evaluation is complete. It comprises one central model and two region-stratified whole-block bootstrap models with seeds 2101 and 2102. Each SSP combines five GCMs with three regional sea-level quantile paths to give 15 members, assigning the three ecological model fits evenly, five times each. Every urban development choice uses the same climate, sea-level and ecological-model combinations. This balanced design uses 15 joint combinations to represent variation in climate, sea level and ecological-model fitting. Its members receive equal weight when the scenario distribution is summarized.
+
+
+Within each macroregion, a bootstrap replicate draws the same number of blocks as originally present, with replacement. All sampled centres and their full time series remain together within a drawn block; repeated draws multiply that block's fitting weight. Seeds 2101 and 2102 define the two replicate fits, and the central fit uses the original block weights. All three are refitted through 2025 with the selected family and residual coefficient.
+
+The joint-member assignment is fixed across pathways and urban branches. In the matrix below, 0 denotes the central ecological fit, 1 the seed-2101 fit and 2 the seed-2102 fit; columns give the relative-sea-level quantile used with each GCM.
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+GCM & q17 & q50 & q83\\
+\midrule
+ACCESS-CM2 & 2 & 0 & 1\\
+ACCESS-ESM1-5 & 0 & 1 & 2\\
+CanESM5 & 1 & 2 & 0\\
+MPI-ESM1-2-LR & 2 & 0 & 1\\
+IPSL-CM6A-LR & 0 & 1 & 2\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each GCM therefore participates in three members, each sea-level path in five, and each ecological fit in five. The 15 assignments are reused in every branch, so annual and cumulative effects compare development choices under the same environmental conditions.
+
+Keeping each member together across the urban branches preserves its shared climate, sea-level and fitted ecological response in the comparison. The distribution of paired differences consequently reflects how the urban effect varies across those joint conditions. Subtracting separately summarized branch medians would compare marginal summaries and would not retain the same member-level contrast. The same principle applies through time: cumulative effects sum each complete paired annual trajectory, and avoided-loss fractions divide benefit by additional urban loss within that member before taking quantiles. The 15-member assignment is balanced across the three varied inputs. It includes every GCM--sea-level combination and distributes the three ecological fits evenly among them; the complete crossing of five GCMs, three sea-level paths and three ecological fits would contain 45 combinations.
+
+
+\subsection{7. Robustness, uncertainty and interpretation}
+
+The primary historical decline is $-0.2420$ UMRI units. It remains $-0.2422$ UMRI at locations observed in both endpoint years and $-0.2170$ UMRI at locations observed throughout the complete 26-year record. The 151 exclusion analyses remove each of the 141 blocks or ten macroregions in turn. All historical endpoint changes are negative, ranging from $-0.2995$ to $-0.1682$ UMRI. Future exclusion diagnostics recalculate the effects of urban expansion and protection in 2100; all 15 members remain negative for the urban contrast in every SSP and positive for protection in its two tested SSPs. Supplementary Table~\ref{tab:si_robustness} gives the ranges of exclusion medians and member-sign checks. These future diagnostics concern the endpoint, while the full-domain sign statements in the main text concern every year from 2026 to 2100.
+
+Neighbourhood radii of 300, 500 and 800~m were additionally evaluated in the preselected sample of 577 centres, 30 blocks and ten regions. Under its retained region- and block-balanced estimator, historical endpoints are $-0.4264$ to $-0.5541$ UMRI units at 300~m, $-0.4787$ to $-0.5657$ UMRI at 500~m, and $-0.5291$ to $-0.5755$ UMRI at 800~m. These are sample-based scale diagnostics, whereas the full-domain primary reconstruction uses 500~m. The calibration constant is identical at all radii. 
+
+\subsubsection{Alternative spatial weights}
+The historical decline also occurs when the overall estimate gives greater relative weight to regions or blocks with smaller reference populations. At centres observed in both endpoint years, giving each region equal weight after averaging its centres yields a change of $-0.1071$ UMRI units; giving blocks equal weight within each region and then regions equal weight yields $-0.1167$ UMRI. At centres observed throughout 2000--2025, the corresponding changes are $-0.1001$ and $-0.1286$ UMRI. These analyses retain the same local components and fixed normalization while changing how geography contributes to the overall estimate. Their smaller declines, relative to the equal-centre estimates, show that the magnitude depends on the habitat distribution represented by the weighting scheme. The negative direction is shared across the three weighting schemes and both fixed historical populations.
+
+\subsubsection{City-domain sensitivity}
+We repeated the 2000--2025 historical analysis for GUB2018 city polygons with urban areas greater than 100~km$^2$ and their 1-, 2- and 5-km buffers, intersected with the identical original study mosaic. Buffer construction, 30-m simplification, pixel-centre rasterization and the globally aligned 30-m EPSG:6933 grid were identical across domains. Fixed reference centres were pixels mapped as mangrove by GMW v4.1.12 in at least one year during 2000--2004. The 500-m ground-radius ecological neighbourhood, annual observations, component definitions, weights, compensation rule and normalization constant were held fixed. The expanded domain included all additional reference centres and their required spatial context. Per-centre spectral and structural baselines retained the 2000--2004 median and the requirement for at least three finite baseline years. Annual valid and missing observations followed the primary-analysis rules. We averaged the unnormalized score $S$ over valid equal-area reference centres within each region and across all regions pooled, then applied the fixed normalization. We compared all annual continuous trajectories and the 2000--2025 endpoint changes.
+
+The 1-, 2- and 5-km domains contained 597,183, 934,814 and 1,559,934 fixed reference centres, respectively. Valid support across the 26 years comprised 15,439,375 (99.437\%), 24,016,461 (98.812\%) and 39,756,107 (98.022\%) centre-years, respectively. Overall UMRI declined from $-0.2950$ to $-0.5402$ UMRI at 1~km, from $-0.2497$ to $-0.4917$ UMRI at 2~km, and from $-0.2090$ to $-0.4429$ UMRI at 5~km, corresponding to declines of 0.2451, 0.2420 and 0.2338 UMRI (Supplementary Fig.~\ref{fig:si_support}c; Supplementary Table~\ref{tab:city_buffer_sensitivity}). Annual pooled trajectories were closely aligned with the 2-km analysis (Pearson $r=0.9978$ and 0.9979 for 1 and 5~km). The endpoint-change direction matched the primary analysis in 19 of the 20 regional comparisons. Eastern Asia showed a small increase of 0.0105 UMRI at 5~km, compared with declines of 0.0793 and 0.0763 UMRI at 1 and 2~km. Regional annual-trajectory correlations ranged from 0.782 to 1.000. The structural-trajectory component provided the largest negative contribution to the pooled decline in all three domains ($-0.2115$, $-0.2240$ and $-0.2281$ UMRI at 1, 2 and 5~km).
+
+\subsubsection{Evidence at the observation, prediction and scenario stages}
+The evaluations follow the calculation chain. Spectral processing and classification checks on the same records characterize the inputs to the mapped coastal states. Annual coverage and analyses of locations observed at both endpoints or throughout the record characterize observation availability. Excluding one block or region tests the dependence of the aggregate result on its spatial composition. The radius comparison evaluates the effect of ecological-neighbourhood extent on the selected sample. The city-domain comparison evaluates the full historical record after varying the city buffer while retaining the same ecological neighbourhood and index parameters. Recursive holdouts measure predictive errors over five- and ten-year horizons using the processed historical record, including the temporal filtering of the source mangrove maps.
+
+The 2026--2100 scenario ensemble varies the climate model, relative-sea-level path and ecological-model fit according to the assignments in Supplementary Methods~6. Its 17th--83rd percentiles are empirical ranges across those 15 joint scenarios, and member signs describe directional consistency within that design. Component weights, neighbourhood definitions, allocation eligibility and relocation distance are held fixed. Classification, historical observation coverage and spatial representation are assessed through their respective diagnostics; the ensemble range represents the three varied scenario inputs. The historical record supports five- and ten-year predictive tests, while the subsequent annual trajectories describe the specified future forcing and land-allocation scenarios through 2100.
+
+The contribution analysis follows an exact accounting identity in the defined index. Historical contributions show the changing balance among observed urban exposure and ecological states. Future comparisons show how that balance responds to the specified urban intervention under the shared environmental trajectory. EVI and NDMI describe canopy state, and connected capacity describes habitat retention and patch configuration. The fixed normalization places their combined balance on the same coordinate across years, regions and scenarios; zero identifies a balance of weighted terms.
+
+
+\paragraph{Historical gross contribution balance.}
+Separating positive and adverse terms at each centre before spatial aggregation gives $+0.1027$ UMRI of gross positive contribution and $-0.5944$ UMRI of gross adverse contribution in 2025. Adverse terms comprise 85.3\% of their combined magnitude. This gross balance retains opposing local contributions that can cancel within a spatially averaged component. It therefore differs from grouping the five mean state contributions in Source Data by sign. The state, change and gross-budget expressions in Supplementary Methods~4 define these calculations; complete annual component values accompany Fig.~3 in Source Data.
+
+
+\subsection{8. Habitat retention and connectivity}
+\label{note:retention}
+
+The structural component follows the historical habitat that remains and how it is distributed among connected mangrove patches. Its two parts can be separated algebraically. Let $H=|B_i|$ be the historical reference count in a neighbourhood, and let $M=\sum_j n_j^B$ be the number of those pixels that currently retain mangroves. For $M>0$, define the retained fraction $m=M/H$ and the share $q_j=n_j^B/M$ of retained historical habitat assigned to connected patch $j$. The shares sum to one. Substituting these quantities into Supplementary Equation~\eqref{eq:si_capacity} gives
+\begin{equation}\label{eq:si_capacity_factor}
+C=m\sqrt{\sum_j q_j^2}.
+\end{equation}
+Thus, connected capacity combines the amount of retained habitat with its distribution among connected patches. Let $n$ count patches containing at least one retained historical pixel. Since $q_j\geq0$ and $\sum_jq_j=1$, the squared shares satisfy $1/n\leq\sum_jq_j^2\leq1$. The lower bound follows from the Cauchy--Schwarz inequality; the upper bound follows by expanding $(\sum_jq_j)^2$ and retaining its non-negative cross-products. Consequently,
+\[
+\frac{m}{\sqrt n}\leq C\leq m\leq1.
+\]
+Equal division of retained habitat among $n$ patches gives the lower bound, while one connected patch gives $C=m$. Concentrating more of a fixed retained area in a dominant patch increases the squared-share sum. Complete loss gives $M=0$ and $C=0$ directly. The factor multiplying $m$ measures the concentration of retained habitat within connected units. We denote it by $q=\sqrt{\sum_jq_j^2}=C/m$ for $m>0$, giving $C=mq$. Retention $m$ sets the amount of historical habitat available to those units. The unindexed configuration quantity $q$ is distinct from a single patch share $q_j$.
+
+Patch joining has an exact effect at fixed retained area. Suppose two patches contain $a>0$ and $b>0$ retained historical pixels, and a connection joins them while all other patch memberships and the retained count remain fixed. Their separate squared terms, $a^2+b^2$, become $(a+b)^2$, so
+\[
+C_{\mathrm{joined}}^2-C_{\mathrm{separate}}^2=\frac{2ab}{H^2},\qquad
+C_{\mathrm{joined}}-C_{\mathrm{separate}}
+=\frac{2ab}{H^2(C_{\mathrm{joined}}+C_{\mathrm{separate}})}>0.
+\]
+Splitting the same retained habitat into those two patches reverses this change. The response depends on both sides of the connection: joining two substantial retained patches changes capacity more than attaching a very small retained fragment to a large patch. The calculation thus gives greater structural importance to links joining substantial areas of remaining forest.
+
+This identity makes the role of new mangroves outside the historical reference explicit. Such pixels can join otherwise separate patches and change which retained historical pixels belong to the same connected component. They can therefore increase $C$ without adding to $M$ or $H$. By contrast, an isolated new patch containing no historical reference pixels contributes no retained count to the numerator. The historical reference remains fixed in both cases. This construction distinguishes the establishment of new cover from the structural reconnection of historical habitat, while allowing both processes to affect the wider current mangrove mosaic.
+
+Consider an illustrative neighbourhood with ten historical pixels, six of which currently retain mangroves. If all six retained pixels belong to one connected patch, $m=C=0.6$. If they form two disconnected patches of three pixels each, $m$ remains 0.6 but $C=\sqrt{3^2+3^2}/10\simeq0.4243$. A bridge of current mangroves outside the historical reference can join the two patches, restoring $C$ to 0.6 while leaving historical retention unchanged. The change reflects the grouping of retained habitat, rather than an increase in its area.
+
+A second mathematical example separates habitat retention from patch configuration using a ten-cell historical reference $B$, with baseline capacity $C_0=0.8$. Retaining seven historical cells in two components containing three and four cells gives $m=0.7$ and $C=\sqrt{3^2+4^2}/10=0.5$. Retaining five historical cells in a single connected component gives $m=C=0.5$. Both yield \mbox{$T=(0.5-0.8)/(0.5+0.8)=-3/13$}, although their retention and patch configurations differ. The single structural coordinate records the common loss of capacity. Separate observations of retention and patch distribution distinguish how that loss arose. 
+
+Loss of retained habitat also changes capacity directly. If a patch with $a$ retained pixels loses $\ell$ of them while the remaining patch memberships stay fixed, its contribution to $C^2$ changes by $(-2a\ell+\ell^2)/H^2$, which is negative for $0<\ell\leq a$. If the loss additionally separates the remaining habitat, the splitting effect acts in the same direction. Structural trajectory carries these capacity changes onto the historical reference. For $C_0>0$,
+\[
+\frac{\partial T}{\partial C}=\frac{2C_0}{(C+C_0)^2}>0.
+\]
+For a positive baseline, recovery of mangrove area within historical habitat and increased connectivity among its patches therefore raise $T$ through their respective effects on $C$. A zero capacity baseline gives $T=1$ when current capacity is positive and $T=0$ when both are zero, following the common zero-to-zero convention. Together, retention, patch membership and baseline capacity specify how each structural change enters the resilience balance.
+
+Four-neighbour adjacency describes the arrangement of mapped forest within each 500-m neighbourhood. Pixels that share an edge belong to the same connected patch, so the calculation records the local configuration of remaining habitat. This spatial setting shapes the opportunities for persistence and recovery. Water exchange, propagule movement and animal use provide ecological processes through which connections can matter; suitable field observations link these processes to the mapped forest pattern. Studies of coastal protection, storm recovery and wetland accommodation space establish the importance of that setting\cite{ref011,ref021,ref029}.
+
+\subsection{9. Recovery, canopy condition and compensation}
+\label{note:compensation}
+
+The positive components describe different kinds of ecological change. Confirmed recovery is the current area of mangrove cover recovered within historical habitat after documented loss and present for two consecutive mapped years, expressed as a fraction of historical habitat. Growth is a baseline-relative canopy-greenness measure calculated from EVI over current mangroves within the historical reference. A positive recovery contribution therefore requires documented loss followed by two consecutive years of mangrove presence, whereas positive growth requires an increase in the spectral state of the mangroves currently observed. Both quantities follow the annual habitat and observation masks used to calculate them.
+
+For example, a historical pixel first mapped absent in 2005 and present in both 2006 and 2007 can enter the recovered stock in 2007. If it disappears again in 2008, it leaves that stock. Confirmation requires presence in both the current and preceding year. A newly established mangrove outside $B$ enters the current mosaic and can connect historical patches. Recovery within the reference and expansion beyond it thus retain their distinct spatial and temporal definitions. 
+
+Canopy indices describe the trees that remain, while habitat area also records where forest has disappeared. They summarize vegetation within $B_i\cap M_{it}$, so they can improve even when part of the original forest is no longer present. Retention and connected capacity preserve information about that missing forest. Evaluating these quantities together relates canopy condition in the standing forest to the amount and connected structure of its historical habitat. The pooled contribution balance in the main text describes how these observations combine across the study domain.
+
+Recovery and canopy gains contribute to resilience through the condition and spatial integrity of the habitat that supports them. Within UMRI, the factor $G$ represents this dependence on canopy moisture and habitat structure. An equivalent form of Supplementary Equation~\eqref{eq:si_gate} is
+\begin{equation}\label{eq:si_gate_min}
+G=1+\min(0,h,T).
+\end{equation}
+Within the defined component ranges, $0\leq G\leq1$. When health and structure are both at or above baseline, $G=1$. When either is below baseline, the lower of the two sets the support for compensation. Effective recovery and positive growth are $rG$ and $gG$, respectively. For $g\leq0$, $g^\ast=g$, and the observed decline enters the canopy-growth component directly.
+
+Writing $\ell=\min(h,T)$ makes the two regimes explicit:
+\[
+G=\begin{cases}1,&\ell\geq0,\\1+\ell,&\ell<0,\end{cases}
+\qquad
+g^\ast=\begin{cases}g,&g\leq0,\\Gg,&g>0.\end{cases}
+\]
+Health and structural trajectory locate canopy moisture and habitat capacity relative to their own baselines. With both conditions maintained, the observed recovery and positive greenness terms contribute at $G=1$. As the limiting condition approaches $-1$, the support represented by $G$ and the corresponding effective responses approach zero continuously. At a tie, health and structure give the same value of $G$, so the relation is continuous as the limiting condition changes.
+
+The treatment of sign can be seen by defining $g_+=\max(g,0)$, $g_-=\min(g,0)$ and $R_+=w_rr+w_gg_+$. The score becomes
+\[
+S=w_dd+w_hh+w_TT+w_gg_-+G R_+.
+\]
+Here $R_+\geq0$ combines recovery and positive greenness before their dependence on canopy and habitat condition is applied. Their joint contribution is $GR_+$. For fixed vegetation responses, a change $\Delta G$ in the supporting condition changes this contribution by $R_+\Delta G$. The term $w_gg_-$ describes declining canopy greenness directly. Together with urban pressure, canopy moisture and structural trajectory, these terms form the five-component resilience balance $S$.
+
+For example, when $h=-0.20$ and $T=-0.50$, the factor $G=0.50$ halves the contributions from confirmed recovery and positive growth. Negative growth retains its full adverse contribution. The fixed weights and common normalization then place all five contributions on the final UMRI scale.
+
+Health and structure consequently have two related roles: each contributes its own observed state, and the limiting one also regulates the realization of positive recovery and greenness. Holding the other components fixed, a strictly limiting health term, $h<\min(0,T)$, gives $\partial S/\partial h=w_h+R_+$; a strictly limiting structural term gives $\partial S/\partial T=w_T+R_+$. A non-limiting term contributes its direct weight within that regime. This interaction expresses the ecological premise that recovery and greening are supported by the condition and spatial integrity of the remaining habitat. Applying the same rule to observed and projected states preserves that interpretation across the historical, urban-growth and protection trajectories.
+
+\subsubsection{An upper bound on compensation}
+
+The habitat-support constraints place an upper bound on the contribution available from recovery and greening. For a fixed local state $(d,h,T,m)$, confirmed recovery satisfies $0\leq r\leq m$, while the valid EVI range and non-negative baseline give $0\leq g_+\leq1$. Consequently,
+\[
+\begin{aligned}
+R_+&=w_rr+w_gg_+\leq w_rm+w_g,\\
+S&\leq S_{\mathrm{upper}}
+=w_dd+w_hh+w_TT+G(w_rm+w_g).
+\end{aligned}
+\]
+The second inequality follows because $G\geq0$ and the remaining greenness term $w_gg_-$ is non-positive. It holds for both signs of growth. The increasing UMRI mapping gives $V\leq\mathcal{N}(S_{\mathrm{upper}})$. Under these fixed habitat, canopy and pressure conditions, $S_{\mathrm{upper}}<0$ identifies a resilience balance below zero across the response range allowed by the bound. Recovery of mangrove area, increased structural connectivity or a change in canopy condition can alter the supporting state and hence this bound.
+
+For the positive-response case $g\geq0$ and $G>0$, write $p=-d$. The exact balance line in the $(p,R_+)$ plane is
+\[
+R_{+,\mathrm{balance}}(p)=\frac{w_dp-w_hh-w_TT}{G}.
+\]
+The region
+\[
+\max\{0,R_{+,\mathrm{balance}}(p)\}\leq R_+\leq w_rm+w_g,
+\qquad 0\leq p\leq1,
+\]
+is an outer bound on the response combinations that reach the resilience balance under the specified pressure and habitat conditions. Canopy moisture and connected habitat determine the support for compensation through $G$ and their direct state terms; retention bounds the area of recovered mangrove cover. Their joint values determine the location of the balance boundary and the response range below the upper bound.
+
+The EVI reference value and the history of forest loss and recovery determine which positive responses can occur. If the fixed EVI baseline is $e_0\in[0,1]$, the sharper bound is $g_+\leq(1-e_0)/(1+e_0)$. Recovery histories can also keep $r$ below $m$, because recovered area requires documented loss followed by two consecutive years of mangrove presence. Thus the calculated pressure limits in Fig.~6a and the ranges of potential compensation in Supplementary Fig.~\ref{fig:si_compensation}a describe the general upper bound. Individual ecological histories can occupy a smaller set of states. Known complete habitat absence follows the rule $r=g=0$, $h=-1$ and $C=0$, so positive recovery and growth contribute zero to the balance.
+
+\subsubsection{How remaining habitat limits compensation for urban pressure}
+For $C_0>0$ and $m>0$, $C\leq m$ implies
+\[
+T\leq T_{\max}(m)=\frac{m-C_0}{m+C_0},\qquad
+G\leq G_{\max}(m)=1+\min\{0,h,T_{\max}(m)\}.
+\]
+With positive weights and non-negative $G$, both the direct structural contribution and the maximum regulated response are non-decreasing in $C$. Substituting the capacity and response bounds therefore yields
+\[
+\begin{aligned}
+p_{\mathrm{cap}}(m;h,C_0)&=
+\frac{w_hh+w_TT_{\max}(m)+G_{\max}(m)(w_rm+w_g)}{w_d},\\
+S&\leq w_d\{p_{\mathrm{cap}}(m;h,C_0)-p\}.
+\end{aligned}
+\]
+The monotone UMRI mapping preserves the sign of this bound. If $p>p_{\mathrm{cap}}$, adverse contributions dominate even at the general response limits. The EVI baseline and recovery history determine the attainable responses below that limit. This limit for the remaining habitat is the $q=1$ edge of the two-dimensional field in Fig.~6a. The relations apply to $m>0$; complete absence fixes $h=-1$ and $r=g=C=0$. Pressure is a composite exposure index with distinct area, boundary-contact and occupation channels.
+
+\subsubsection{Combined effects of habitat loss and fragmentation}
+
+For $m>0$, write $C=mq$, with $q=\sqrt{\sum_jq_j^2}$ as defined in Supplementary Methods~8. At fixed $h$ and $C_0>0$, the general response bound gives
+\[
+\begin{aligned}
+p^*(m,q;h,C_0)&=\frac{w_hh+w_TT(mq)+G(mq,h)(w_rm+w_g)}{w_d},\\
+T(C)&=\frac{C-C_0}{C+C_0},\qquad G(C,h)=1+\min\{0,h,T(C)\},\\
+S&\leq w_d\{p^*(m,q;h,C_0)-p\}.
+\end{aligned}
+\]
+The compensation margin is $\mathcal M=p^*-p$. Its pressure derivative is $-1$. Let $R_{\max}=w_rm+w_g$ and $T'=2C_0/(C+C_0)^2$. Away from ties in the limiting condition,
+\[
+\begin{aligned}
+\left.\frac{\partial\mathcal M}{\partial m}\right|_{C,h,p}
+ &=\frac{w_rG}{w_d}\geq0,\\
+\left.\frac{\partial\mathcal M}{\partial C}\right|_{m,h,p}
+ &=\frac{T'}{w_d}\{w_T+R_{\max}\mathbf1[T<\min(0,h)]\}>0,\\
+\left.\frac{\partial\mathcal M}{\partial h}\right|_{m,C,p}
+ &=\frac{w_h+R_{\max}\mathbf1[h<\min(0,T)]}{w_d}>0.
+\end{aligned}
+\]
+At equal capacity, the first derivative shows that retaining more habitat raises the compensation margin whenever the compensation factor is positive. The second combines the direct structural benefit with increased maximum recovery and growth contributions when structure is limiting. The third gives the corresponding effect of canopy moisture. At ties, the margin remains continuous and the adjacent one-sided derivatives retain these signs. At fixed configuration $q$, increasing $m$ changes both retention and $C=mq$. At fixed retention, increasing $q$ changes capacity. Their derivatives follow by the chain rule. Rising pressure together with declining retention, capacity or moisture therefore reduces the margin through complementary terms.
+
+Figure~6a evaluates $p^*$ at $h=-0.1$ and $C_0=0.8$. Colour and labelled contours show the calculated pressure limit on its original dimensionless scale. Negative limits place the upper response bound below balance even at zero pressure. Dashed curves mark constant capacity, $q=C/m$, for $C=0.15$, 0.30, 0.50 and 0.80. The blue curve marks $C^*=C_0(1+h)/(1-h)=36/55$, where canopy moisture replaces habitat structure as the condition limiting positive contributions. At $q=1$, all retained historical habitat is connected, and the field reduces to $p_{\mathrm{cap}}(m;h,C_0)$.
+
+The displayed domain uses the necessary habitat support of the ten-cell example, $H=10$ and $K_B=1$. Dividing Supplementary Equation~\eqref{eq:si_capacity_support} by $m$ gives
+\[
+q\geq q_{\min}(m)=\max\!\left\{\frac1{\sqrt{10}},\frac1{\sqrt{1+30(1-m)}}\right\}.
+\]
+The grey region fails this necessary condition. The coloured field shows continuous values satisfying this condition; arrangements of the ten cells occupy part of that range. The three marked configurations are exactly realizable using the historical cells supplied in Source Data. Configuration II has $m=C=0.7$. Removing its external mangrove link yields I, with $m=0.7$ and $C=0.5$. Removing two historical cells while keeping the link yields III, with $m=C=0.5$. The respective ceilings are $857/1500$, $3/10$ and $27/130$. The constant-capacity curve joins I and III, whose ceiling difference is $G w_r(0.7-0.5)/w_d=6/65$. These arrows describe controlled endpoint changes in the specified geometry. Canopy condition and the historical reference remain fixed across these examples.
+
+\subsubsection{How canopy condition influences the benefit of increased habitat connectivity}
+
+Figure~6b varies $C\in[0.5,0.7]$ and $h\in[-0.35,0.30]$, fixing $p=0.2$, $m=0.7$, $r=0.2$, $g=0.1$ and $C_0=0.8$. For each $h$, both controlled responses begin at $C_{\mathrm I}=0.5$ with the same moisture state. Set $T_{\mathrm I}=T(C_{\mathrm I})=-3/13$ and $R_+=w_rr+w_gg=0.040$. The field is
+\[
+\begin{aligned}
+S_{\mathrm{dynamic}}(C,h)&=-w_dp+w_hh+w_TT(C)+R_+G(C,h),\\
+S_{\mathrm{fixed}}(C,h)&=-w_dp+w_hh+w_TT(C)+R_+G(C_{\mathrm I},h),\\
+E(C,h)&=\{\mathcal N[S_{\mathrm{dynamic}}(C,h)]-\mathcal N[S_{\mathrm{fixed}}(C,h)]\}.
+\end{aligned}
+\]
+Because their initial states coincide, $E$ is also the difference between their gains from that initial state. Over the plotted capacity range, $T_{\mathrm I}\leq T(C)<0$. The increase in $G$ consequently follows three cases:
+\[
+G(C,h)-G(C_{\mathrm I},h)=
+\begin{cases}
+0,&h\leq T_{\mathrm I},\\
+h-T_{\mathrm I},&T_{\mathrm I}<h<T(C),\\
+T(C)-T_{\mathrm I},&h\geq T(C).
+\end{cases}
+\]
+The blue boundaries in Fig.~6b mark $h=T_{\mathrm I}$ and $h=T(C)$. Canopy moisture limits positive contributions throughout the first regime. In the second, initial structural limitation switches to moisture as capacity increases. Structure limits throughout the third. The difference in the weighted sum is $R_+$ times the increase in $G$. Converting the two scores to UMRI then applies the same nonlinear normalization to each. The resulting contours show how the extra gain varies with capacity and canopy moisture. The displayed $h$ range is compatible with valid NDMI values under a common zero NDMI baseline.
+
+The two zero-score curves are in the structurally limited regime over their displayed portions. Their exact forms are
+\[
+\begin{aligned}
+h_{0,\mathrm{dynamic}}(C)&=\frac{w_dp-w_TT(C)-R_+[1+T(C)]}{w_h},\\
+h_{0,\mathrm{fixed}}(C)&=\frac{w_dp-w_TT(C)-R_+(1+T_{\mathrm I})}{w_h}.
+\end{aligned}
+\]
+The solid teal curve uses the updated value of $G$, and the dashed grey-green curve fixes its initial value. Between the curves, the updated score is positive while the score with $G$ held fixed is negative. The width of this interval in $h$ is $R_+[T(C)-T_{\mathrm I}]/w_h$, reaching 0.0262564 at $C=0.7$. The curves mark balance of the defined weighted contributions. The horizontal $h=-0.1$ slice gives the reconnection example, with the open point at $C^*=36/55$ matching the switch point in Fig.~6a.
+
+\subsubsection{A controlled response with initial compensation held fixed}
+For the $h=-0.1$ slice of Fig.~6b, let $C_{\mathrm I}=0.5$, $G_{\mathrm I}=G(C_{\mathrm I})$, $p=0.2$, $m=0.7$, $r=0.2$, $g=0.1$, $h=-0.1$ and $C_0=0.8$. Two conditional intermediate responses are
+\[
+\begin{aligned}
+S_{\mathrm{dynamic}}(C)&=-w_dp+w_hh+w_TT(C)+G(C)R_+,\\
+S_{\mathrm{fixed}}(C)&=-w_dp+w_hh+w_TT(C)+G_{\mathrm I}R_+,
+\end{aligned}
+\]
+with $R_+=w_rr+w_gg=0.040$. Both begin at the same state $S_{\mathrm I}$. Each gain is $[\mathcal{N}(S(C))-\mathcal{N}(S_{\mathrm I})]$. At $C=0.7$, the dynamic gain is 0.1480 UMRI and the fixed-compensation gain is 0.1256 UMRI; their difference is 0.0224 UMRI. This comparison measures the additional resilience gain when better habitat structure strengthens the contribution of existing recovery and growth. The exact secant allocation in Supplementary Fig.~\ref{fig:si_compensation}b answers a complementary question: how the complete dynamic change is apportioned between weighted intermediate changes using one common secant. Its compensation allocation is 0.0167 UMRI. The first comparison measures the extra gain from this strengthening; the second divides the complete gain among its component changes. Beyond $C^*=36/55$, $G$ is fixed at 0.9 while total gains and the difference between the two mapped responses continue to change.
+
+\subsubsection{Illustrative configurations and exact contribution decomposition}
+
+\begingroup
+\setlength{\abovedisplayskip}{5pt plus 1pt minus 1pt}
+\setlength{\belowdisplayskip}{5pt plus 1pt minus 1pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{4pt}
+\setlength{\parskip}{2pt}
+
+The two configurations share historical retention $m=0.7$, canopy-moisture state $h=-0.1$ and historical measure of connected habitat $C_0=0.8$. Configuration I consists of separate patches with $C=0.5$, giving $T=-3/13$ and $G=10/13$. Configuration II reconnects the same retained historical habitat, giving $C=0.7$, $T=-1/15$ and $G=9/10$. Both have the same upper response bound $R_{\max}=w_rm+w_g=41/200=0.205$. The exact boundaries in Supplementary Fig.~\ref{fig:si_compensation}a are
+\[
+\begin{aligned}
+R_{+,\mathrm{balance,I}}(p)&=\frac{13}{40}p+\frac{43}{400},
+&p_{\mathrm I}^*&=\frac3{10},\\
+R_{+,\mathrm{balance,II}}(p)&=\frac5{18}p+\frac5{108},
+&p_{\mathrm{II}}^*&=\frac{857}{1500}\simeq0.571333.
+\end{aligned}
+\]
+The pressure limits are the intersections with the common response upper bound. Coloured solid lines show the two balance boundaries, and one neutral solid line shows the upper response bound shared by both configurations. Thin dotted lines are coordinate projections. The inclined boundaries are exactly straight under fixed $m$, $h$, $T$ and $G$; they show the contribution balance under those specified conditions. Both axes in Supplementary Fig.~\ref{fig:si_compensation}a are dimensionless process variables: urban pressure $p$ and the positive response $R_+$ before adjustment for habitat and canopy condition. The balance boundaries also satisfy $\mathrm{UMRI}=0$. Supplementary Fig.~\ref{fig:si_compensation}b expresses the resulting change in UMRI units.
+
+The configurations satisfy the joint support bounds in Supplementary Equation~\eqref{eq:si_capacity_support}. Here $H=10$ and $K_B=1$, giving $L(0.7)=0.7/\sqrt{10}\simeq0.2214$, below both illustrated capacities. The fixed reference $B$ contains ten equal-area pixels, of which seven are retained in both configurations. In I, two separate patches contain three and four historical pixels, giving $C=\sqrt{3^2+4^2}/10=0.5$. In II, two new current mangrove pixels outside $B$ join them into one connected patch, giving $C=7/10=0.7$. The link increases total current mangrove area while leaving retained historical area and $m$ unchanged. For $C_0>0$, the necessary joint consistency condition is $L_i(m)\leq C_0(1+T)/(1-T)\leq m$. The lost historical fraction $1-m$ records habitat loss, while pressure $p$ is the maximum of area, interface and occupation exposure. In this example, pressure varies through surrounding or interface exposure with occupation held at zero. Holding pressure fixed isolates the structural effect of joining the patches. The common $h=-0.1$ is compatible with the valid NDMI transformation: a baseline of 0.4 and current NDMI $8/55$ yield this value.
+
+For the reconnection, the identity in Supplementary Methods~8 gives
+\[
+C_{\mathrm{joined}}^2-C_{\mathrm{separate}}^2
+=\frac{2(3)(4)}{10^2}=0.24.
+\]
+This mapped configuration change contributes through structural trajectory and, when structure limits compensation, through stronger positive vegetation contributions. Historical recovery stock retains its existing definition. Supplementary Fig.~\ref{fig:si_compensation}b holds $p=0.20$, $r=0.20$, $g_+=0.10$, $h=-0.10$ and $C_0=0.80$ fixed, giving $R_+=0.040$. The intermediate change relative to I is
+\[
+\begin{aligned}
+\Delta S(C)&=w_T[T(C)-T(C_{\mathrm I})]
++R_+[G(C)-G(C_{\mathrm I})],\\
+T(C)&=\frac{C-C_0}{C+C_0},\qquad
+G(C)=\min\!\left(1,1+h,\frac{2C}{C+C_0}\right),
+\qquad C\in[0.5,0.7].
+\end{aligned}
+\]
+At $C^*=C_0(1+h)/(1-h)=36/55\simeq0.654545$, the limiting condition changes from structure to canopy moisture and fixes $G=1+h=0.9$. Further reconnection continues to increase $T$. The intermediate difference is $\Delta S=w_T\Delta T+R_+\Delta G$. At the fixed illustrative pressure $p=0.20$, the final UMRI states are $V_{\mathrm I}=-0.6320$ and $V_{\mathrm{II}}=-0.4840$. Along the continuous capacity relation,
+\[
+\begin{aligned}
+\Delta V(C)&=[\mathcal{N}(S(C))-\mathcal{N}(S_{\mathrm I})],\\
+A_T(C)&=\alpha(S_{\mathrm I},S(C))w_T\Delta T(C),\\
+A_r(C)+A_g(C)&=\alpha(S_{\mathrm I},S(C))R_+\Delta G(C).
+\end{aligned}
+\]
+The two contributions sum to $\Delta V(C)$ at every capacity. At II, structural change contributes 0.1313 UMRI and compensation contributes 0.0167 UMRI, for a total gain of 0.1480 UMRI. Beyond $C^*$, $G$ is fixed while the common secant factor continues to vary with the endpoint state; the compensation contribution is 0.0156 UMRI at $C^*$ and 0.0167 UMRI at II. The curve expresses this continuous parameter dependence, and markers I and II identify the two mapped habitat configurations.
+
+Historical retention sets the endpoint of the response. Since $C\leq m$ and $T(C)$ increases with $C$,
+\[
+T\leq T_{\max}=\frac{m-C_0}{m+C_0}=-\frac1{15}<0,
+\qquad
+G\leq\min\!\left(1,1+h,\frac{2m}{m+C_0}\right).
+\]
+Where $m<C_0$, attaining baseline connected capacity requires recovery of mangrove area within the historical reference. Even if all remaining habitat formed one connected patch, its capacity would be $C=m<C_0$. Area recovery and increased connectivity among remaining patches therefore address distinct constraints on the capacity supporting resilience.
+
+\endgroup
+
+\subsubsection{Gross contributions and complete habitat absence}
+
+Gross and net contributions describe the magnitude and spatial coexistence of the component signals. Let $a_i$ be non-negative spatial weights summing to one, and let $c_{ki}$ be the effective weighted intermediate for component $k$ at centre $i$. Its spatial mean can be written as $\overline c_k=P_k-N_k$, where
+\[
+P_k=\sum_i a_i\max(c_{ki},0),\qquad
+N_k=\sum_i a_i\max(-c_{ki},0).
+\]
+Summing these quantities over components gives $\overline P$, $\overline N$ and $\overline S=\overline P-\overline N$. Opposite signs within a component can cancel in its mean. Accordingly, $\max(\overline c_k,0)\leq P_k$ and $\max(-\overline c_k,0)\leq N_k$. Applying the common state-mapping factor $1/(\lambda+|\bar S|)$ gives the gross positive and adverse UMRI contributions reported in Supplementary Methods~7 and Source Data. The five mean state contributions $C_k$ and their net UMRI are supplied separately in Source Data. Figure~3a assigns the change from 2000 to the five components using the secant expression in Supplementary Methods~4. These calculations distinguish the composition of the final state from its change through time.
+
+The treatment of absence completes this interpretation. A mapped loss of all historical mangroves in a neighbourhood is a known state with zero retained habitat and connected capacity. Recovery and growth are zero, the health component takes its defined absence value $h=-1$, and urban pressure remains determined by the surrounding land cover. An unknown or incomplete observation retains missing status. Habitat loss and observation availability consequently remain distinct throughout the calculation. The fixed reference retains the ecological consequence of disappearance while annual validity retains uncertainty about observation.
+
+\subsection{10. Urban development choices and ecological consequences}
+\label{note:planning}
+
+The three urban-pressure channels connect the intervention to different spatial relationships with mangroves. The area channel measures relative urban abundance in the surrounding mosaic; the interface channel measures contact along the fixed historical boundary; and occupation records conversion within historical habitat. Three limiting spatial configurations illustrate their roles. Urban growth dispersed within a neighbourhood can raise the area channel before it contacts the historical boundary. A narrow urban strip along that boundary can generate a large contact fraction while occupying a modest share of the surrounding mosaic. Conversion within historical habitat can produce substantial occupation even when a broad vegetated neighbourhood keeps the area fraction moderate. Their common dimensionless scale allows the strongest measured relationship to determine $p$.
+
+For known channel values, $p=\max(P_{\mathrm{area}},P_{\mathrm{interface}},P_{\mathrm{occupation}})$ is bounded by one and is non-decreasing in each channel. A channel below the maximum leaves $p$ unchanged until it reaches the active one. In a mathematical example with channel values $(0.20,0.60,0.40)$, the interface sets $p=0.60$ and hence $d=-0.60$. The three values retain information about the geometry of exposure, while the maximum enters that exposure once in the score. This matters where the same urban footprint contributes to more than one channel: its surrounding cover, boundary contact and occupation remain complementary descriptions of that footprint.
+
+Urban land allocation changes both the pressure around mangroves and the habitat available to them. We compare development choices under the same climate, relative-sea-level path and ecological model fit. Each allocation supplies urban exposure and available landward space; the ecological model then updates habitat retention, connected capacity, confirmed recovery, EVI and NDMI from their preceding states and external drivers. Urban occupation limits how much historical habitat can remain. The predictions also retain the relationships between habitat amount, connected structure and recovered forest described in Supplementary Methods~6. We reconstruct the five components using the historical definitions, fixed weights and common calibration. The resulting comparison follows the consequences of urban development for both direct exposure and forest condition.
+
+The forecasts represent habitat conversion directly: when historical mangrove land becomes urban, less habitat remains available to the forest. Connected capacity follows its geometric lower bound, and both capacity and confirmed recovery remain bounded by retained habitat. Other changes in forest condition follow relationships fitted to urban, climatic, sea-level and historical observations. Together, these relationships and habitat constraints determine the ecological response to each development choice. The ecological contribution to the mean UMRI change $\Delta V$ in 2100 is the sum of the four ecological component contributions, expressed in UMRI units.
+
+The four ecological components together accounted for 15.5\%, 20.7\%, 18.6\% and 26.7\% of the mean additional urban loss in 2100 under SSP1--2.6, SSP2--4.5, SSP3--7.0 and SSP5--8.5, respectively. To calculate these shares, we first average the effective weighted component terms over the same locations within each development choice. Within each model combination, the common secant between the two branch scores converts the five component changes into contributions that sum to the paired UMRI difference. We then take the mean of each component contribution and of the total UMRI difference across the 15 members. The ecological share is the sum of the four mean ecological contributions divided by the mean total difference, expressed as a percentage.
+
+The historical calibration fixes the common UMRI mapping. With $z=S/\lambda$, the reported UMRI state is $V=z/(1+|z|)$. Thus $S=0$ gives zero UMRI, and an intermediate magnitude $|S|=\lambda$ gives $|V|=0.5$. Identical component balances receive the same UMRI value in every region, year and scenario because the calibration remains fixed.
+
+Gross magnitude and sign balance jointly determine this coordinate. On a common reporting population, define $A=\overline P+\overline N$ and, for $A>0$, the adverse share $f=\overline N/A$. Then
+\[
+\overline S=A(1-2f),\qquad
+V=\frac{A(1-2f)}{\lambda+A|1-2f|}.
+\]
+Equal positive and adverse contributions give $f=1/2$ and a zero net balance. At a fixed adverse share above $1/2$, a larger gross magnitude produces a more negative coordinate; at a fixed share below $1/2$, it produces a more positive one. When $A=0$, the coordinate is zero directly. This identity connects the gross contribution balance, the historical calibration and the resulting state. The observed adverse share of 85.3\% in 2025 identifies a strongly suppressed resilience state despite the positive contributions present in the same landscape.
+
+Normalization preserves the ordering of scores while changing their spacing. For a finite aggregate score, the slope is
+\begin{equation}\label{eq:si_normalization_slope}
+\mathcal{N}'(S)=\frac{\lambda}{(\lambda+|S|)^2}.
+\end{equation}
+The UMRI change associated with a given intermediate difference depends on the starting state. The common secant factor incorporates this dependence into every component contribution. Absolute states, historical changes, differences between development choices and component budgets share the same fixed normalization and UMRI scale. Summing annual differences between those choices adds their duration, expressed in UMRI-years throughout.
+
+For two branch scores $S_A$ and $S_B$, the coordinate difference can also be expressed as
+\[
+V_B-V_A=[\mathcal{N}(S_B)-\mathcal{N}(S_A)]
+=\int_{S_A}^{S_B}\frac{\lambda}{(\lambda+|s|)^2}\,\mathrm{d}s.
+\]
+The integrand is positive, so the UMRI effect has the same sign as the change in the intermediate balance. Its magnitude reflects both that change and the starting state. In a mathematical example, a decrease of $\lambda$ from $S=0$ to $S=-\lambda$ changes UMRI from 0 to $-0.5000$ UMRI. The same intermediate decrease from $-\lambda$ to $-2\lambda$ changes UMRI from $-0.5000$ to $-0.6667$ UMRI, a difference of $-0.1667$ UMRI. This example illustrates how the fixed transformation expresses an intermediate change in UMRI units at different starting states. The secant decomposition applies that same transformation to the five component changes, which sum to the complete UMRI difference.
+
+The protected branch adds an explicit land-allocation intervention. Historical habitat and its connected available landward space are removed from new-construction candidates, while existing urban land remains. The target is the construction realized in the corresponding unprotected growth branch. Eligible construction is retained within its source cell where possible, and displaced growth may be relocated within the specified 10-km same-region search. Destination capacity is reserved for its own future growth before accepting relocation. The ledger then divides the target into within-cell construction, nearby relocation and unserved development. Each annual ledger records the cumulative growth target and its allocation since 2025.
+
+The source-cell demand account connects these locations to the amount of growth accommodated. For a positive source target $Q_c^{\mathrm{growth}}$, divide the three terms in Supplementary Equation~\eqref{eq:si_protection_ledger} by that target to obtain
+\[
+f_c^{\mathrm{within}}+f_c^{\mathrm{relocated}}+f_c^{\mathrm{unserved}}=1,\qquad
+f_c^{\mathrm{accommodated}}=1-f_c^{\mathrm{unserved}}.
+\]
+The cell index follows the origin of the growth requirement. Relocated construction remains in that source account, while its effects on urban exposure and available land enter at the receiving location. Because relocation stays within a macroregion, pooling source accounts and pooling the corresponding construction destinations recover the same regional constructed amount. A zero target contributes zero amounts to the account and zero weight to a pooled allocation fraction.
+
+The overall accommodated share is the target-weighted mean of the source shares:
+\[
+F^{\mathrm{accommodated}}
+=\frac{\sum_c Q_c^{\mathrm{growth}}f_c^{\mathrm{accommodated}}}
+       {\sum_c Q_c^{\mathrm{growth}}}
+=\frac{\sum_c\bigl(Q_c^{\mathrm{within}}+Q_c^{\mathrm{relocated}}\bigr)}
+       {\sum_c Q_c^{\mathrm{growth}}}.
+\]
+This gives the reported 90.4\% and 84.5\% for the two evaluated pathways. Regional allocation shares describe the mix of local accommodation, relocation and unserved growth; the accompanying absolute targets show the amount of development represented by each mix. These construction-target weights differ from the historical-habitat area weights used to aggregate resilience.
+
+Figure~5c displays the 75 cumulative construction accounts for each pathway in square kilometres. Dashed curves show the unprotected realized target, $\sum_c Q_{ct}^{\mathrm{growth}}$; solid curves show protected construction accommodated, $\sum_c(Q_{ct}^{\mathrm{within}}+Q_{ct}^{\mathrm{relocated}})$; dotted curves show its relocated subset, $\sum_c Q_{ct}^{\mathrm{relocated}}$. The shaded target--accommodated gap equals $\sum_c Q_{ct}^{\mathrm{unserved}}$ and represents construction area. Each annual row is cumulative since 2025. Supplementary Fig.~\ref{fig:si_protection}a divides the within-cell, relocated and unserved amounts by each region's unprotected construction target at 2100. Among regions with positive targets, four of ten under SSP2--4.5 and three of nine under SSP5--8.5 accommodate the full target. Equals signs identify these seven cases. Central America under SSP5--8.5 has no target and is excluded from percentage-based accommodation counts.
+
+Among regions with a positive construction target, zero unserved share means that protected and unprotected branches realize the same construction amount and the ecological difference follows its changed spatial placement. Where the unserved share is positive, the intervention changes both placement and the amount constructed. The pooled protection benefit combines these outcomes. The ledger measures how much growth is accommodated, while the conversion maps specify where that growth acts on habitat, boundaries and landward space. Their joint interpretation explains why preserving the spatial setting of mangroves can remain consequential even when most of the construction target is accommodated.
+
+Protecting a landward corridor preserves space in which coastal adjustment may occur. The model uses that availability as an ecological predictor and protects the historical habitat within the intervention. Sediment accretion, tidal exchange and establishment processes determine whether preserved space becomes suitable habitat in a particular coastal setting\cite{ref010,ref029,ref021}. Preserving these sites retains options for coastal adjustment as development is allocated. Local planning can combine the identified opportunities with terrain, hydrological and land-use information to identify feasible protection, restoration and development locations.
+
+
+\section{Supplementary Discussion}
+\subsection{Ecological evidence across habitat change and planning scenarios}
+
+The historical record shows persistent and widespread suppression of mangrove resilience, together with further overall deterioration. At least nine of the ten regions had negative UMRI in every year during 2000--2025, identifying degraded states in which adverse contributions outweighed positive gains. Overall UMRI fell from $-0.2497$ to $-0.4917$ UMRI, showing that the negative balance deepened. The decline persisted at locations observed throughout the record and in all 151 analyses that excluded an individual study area or region (Supplementary Methods~7). Changes in forest area and connectedness explain the depleted habitat supporting vegetation responses. Comparing future urban development choices then shows how further expansion worsens this condition and how protection can alleviate it. These observations and interventions connect Fig.~3 to Figs.~4 and 5.
+
+\subsubsection{Habitat amount and configuration}
+
+Historical forest was lost and the remaining habitat became more dispersed among disconnected patches. Supplementary Table~\ref{tab:si_native_endpoints} separates the amount remaining, $m$, the measure combining amount and connectedness, $C$, and patch concentration, $q=C/m$. The comparison follows the same 925,583 neighbourhoods in 2000 and 2025. A second comparison follows 876,841 neighbourhoods observed in all 26 years. Patch concentration uses locations with retained forest in both endpoint years: 921,921 and 874,224 neighbourhoods, respectively. We calculate $q$ at each location before taking its mean. Known forest absence contributes zero to $m$ and $C$; $q$ describes the arrangement of forest that is present.
+
+Retention, capacity and patch concentration declined by 17.09, 15.20 and 3.23 percentage points, respectively. At locations observed throughout the record, the corresponding declines were 15.87, 13.94 and 2.89 percentage points. Regional comparisons expose different structural changes within this overall decline. Western Africa lost 36.37 percentage points of retention and 35.68 points of capacity, while patch concentration fell by 10.71 points among neighbourhoods retaining habitat at both endpoints. Southern Asia lost 4.11 points of retention but 0.46 points of capacity, with a 2.26-point increase in patch concentration. The retention and capacity changes use 98,847 matched neighbourhoods, while patch concentration uses the 98,617 with positive retention at both endpoints. Retention and configuration can therefore deteriorate together or move in opposing directions. The joint history distinguishes habitat removal from changes in the connected arrangement of what remains.
+
+Attaining baseline connected capacity can require recovery of mangrove area within the historical reference. The amount of forest remaining determines this requirement. As $C=mq$ and $0\leq q\leq1$, the maximum capacity at fixed $m$ is $m$. If $m<C_0$, even a single connected patch containing all remaining habitat has $C<C_0$, so increased area within the historical reference is necessary to attain baseline capacity. Where $m\geq C_0$, attaining baseline capacity requires $q\geq C_0/m$ when $m>0$, together with a spatial configuration that permits this degree of connectivity. The relationship distinguishes the need for habitat-area recovery from the potential contribution of increased connectivity among remaining stands.
+
+Across all 925,801 valid neighbourhoods in 2025, 529,527 (57.1966\%) satisfied $m_{2025}<C_0-10^{-12}$. Locations observed throughout the historical record gave 486,419 of 876,841 (55.4740\%). These populations include known habitat absence; the corresponding Source Data rows are labelled \texttt{all\_valid}.
+
+\subsubsection{Vegetation responses within depleted habitat}
+
+Recovery of mangrove cover and canopy greening occurred alongside widespread habitat depletion (Supplementary Fig.~\ref{fig:si_native}a--c). The joint greenness and structural distribution is shown in Supplementary Fig.~\ref{fig:si_native}d,e, and Source Data provide the counts for both vegetation responses. In 2025, 532,032 of the 713,029 greener neighbourhoods had $C$ below their local 2000--2004 reference value, giving 74.62\%. Among 711,275 neighbourhoods containing confirmed recovered mangrove cover, 551,155 had lower $C$, giving 77.49\%. At locations observed throughout the record, the corresponding fractions were 73.91\% (510,504 of 690,718) and 76.17\% (509,179 of 668,439). Confirmed recovery records historical habitat with mangrove presence after documented loss and two consecutive years of mapped persistence. It can occupy a small part of a neighbourhood while the wider habitat remains depleted.
+
+For Fig.~3c, we used $m_{2025}<C_0-10^{-12}$ to identify the need for habitat-area recovery among the same 713,029 greener neighbourhoods. Of these, 374,920 (52.5813\%) required recovery of mangrove area within the historical reference to attain baseline connected capacity; all belonged to the 532,032 with lower capacity. This requirement therefore applied to 70.4694\% of greener neighbourhoods with depleted habitat structure. Among greener locations observed throughout the record, the corresponding count was 357,121 of 690,718 (51.7029\%), or 69.9546\% of the 510,504 with lower capacity. Among neighbourhoods with confirmed recovery and lower capacity, 406,827 of 551,155 (73.8135\%) met the same condition.  Each reference centre receives equal weight, and nearby centres can have overlapping neighbourhoods. Known absence is zero; unknown observations remain missing. Greener locations have retained forest and finite annual and historical EVI values. This area requirement applies to sites with a positive historical capacity.
+
+Source Data provide the centre-level retention, baseline capacity, canopy and recovery observations underlying these comparisons, together with regional and overall counts for each stated population.
+
+Canopy greenness and moisture provide complementary observations within the retained habitat. On the same 922,143 forest-present reference neighbourhoods in 2025, mean EVI was 0.0451 above its local 2000--2004 baseline, whereas mean NDMI was 0.0405 below its baseline. These are centre-weighted means of the neighbourhood-level canopy changes, with each spectral mean calculated over its valid retained-mangrove observations. Their opposite directions distinguish the aggregate greenness response from the canopy-moisture signal. Together with the same-location recovery and capacity comparisons above, they show positive vegetation responses developing within depleted habitat and alongside a lower canopy-moisture signal. Supplementary Methods~9 specify how the measured moisture and structural states regulate compensation; the spectral observations describe retained forest, while the habitat record also preserves sites where forest is absent.
+
+The annual record shows habitat depletion becoming more widespread among greener forests. The fraction of greener neighbourhoods with lower capacity rose from 38.69\% in 2010 to 54.54\% in 2015 and 74.62\% in 2025. Locations observed throughout the record gave 36.99\%, 54.14\% and 73.91\%, respectively. Each year's denominator contains centres with a valid UMRI observation, retained mangroves, finite EVI and $g>0$; the numerator also requires $T<0$. We pool counts across centres before division. For locations observed in all 26 years, we select the greener subset separately in each year using the same rule. Thus, each proportion describes that year's greener forest within the specified set of locations. Recovery and growth also contributed positively to overall UMRI in every year from 2013 to 2025, while the balance deteriorated by a further 0.1447 UMRI. Together, the spatial and temporal observations show positive vegetation responses developing within a progressively depleted habitat base.
+
+\subsubsection{Urban expansion and the location of development}
+
+Further urban expansion added to resilience loss under every development pathway. We compared expanding and unchanged urban footprints under the same climate, relative sea level and ecological model. The overall urban effect was negative in every year from 2026 to 2100, in all 15 members of each of the four pathways. Recovery, growth, canopy moisture and habitat structure together accounted for 15.5--26.7\% of the mean additional urban loss in 2100; structure made the largest ecological contribution under every pathway. The relationships in Supplementary Methods~8 and~9 explain how habitat depletion affects this balance. Less remaining forest bounds the area of recovered mangrove cover that can be present, and degraded structure reduces the contribution of positive vegetation responses when it is the condition limiting compensation.
+
+The protection scenarios identify spatial choices that preserve this habitat support. Two regional comparisons in Supplementary Fig.~\ref{fig:si_protection}b,c and Supplementary Table~\ref{tab:si_ledger} identify benefits at equal realized construction amounts. Australia and New Zealand accommodated the same 54.18~km$^2$ of construction under SSP2--4.5 and gained a median 0.0215 UMRI under protection. Eastern Asia accommodated the same 39.21~km$^2$ under SSP5--8.5 and gained 0.0822 UMRI. In these cases, the benefit follows from the location of development and its ecological consequences. Across the full domain, protection accommodated 90.4\% and 84.5\% of the two construction targets while avoiding 91.5\% and 94.0\% of additional urban loss. The regional ledger in Supplementary Table~\ref{tab:si_ledger} identifies where nearby eligible land accommodated displaced construction and where limited space also reduced the amount realized.
+
+The two equal-construction examples differed in how the protection benefit arose (Supplementary Fig.~\ref{fig:si_protection}). For Australia and New Zealand under SSP2--4.5, the median change in retained habitat was $-0.0235$ percentage points (17th--83rd percentiles, $-0.0869$ to $-0.0064$), whereas capacity increased by 0.1246 percentage points (0.0919--0.1652). Retention fell in 13 of 15 members, while capacity increased in all 15. The mean protection benefit was 0.0302 UMRI; the urban-pressure contribution was 0.0283 UMRI, or 93.5832\% of that mean. For Eastern Asia under SSP5--8.5, retention and capacity increased in all 15 members, with median changes of 2.4830 (2.2792--3.5551) and 2.7170 (2.3584--3.9003) percentage points. Recovery, growth, health and structure together contributed 0.0186 UMRI of the 0.0873 mean benefit (21.3559\%). These contribution shares decompose ensemble means, whereas the 0.0215 and 0.0822 UMRI effects reported above are ensemble medians.
+
+Equal construction constrains the regional total while allowing the protected and unprotected footprints to occupy different places. These cases therefore test the consequences of placement within the stated allocation rules. The Australia and New Zealand comparison illustrates why retained amount and connected capacity are reported together: capacity can increase even when mean historical occupancy falls slightly, because the two statistics also reflect how remaining habitat is arranged. The Eastern Asia comparison combines positive changes in both habitat quantities with a larger ecological share of the benefit. Their contrast identifies different balances of exposure reduction and habitat response under the same construction amount in each region.
+
+\clearpage
+\section{Supplementary Figures}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/SupplementaryFig1_observation_domain_sensitivity.pdf}
+\caption{Historical consistency across observation populations and city domains. \textbf{a}, Annual overall Urban Mangrove Resilience Index (UMRI) using all valid historical observations, locations observed in both endpoint years, and locations observed in all 26 years; the lower trace gives annual valid-centre coverage of the full fixed reference. Estimates average the computational intermediate $S$ before applying the fixed UMRI mapping. \textbf{b}, Cumulative distributions of the 2000--2025 UMRI change after separately excluding each of 141 study blocks or ten macroregions. The dashed vertical line marks the complete-domain change. Each exclusion contributes one estimate. \textbf{c}, Annual regional UMRI under 1- and 5-km city domains minus its counterpart under the primary 2-km domain. Each symbol is one year from 2000 to 2025; small vertical offsets separate overlapping symbols. The comparisons are differences between domain-level estimates, with each domain retaining its own reference population. They use the same city selection, original study mosaic, 500-m ecological neighbourhood and UMRI parameters. Supplementary Table~\ref{tab:city_buffer_sensitivity} gives reference counts and endpoint changes. No temporal smoothing is applied.}\label{fig:si_support}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/SupplementaryFig2_regional_scenario_trajectories.pdf}
+\caption{Regional urban effects and overall protection benefits through time. \textbf{a}, Annual urban-growth minus fixed-2025 differences in the Urban Mangrove Resilience Index (UMRI; $\Delta\mathrm{UMRI}$) in ten macroregions under four pathways. Lines show medians and shaded bands the 17th--83rd percentiles across 15 joint members; markers identify 2100 endpoints. Regional panels retain original UMRI values on labelled linear axes with different ranges. Three trajectories are omitted because every member has exactly zero urban effect in all 75 years: SSP5--8.5 in Central America, and SSP2--4.5 and SSP3--7.0 in Western Asia. The thin grey line retains zero as a reference. Western Asia under SSP1--2.6 is retained: its effect first becomes non-zero in 2092 and reaches a median of $-1.93\times10^{-5}$ UMRI in 2100. \textbf{b}, Overall annual protected minus urban-growth UMRI differences under SSP2--4.5 and SSP5--8.5. Both panels retain 2026--2100 and the same member-quantile definition. Development choices are paired at the same locations under common climate, sea-level and ecological-model combinations. Regional and overall estimates average the computational intermediate over valid equal-area reference centres before applying the fixed UMRI mapping. Colours identify Shared Socioeconomic Pathway (SSP) pathways consistently across panels. All values, including exact-zero trajectories and cumulative effects, are supplied in Source Data.}\label{fig:si_urban_regions}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/SupplementaryFig3_historical_native_states.pdf}
+\caption{Vegetation responses within changing historical habitat. \textbf{a--c}, Centre-weighted annual habitat retention ($m$), connected capacity ($C$), confirmed recovered cover and enhanced vegetation index (EVI) change for available observations (solid) and locations observed throughout 2000--2025 (dashed). Grey in \textbf{b} marks years before recovery can be confirmed. \textbf{d}, Joint 2025 distribution of greenness response $g$ and structural trajectory $T$ at 922,143 forest-present centres with valid local baselines. Colour gives centres per 0.025-by-0.025 bin on a logarithmic scale; empty bins are uncoloured. \textbf{e}, Marginal distributions using the same bins and line styles, normalized separately for available and complete-history populations (922,143 and 874,251 centres). Neighbourhoods overlap. Known absence and missing observations remain distinct. Supplementary Table~\ref{tab:si_native_endpoints} gives paired changes in $m$, $C$ and $q=C/m$.}\label{fig:si_native}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{figures/SupplementaryFig4_habitat_compensation.pdf}
+\caption{How habitat reconnection changes compensation and resilience. \textbf{a}, Balance boundaries in urban pressure $p$ and unadjusted positive response $R_+$ for separate (I) and reconnected (II) habitat. Both have $m=0.7$, $h=-0.1$ and $C_0=0.8$, with capacities 0.5 and 0.7. Shaded regions are outer bounds on compensation below the common response limit $w_rm+w_g=0.205$; baseline enhanced vegetation index (EVI) and recovery history determine attainable responses. \textbf{b}, Reconnection gain at fixed $p=0.20$, $r=0.20$, $g=0.10$, $h=-0.10$ and $C_0=0.80$. The solid curve is total Urban Mangrove Resilience Index (UMRI) gain, the dashed curve its structural contribution, and the gold band the recovery and growth contribution. At II, 0.1313 and 0.0167 sum to 0.1480 UMRI. The diamond marks the switch to moisture limitation at $C^*=36/55$. The configurations retain the same seven historical cells; two external mangrove cells connect them in II. Supplementary Methods~9 define the geometry and common-secant allocation. Here, $m$ is retained habitat, $C$ connected capacity, $h$ canopy-moisture state and $C_0$ baseline capacity; $r$ and $g$ denote recovery and growth. Figure~6b instead measures the extra gain relative to holding initial compensation fixed.}\label{fig:si_compensation}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth]{figures/SupplementaryFig5_regional_protection.pdf}
+\caption{Regional protection outcomes and equal-construction mechanisms. \textbf{a}, Construction allocation, paired protection benefits, component contributions and habitat changes in 2100. SSP2--4.5 appears above SSP5--8.5 within each region. Construction bars partition the realized unprotected target into within-cell allocation, relocation and unserved demand. Equals signs identify seven positive-target cases that accommodate the same total construction under protection; the zero target in Central America under SSP5--8.5 remains undefined. For benefits and habitat changes, faint points show all 15 paired members; larger symbols and intervals show medians and 17th--83rd percentiles. Habitat changes are protected minus unprotected growth in percentage points (pp). Heat tiles show mean contributions in final UMRI units from urban pressure ($d$), effective recovery ($r^*$), effective growth ($g^*$), moisture ($h$) and structure ($T$); the five contributions sum to mean benefit. Blue and orange indicate positive and negative contributions, respectively. Benefit positions use $\operatorname{asinh}(x/0.001)$, habitat positions use $\operatorname{asinh}(x/0.05)$ and component colours use $\operatorname{asinh}(x/0.002)$ with limits $\pm0.6$ UMRI. \textbf{b}, The two equal-construction examples discussed in the Results: Australia and New Zealand under SSP2--4.5 and Eastern Asia under SSP5--8.5. Each symbol is one paired member. Capacity gains are relative to that member's unprotected branch. Ecological contribution is the sum of recovery, growth, moisture and structure contributions, expressed as a percentage of the positive paired total benefit. Open and filled symbols indicate a decrease and an increase in retained historical habitat, respectively. \textbf{c}, All five component shares for the same 30 members; shares sum to 100\% within each member. Symbols and intervals summarize medians and 17th--83rd percentiles, with faint points retaining all member values. Positions use $\operatorname{asinh}(x/0.2)$ and original percentage ticks, retaining negative contributions. All non-linear displays retain native-unit tick labels.}\label{fig:si_protection}
+\end{figure}
+\clearpage
+
+
+\clearpage
+\begin{figure}[!p]
+\centering
+\includegraphics[width=\linewidth]{figures/SupplementaryFig6_full_histories.pdf}
+\caption{Unsmoothed annual mangrove-resilience histories on a common full scale. The overall estimate and ten macroregions use identical $[-1,+1]$ Urban Mangrove Resilience Index (UMRI) axes. Lines connect all 26 annual estimates from 2000 to 2025; open and filled circles mark the two endpoints. Arrows and numbers give the endpoint changes. Shading extends to zero, where positive and adverse contributions balance. These are the historical curves in main Fig.~2, using 925,774 forecast-valid centres observed in 2025; earlier years retain their annual validity masks. Estimates average the computational intermediate $S$ across valid equal-area centres before applying the fixed normalization. All 286 annual regional and overall values are provided in Source Data.}\label{fig:si_full_histories}
+\end{figure}
+
+\clearpage
+\section{Supplementary Tables}
+
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{>{\raggedright\arraybackslash}p{41mm}rrrrrr}
+\caption{Regional analysis populations and primary forecast weights.}\label{tab:si_population}\\
+\toprule
+Region (abbreviation) & Blocks & \shortstack{Reference\\centres} & \shortstack{Forecast\\centres} & \shortstack{Matched\\centres} & \shortstack{Reference\\area (km$^2$)} & \shortstack{Forecast\\weight (\%)}\\
+\midrule
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+Region (abbreviation) & Blocks & \shortstack{Reference\\centres} & \shortstack{Forecast\\centres} & \shortstack{Matched\\centres} & \shortstack{Reference\\area (km$^2$)} & \shortstack{Forecast\\weight (\%)}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Australia and New Zealand (ANZ) & 15 & 89,853 & 88,706 & 88,706 & 80.8677 & 9.577\\
+Central America (CAM) & 3 & 4,233 & 4,215 & 4,215 & 3.8097 & 0.455\\
+Eastern Africa (EAF) & 3 & 4,894 & 4,888 & 4,773 & 4.4046 & 0.528\\
+Eastern Asia (EAS) & 8 & 4,233 & 4,219 & 4,219 & 3.8097 & 0.456\\
+Northern America (NAM) & 35 & 290,329 & 287,579 & 287,573 & 261.2961 & 31.049\\
+South America (SAM) & 22 & 97,145 & 96,819 & 96,819 & 87.4305 & 10.453\\
+South-Eastern Asia (SEA) & 36 & 222,130 & 222,008 & 221,683 & 199.9170 & 23.969\\
+Southern Asia (SAS) & 8 & 98,972 & 98,847 & 98,847 & 89.0748 & 10.672\\
+Western Africa (WAF) & 9 & 122,802 & 118,716 & 118,716 & 110.5218 & 12.817\\
+Western Asia (WAS) & 2 & 223 & 223 & 223 & 0.2007 & 0.024\\
+\textbf{Total} & 141 & 934,814 & 926,220 & 925,774 & 841.3326 & 100.000\\
+\end{longtable}
+{\small Reference centres form the fixed 2000--2004 habitat union. Forecast centres are valid across all future cases. Matched centres also have a valid historical score in 2025. Area is the reference-centre count multiplied by 900~m$^2$.\par}
+\endgroup
+
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{lrr}
+\caption{Band-level transformation to the historical ETM+ reference.}\label{tab:si_coefficients}\\
+\toprule
+Band & OLI slope & OLI intercept\\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+Band & OLI slope & OLI intercept\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Blue & 0.8850 & 0.0183\\
+Green & 0.9317 & 0.0123\\
+Red & 0.9372 & 0.0123\\
+NIR & 0.8339 & 0.0448\\
+SWIR1 & 0.8639 & 0.0306\\
+SWIR2 & 0.9165 & 0.0116\\
+\end{longtable}
+{\small The transformation is $\rho_{\mathrm{target}}=a\rho_{\mathrm{source}}+b$ for dimensionless surface reflectance. Landsat~8 and 9 use the OLI coefficients shown; the published fit compares Landsat~8 with 7\cite{Roy2016}. Landsat~5/7 retain their original scale, with slope 1 and intercept 0 for every band.\par}
+\endgroup
+
+\clearpage
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{>{\raggedright\arraybackslash}p{32mm}>{\raggedright\arraybackslash}p{39mm}>{\raggedright\arraybackslash}p{86mm}}
+\caption{Source products and the spatial or temporal support used in the analysis.}\label{tab:si_datasets}\\
+\toprule
+Input & Product & Use\\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+Input & Product & Use\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Historical mangroves & GMW v4.1.12 & Annual 30-m maps; 2000--2025 bands; fixed reference union 2000--2004\cite{GMW2026}.\\
+Urban study boundaries & GUB 2018 & Polygons larger than 100 km$^2$ and their 2-km neighbourhoods\cite{ref086}.\\
+Optical and\newline thermal data & Landsat C2 T1 L2 & Annual observations selected by maximum NDVI, 2000--2025; 30-m grid.\\
+Static water context & JRC GSW v1.4 & 1984--2021 occurrence $\geq90\%$; distance in native-grid pixels\cite{Pekel2016}.\\
+Historical climate & ERA5-Land & 0.1-degree distributed grid (9-km native resolution); 2000--2025; 252 cells mapped to the analysis\cite{ERA5Land2021,ERA5LandHourlyData}.\\
+Future climate & NEX-GDDP-CMIP6 v2.0 & 0.25-degree native daily fields; five GCMs, four SSPs; 2026--2100\cite{ref054,NEXGDDPCMIP6Data}.\\
+Historical relative sea level & PSMSL RLR\cite{Holgate2013,PSMSL2026}; C3S vDT2024\cite{C3SSeaLevel2018} & Qualifying gauges and flagged ocean-plus-background proxies; 2000--2014 reference.\\
+Future relative sea level & AR6 regional total; version 20210809 & Regional point support; q17/q50/q83; annual interpolation and 2025 anchoring\cite{AR6SL2021,IPCC2021Chapter9,Kopp2023}.\\
+Local topography & FABDEM v1.2 & EGM2008; relative neighbourhood elevation and slope\cite{Hawker2022,FABDEM12}.\\
+Urban demand & Global 1-km\newline Downscaled Urban Land v1.00 & Native land-area denominator; SSP fractions interpolated annually and anchored in 2025\cite{ref051,GaoUrbanData}.\\
+\end{longtable}
+{\small Climate, sea-level and urban-demand information retain their native source scales when linked to the 30-m reporting grid and 500-m ecological neighbourhoods. Provider access points are listed in the main Data availability statement.\par}
+\endgroup
+
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{>{\raggedright\arraybackslash}p{52mm}>{\raggedright\arraybackslash}p{23mm}>{\raggedright\arraybackslash}p{82mm}}
+\caption{Dynamic and static ecological-model inputs.}\label{tab:si_features}\\
+\toprule
+Variable & Unit & Definition\\
+\midrule
+\endfirsthead
+\multicolumn{3}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+Variable & Unit & Definition\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{3}{l}{\textit{Dynamic variables (13)}}\\
+Urban area exposure & fraction & Urban / (urban + vegetation + unknown).\\
+Urban interface & fraction & Urban contact on the fixed reference interface.\\
+Historical occupation & fraction & Reference habitat lost and currently urban.\\
+Mean temperature & $^\circ$C & Annual mean of daily mean temperature.\\
+High temperature & $^\circ$C & Annual 95th percentile of daily maximum temperature.\\
+Precipitation & mm yr$^{-1}$ & Annual precipitation total.\\
+Dry-season precipitation & mm & Total over three fixed historically driest months.\\
+Consecutive dry days & days & Longest annual run below 1 mm day$^{-1}$.\\
+Relative sea level & m & Anomaly relative to the historical reference.\\
+Sea-level rate & mm yr$^{-1}$ & Observed or scenario relative sea-level rate.\\
+Connected landward space & km$^2$ & Available landward connected area.\\
+Landward urban blockage & fraction & Urban-blocked share of the landward context.\\
+Landward class coverage & fraction & Known land-cover support.\\
+\addlinespace
+\multicolumn{3}{l}{\textit{Static variables (9)}}\\
+EVI baseline & index & 2000--2004 local median; at least three valid years.\\
+NDMI baseline & index & 2000--2004 local median; at least three valid years.\\
+Capacity baseline & fraction & 2000--2004 connected-capacity median.\\
+Longitude & degrees & Fixed centre longitude.\\
+Latitude & degrees & Fixed centre latitude.\\
+Macroregion & code & Ten-region categorical identity.\\
+Relative elevation & m & Neighbourhood median minus reference-habitat median.\\
+Slope & degrees & Local topographic slope.\\
+Baseline direction coverage & fraction & Known support for baseline landward direction.\\
+\end{longtable}
+{\small The five ecological states and their masks are provided over a five-year history in addition to these inputs. Future dynamic drivers refer to the target year. The tree model therefore receives 137 features.\par}
+\endgroup
+
+\clearpage
+\begingroup\small\setlength{\tabcolsep}{3.2pt}\renewcommand{\arraystretch}{1.16}
+\begin{longtable}{@{}lrrrrrrrr@{}}
+\caption{Temporal and spatial holdout performance.}\label{tab:si_validation}\\
+\toprule
+\multicolumn{1}{l}{} & \multicolumn{2}{c}{5-year temporal} & \multicolumn{2}{c}{5-year spatial} & \multicolumn{2}{c}{10-year temporal} & \multicolumn{2}{c}{10-year spatial}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Measure & Model & Persistence & Model & Persistence & Model & Persistence & Model & Persistence\\
+\midrule
+\endfirsthead
+\multicolumn{9}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+\multicolumn{1}{l}{} & \multicolumn{2}{c}{5-year temporal} & \multicolumn{2}{c}{5-year spatial} & \multicolumn{2}{c}{10-year temporal} & \multicolumn{2}{c}{10-year spatial}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+Measure & Model & Persistence & Model & Persistence & Model & Persistence & Model & Persistence\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+$m$ & 0.03246 & 0.03195 & 0.02548 & 0.02460 & 0.06610 & 0.07606 & 0.07455 & 0.08936\\
+$C$ & 0.03077 & 0.03014 & 0.01876 & 0.01840 & 0.06783 & 0.07145 & 0.06419 & 0.07593\\
+$r$ & 0.01360 & 0.01376 & 0.00812 & 0.00827 & 0.01940 & 0.01936 & 0.01870 & 0.02068\\
+EVI & 0.03828 & 0.04010 & 0.04130 & 0.04182 & 0.04920 & 0.04864 & 0.04771 & 0.06039\\
+NDMI & 0.03176 & 0.03204 & 0.02784 & 0.02570 & 0.04293 & 0.04059 & 0.04274 & 0.04643\\
+$S$ & 0.00826 & 0.00797 & 0.01012 & 0.00823 & 0.01426 & 0.01538 & 0.02836 & 0.03594\\
+UMRI & 0.0386 & 0.0397 & 0.0366 & 0.0384 & 0.0540 & 0.0659 & 0.0482 & 0.0547\\
+\addlinespace
+Correct direction & 7/10 & 6/10 & 7/10 & 8/10 & 5/10 & 6/10 & 5/10 & 8/10\\
+False absence & 1,658 & 222 & 45 & 3 & 1,607 & 145 & 2 & 2\\
+\end{longtable}
+{\small The first seven rows report mean absolute errors. Correct direction is the number of regions with the observed change direction; false absence counts observed forest-present records predicted as absent. Five-year tests and the terminal five years of ten-year tests are both evaluated against 2021--2025 observations. Errors in $S$ and UMRI compare annual regional aggregates with equal block weights; state errors are calculated at centres first. Evaluation summaries give regions equal weight. Temporal and spatial holdouts contain 55,273 and 2,625 centres, respectively, with 275,168 and 12,956 valid score records. Model denotes the selected ecological-state model.\par}
+\endgroup
+
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{>{\raggedright\arraybackslash}p{43mm}rrrrrr}
+\caption{Historical endpoints and median absolute urban-growth states in 2100 (UMRI).}\label{tab:si_endpoints}\\
+\toprule
+ & \multicolumn{2}{c}{Historical} & \multicolumn{4}{c}{Projected state in 2100}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-7}
+Region & 2000 & 2025 & SSP1--2.6 & SSP2--4.5 & SSP3--7.0 & SSP5--8.5\\
+\midrule
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+ & \multicolumn{2}{c}{Historical} & \multicolumn{4}{c}{Projected state in 2100}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-7}
+Region & 2000 & 2025 & SSP1--2.6 & SSP2--4.5 & SSP3--7.0 & SSP5--8.5\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+All centres & -0.2497 & -0.4917 & -0.5458 & -0.5873 & -0.5476 & -0.6423\\
+Australia and New Zealand & -0.2464 & -0.3362 & -0.4710 & -0.4666 & -0.4097 & -0.5420\\
+Central America & -0.2929 & -0.5641 & -0.6542 & -0.6221 & -0.6139 & -0.6059\\
+Eastern Africa & -0.3143 & 0.1592 & -0.0714 & -0.5979 & -0.0718 & -0.5868\\
+Eastern Asia & -0.4260 & -0.5023 & -0.5460 & -0.6634 & -0.6061 & -0.6028\\
+Northern America & -0.2112 & -0.3720 & -0.5428 & -0.5211 & -0.4821 & -0.5764\\
+South America & -0.2097 & -0.2785 & -0.4287 & -0.5242 & -0.4223 & -0.6058\\
+South-Eastern Asia & -0.2052 & -0.6206 & -0.6565 & -0.7173 & -0.6765 & -0.7525\\
+Southern Asia & -0.4432 & -0.1068 & 0.0024 & 0.0200 & 0.0372 & 0.0748\\
+Western Africa & -0.2167 & -0.6858 & -0.7002 & -0.7067 & -0.6797 & -0.7176\\
+Western Asia & -0.7131 & -0.6871 & -0.7708 & -0.7777 & -0.7728 & -0.8189\\
+\end{longtable}
+{\small Historical endpoints use the full annual historical support. Absolute future states use the 926,220-centre forecast support. The trajectory panels in Figure 2 use the matched-2025 support for both periods. Full annual member quantiles and differences between urban development choices are supplied in Source Data.\par}
+\endgroup
+
+\clearpage
+\begingroup\small\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{42mm}>{\raggedleft\arraybackslash}p{19mm}>{\centering\arraybackslash}p{34mm}>{\raggedleft\arraybackslash}p{21mm}>{\raggedleft\arraybackslash}p{17mm}>{\raggedleft\arraybackslash}p{17mm}@{}}
+\caption{Cumulative construction allocation under protection and resilience benefits at equal construction totals.}\label{tab:si_ledger}\\
+\toprule
+Region & \shortstack{Unprotected\\growth} & \shortstack{Within\\source cell} & Relocated & \shortstack{Protected\\realized} & Unserved\\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{\small Supplementary Table \thetable\ continued}\\
+\toprule
+Region & \shortstack{Unprotected\\growth} & \shortstack{Within\\source cell} & Relocated & \shortstack{Protected\\realized} & Unserved\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{6}{l}{\textbf{Construction allocation during 2026--2100 (km$^2$)}}\\
+\addlinespace
+\multicolumn{6}{l}{SSP2--4.5}\\
+Australia and New Zealand & 54.182 & 40.806 & 13.376 & 54.182 & 0.000\\
+Central America & 0.149 & 0.110 & 0.040 & 0.149 & 0.000\\
+Eastern Africa & 16.889 & 3.445 & 2.459 & 5.904 & 10.985\\
+Eastern Asia & 43.267 & 31.758 & 10.409 & 42.168 & 1.100\\
+Northern America & 351.490 & 244.900 & 101.309 & 346.209 & 5.281\\
+South America & 79.399 & 35.338 & 33.082 & 68.420 & 10.979\\
+South-Eastern Asia & 414.401 & 216.909 & 135.517 & 352.426 & 61.975\\
+Southern Asia & 1.897 & 1.346 & 0.551 & 1.897 & 0.000\\
+Western Africa & 20.326 & 6.105 & 10.444 & 16.548 & 3.778\\
+Western Asia & 0.010 & 0.010 & 0.000 & 0.010 & 0.000\\
+Total & 982.013 & 580.727 & 307.187 & 887.914 & 94.099\\
+\addlinespace
+\multicolumn{6}{l}{SSP5--8.5}\\
+Australia and New Zealand & 153.542 & 105.524 & 41.138 & 146.662 & 6.880\\
+Central America & 0.000 & 0.000 & 0.000 & 0.000 & 0.000\\
+Eastern Africa & 15.818 & 3.345 & 2.559 & 5.904 & 9.914\\
+Eastern Asia & 39.212 & 31.894 & 7.318 & 39.212 & 0.000\\
+Northern America & 552.515 & 360.817 & 143.410 & 504.227 & 48.289\\
+South America & 132.235 & 52.795 & 34.939 & 87.734 & 44.501\\
+South-Eastern Asia & 539.892 & 245.791 & 177.124 & 422.914 & 116.978\\
+Southern Asia & 6.424 & 4.341 & 2.083 & 6.424 & 0.000\\
+Western Africa & 40.338 & 13.735 & 22.739 & 36.474 & 3.864\\
+Western Asia & 1.982 & 1.706 & 0.275 & 1.982 & 0.000\\
+Total & 1481.958 & 819.949 & 431.585 & 1251.534 & 230.424\\
+\addlinespace\midrule
+\multicolumn{6}{l}{\textbf{Protection benefits at equal construction totals in 2100}}\\
+Region / pathway & \shortstack{Built in both\\(km$^2$)} & \shortstack{Median benefit\\{[17th--83rd percentiles]}\\(UMRI)} & \shortstack{Mean benefit\\(UMRI)} & \shortstack{Pressure\\share (\%)} & \shortstack{Ecological\\share (\%)}\\
+\midrule
+Australia and New Zealand\newline SSP2--4.5 & 54.18 & 0.0215\newline [0.0200--0.0454] & 0.0302 & 93.6 & 6.4\\
+Eastern Asia\newline SSP5--8.5 & 39.21 & 0.0822\newline [0.0701--0.1103] & 0.0873 & 78.6 & 21.4\\
+\end{longtable}
+{\small\noindent Construction is cumulative during 2026--2100. Protected realized construction equals within-cell plus relocated growth; unprotected growth equals protected realized construction plus unserved demand. Relocation is restricted to 10 km between source-cell centres within the same macroregion. Zeros are actual ledger zeros. In the equal-construction comparisons, protected and unprotected totals are identical within each row. Benefits are protected-minus-growth differences in the Urban Mangrove Resilience Index (UMRI) across 15 paired climate, sea-level and ecological-model combinations. Medians and 17th--83rd percentiles summarize total member benefits. Component shares divide the mean pressure or combined ecological contribution by the mean total benefit. Ecological contributions comprise recovery, growth, canopy moisture and habitat structure. Shares sum to 100\%; the mean budget and median total are distinct summaries. SSP denotes Shared Socioeconomic Pathway. Full-precision component means remain in Source Data.\par}
+\endgroup
+\clearpage
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{llrrrl}
+\caption{Effects of urban expansion and protection in 2100 after excluding individual study areas or regions (UMRI).}\label{tab:si_robustness}\\
+\toprule
+SSP & Contrast & Exclusions & Minimum median & Maximum median & Member direction\\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+SSP & Contrast & Exclusions & Minimum median & Maximum median & Member direction\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+SSP1--2.6 & Urban & 151 & -0.0395 & -0.0163 & 15/15 negative\\
+SSP2--4.5 & Protection & 151 & 0.0571 & 0.0970 & 15/15 positive\\
+SSP2--4.5 & Urban & 151 & -0.1056 & -0.0643 & 15/15 negative\\
+SSP3--7.0 & Urban & 151 & -0.0588 & -0.0259 & 15/15 negative\\
+SSP5--8.5 & Protection & 151 & 0.1158 & 0.1644 & 15/15 positive\\
+SSP5--8.5 & Urban & 151 & -0.1743 & -0.1244 & 15/15 negative\\
+\end{longtable}
+{\small Each row contains 141 block and ten region exclusions. Ranges refer to medians across the exclusion analyses. The final column holds for every exclusion. Historical endpoint changes are negative in all 151 exclusions, with a range from $-0.2995$ to $-0.1682$ UMRI.\par}
+\endgroup
+
+\clearpage
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{lrrrrrr}
+\caption{Spatial extent of resilience deficits and additional urban losses in 2100.}\label{tab:si_endpoint_area}\\
+\toprule
+Pathway & \shortstack{Resilience deficit\\(km$^2$)} & \shortstack{Reference area\\(\%)} & \shortstack{Additional urban loss\\(km$^2$)} & \shortstack{Reference area\\(\%)} & \shortstack{Overlap\\(km$^2$)} & \shortstack{Overlap / urban\\loss (\%)}\\
+\midrule
+\endfirsthead
+\multicolumn{7}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+Pathway & \shortstack{Resilience deficit\\(km$^2$)} & \shortstack{Reference area\\(\%)} & \shortstack{Additional urban loss\\(km$^2$)} & \shortstack{Reference area\\(\%)} & \shortstack{Overlap\\(km$^2$)} & \shortstack{Overlap / urban\\loss (\%)}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+SSP1--2.6 & 716.6556 & 85.18 & 285.2370 & 33.90 & 273.1959 & 95.78\\
+SSP2--4.5 & 704.2257 & 83.70 & 361.9710 & 43.02 & 346.9509 & 95.85\\
+SSP3--7.0 & 687.5208 & 81.72 & 299.9034 & 35.65 & 285.4449 & 95.18\\
+SSP5--8.5 & 694.1124 & 82.50 & 435.1158 & 51.72 & 416.3553 & 95.69\\
+\end{longtable}
+{\small Resilience deficit denotes negative pixelwise ensemble-median UMRI in the urban-growth branch. Additional urban loss denotes negative pixelwise ensemble medians of within-member growth-minus-fixed-2025 differences. Overlap is the area satisfying both conditions; its percentage uses the additional urban-loss area as denominator. Reference-area percentages use the fixed historical reference area of 841.3326 km$^2$ (934,814 distinct 30-m equal-area cells). Forecasts are valid for 833.5980 km$^2$; the remaining 7.7346 km$^2$ is unknown and retained in the denominator. Signs use stored score precision; unknown cells are separate from zero. Supplementary Methods~4 define these area calculations.\par}
+\endgroup
+
+\begin{center}\small\begin{tabular}{lrr}\toprule Pathway & Resilience deficit (\%) & Additional urban loss (\%)\\\midrule
+SSP1--2.6 & 80.93 [77.60, 88.88] & 33.75 [33.42, 34.03]\\
+SSP2--4.5 & 82.05 [76.77, 86.67] & 42.81 [42.56, 42.99]\\
+SSP3--7.0 & 81.00 [70.89, 84.65] & 35.49 [35.06, 35.66]\\
+SSP5--8.5 & 82.59 [72.46, 86.41] & 51.49 [50.73, 51.69]\\\bottomrule\end{tabular}\end{center}
+Companion estimates calculate affected area separately in each of the 15 members and then report its median [17th, 83rd percentile], as percentages of the fixed reference area. The table above first calculates the median effect at each location and then measures its area. The companion estimates show variation in affected area among projections. Regional values, positive and zero areas, unknown coverage and both sets of forecast locations are supplied in Source Data.
+
+
+\begingroup\small\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.14}
+\begin{longtable}{llrrrr}
+\caption{Changes in habitat amount and connectedness at the same historical locations.}\label{tab:si_native_endpoints}\\
+\toprule
+Support & State & 2000 (\%) & 2025 (\%) & Change (pp) & Centres\\
+\midrule
+\endfirsthead
+\multicolumn{6}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+Support & State & 2000 (\%) & 2025 (\%) & Change (pp) & Centres\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Both endpoints & $m$ & 97.05 & 79.96 & $-17.09$ & 925,583\\
+ & $C$ & 86.52 & 71.32 & $-15.20$ & 925,583\\
+ & $q$ & 88.92 & 85.69 & $-3.23$ & 921,921\\
+\addlinespace
+Complete history & $m$ & 96.97 & 81.10 & $-15.87$ & 876,841\\
+ & $C$ & 86.35 & 72.41 & $-13.94$ & 876,841\\
+ & $q$ & 88.80 & 85.91 & $-2.89$ & 874,224\\
+\end{longtable}
+{\small Values are equal-centre means of the local states multiplied by 100; changes are percentage points (pp). For the both-endpoints rows, $m$ and $C$ use centres with valid scores in both 2000 and 2025. Complete-history rows additionally require a valid score in every year from 2000 to 2025. For $q$, each corresponding population is restricted to neighbourhoods with $m>0$ at both endpoints. Patch concentration is calculated separately at each centre as $q=C/m$ and then averaged. Counts refer to fixed 30-m reference centres whose 500-m neighbourhoods can overlap. The two endpoint means and their difference use the same mask within each row.\par}
+\endgroup
+
+
+\clearpage
+\begingroup\small\setlength{\tabcolsep}{3pt}\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{25mm}>{\raggedright\arraybackslash}p{42mm}>{\raggedright\arraybackslash}p{64mm}>{\raggedright\arraybackslash}p{29mm}@{}}
+\caption{UMRI components, observations and interpretation.}\label{tab:si_components}\\
+\toprule
+Component & Ecological meaning and observation & Transformation & Main uncertainty sources\\
+\midrule
+\endfirsthead
+\multicolumn{4}{l}{\small\textit{Supplementary Table \thetable\ continued}}\\
+\toprule
+Component & Ecological meaning and observation & Transformation & Main uncertainty sources\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Urban pressure, $d$\newline Weight 0.25 & Built land around, along the boundary of and within historical habitat.\newline Annual coastal classes and fixed GMW reference. & $d=-\max(P_{\rm area},P_{\rm interface},P_{\rm occupation})$.\newline Area: $U/(U+V+Q)$. Interface: urban-contact length / fixed reference-boundary length, using the all-direction boundary when the landward boundary is absent. Occupation: historical habitat lost and currently urban. & Classification transfer; unknown cover; boundary and observation support.\\
+Recovery, $r^\ast$\newline Weight 0.15 & Mangrove cover recovered after documented loss within historical habitat.\newline Annual GMW maps. & $r^\ast=rG$. Recovery requires absence in at least one year from 2005 to $t-2$, followed by presence in both $t-1$ and $t$. It is divided by $|B_i|$; confirmation begins in 2007. & Extent mapping; temporal filtering; loss and recovery detection.\\
+Growth, $g^\ast$\newline Weight 0.10 & Greenness of retained forest relative to baseline.\newline EVI from harmonized Landsat reflectance. & $g=(\mathrm{EVI}_t-\mathrm{EVI}_0)/(\mathrm{EVI}_t+\mathrm{EVI}_0)$.\newline $g^\ast=\min(g,0)+G\max(g,0)$. & Spectral and atmospheric variation; harmonization; canopy and baseline validity.\\
+Health, $h$\newline Weight 0.25 & Canopy moisture relative to baseline.\newline NDMI from harmonized Landsat reflectance. & $h=(\mathrm{NDMI}_t-\mathrm{NDMI}_0)/$\newline $(2+\mathrm{NDMI}_t+\mathrm{NDMI}_0)$. & Spectral and harmonization error; canopy and baseline availability.\\
+Structure, $T$\newline Weight 0.25 & Amount and connected arrangement of historical habitat.\newline Annual GMW maps and four-neighbour patches. & $C=\sqrt{\sum_j(n_j^B)^2}/|B_i|$;\newline $T=(C_t-C_0)/(C_t+C_0)$.\newline $n_j^B$ counts retained historical pixels in current patch $j$. Mangroves outside $B_i$ can join these patches. & Extent mapping; 30-m patch boundaries; adjacency and fixed-reference support.\\
+\end{longtable}
+{\small Components are evaluated annually at fixed 30-m EPSG:6933 centres within 500-m ground-radius neighbourhoods. $B_i$ is the 2000--2004 union of mangrove presence; EVI, NDMI and $C$ baselines are medians with at least three finite annual values. EVI and NDMI use harmonized bands from the same selected annual observation. The common compensation factor is $G=1-\max(0,-h,-T)$, and $S=0.25d+0.15r^\ast+0.10g^\ast+0.25h+0.25T$. UMRI is $S/(\lambda+|S|)$ with $\lambda=0.05934161890467785$. Weights and calibration are fixed. Relative changes retain the defined zero-to-zero convention. Known complete habitat absence gives $r=g=C=0$ and $h=-1$; unknown observations remain missing, with no weight redistribution. Scenario ranges summarize the 15 climate, sea-level and model combinations defined in Supplementary Methods~6.\par}
+\endgroup
+
+\begingroup\small\setlength{\tabcolsep}{4pt}
+\begin{longtable}{lrrrrrr}
+\caption{City-domain sensitivity of historical UMRI. Fixed reference-centre counts and changes between 2000 and 2025 are compared across the three city domains. The 500 m ecological neighbourhood and the full UMRI specification are held fixed.}\label{tab:city_buffer_sensitivity}\\
+
+\toprule
+ & \multicolumn{3}{c}{Fixed reference centres} & \multicolumn{3}{c}{Change in UMRI} \\
+Region & 1 km & 2 km & 5 km & 1 km & 2 km & 5 km \\
+\midrule
+All regions & 597,183 & 934,814 & 1,559,934 & -0.2451 & -0.2420 & -0.2338 \\
+Australia and New Zealand & 58,199 & 89,853 & 129,959 & -0.1092 & -0.0899 & -0.0814 \\
+Central America & 3,917 & 4,233 & 5,185 & -0.2655 & -0.2712 & -0.2828 \\
+Eastern Africa & 3,704 & 4,894 & 10,384 & +0.2605 & +0.4734 & +0.3444 \\
+Eastern Asia & 2,963 & 4,233 & 7,904 & -0.0793 & -0.0763 & +0.0105 \\
+Northern America & 192,834 & 290,329 & 442,499 & -0.1278 & -0.1608 & -0.1743 \\
+South America & 53,341 & 97,145 & 205,092 & -0.0786 & -0.0687 & -0.0590 \\
+South-Eastern Asia & 152,770 & 222,130 & 349,102 & -0.4277 & -0.4154 & -0.4060 \\
+Southern Asia & 63,254 & 98,972 & 142,834 & +0.2806 & +0.3364 & +0.3320 \\
+Western Africa & 65,982 & 122,802 & 266,752 & -0.4577 & -0.4691 & -0.3989 \\
+Western Asia & 219 & 223 & 223 & +0.0195 & +0.0260 & +0.0260 \\
+\bottomrule
+\end{longtable}
+{\small Each annual estimate uses its valid subset of fixed reference centres and pools their equal-area weighted sums before normalization. Supplementary Methods~7 report observation completeness. Annual regional counts and five-component estimates are provided in Source Data.\par}
+\endgroup
+
+\clearpage
+
+\section{Supplementary References}
+\renewcommand{\bibsection}{}
+\bibliographystyle{naturemag}
+\bibliography{references}
+
+

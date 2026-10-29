@@ -1,0 +1,266 @@
+{
+  "classification": {
+    "archive_rows": 10657,
+    "paired_n": 3857,
+    "groups": [
+      "urban_5",
+      "vegetation_1_3",
+      "other_2_4_6"
+    ],
+    "status_counts": {
+      "outside_acquisition_crops": 4587,
+      "classified": 3857,
+      "outside_needed_support": 2144,
+      "halo_only_no_core": 62,
+      "unclassified_incomplete_or_rejected_features": 6,
+      "unclassified_no_optical_observation": 1
+    },
+    "by_region_n": [
+      {
+        "region_id": 0,
+        "region": "unassigned_context",
+        "n": 10
+      },
+      {
+        "region_id": 1,
+        "region": "Australia and New Zealand",
+        "n": 546
+      },
+      {
+        "region_id": 2,
+        "region": "Central America",
+        "n": 25
+      },
+      {
+        "region_id": 3,
+        "region": "Eastern Africa",
+        "n": 34
+      },
+      {
+        "region_id": 4,
+        "region": "Eastern Asia",
+        "n": 391
+      },
+      {
+        "region_id": 5,
+        "region": "Northern America",
+        "n": 926
+      },
+      {
+        "region_id": 6,
+        "region": "South America",
+        "n": 646
+      },
+      {
+        "region_id": 7,
+        "region": "South-Eastern Asia",
+        "n": 936
+      },
+      {
+        "region_id": 8,
+        "region": "Southern Asia",
+        "n": 134
+      },
+      {
+        "region_id": 9,
+        "region": "Western Africa",
+        "n": 178
+      },
+      {
+        "region_id": 10,
+        "region": "Western Asia",
+        "n": 31
+      }
+    ],
+    "by_year_n": {
+      "2000": 890,
+      "2010": 750,
+      "2020": 967,
+      "2023": 1250
+    },
+    "predictions": {
+      "actual_raster": {
+        "six_class_matrix": [
+          [
+            1462,
+            7,
+            126,
+            7,
+            0,
+            2
+          ],
+          [
+            22,
+            239,
+            57,
+            111,
+            10,
+            10
+          ],
+          [
+            187,
+            23,
+            466,
+            23,
+            11,
+            7
+          ],
+          [
+            20,
+            93,
+            19,
+            382,
+            13,
+            7
+          ],
+          [
+            4,
+            9,
+            38,
+            5,
+            306,
+            18
+          ],
+          [
+            3,
+            20,
+            15,
+            5,
+            32,
+            98
+          ]
+        ],
+        "group_matrix": [
+          [
+            306,
+            42,
+            32
+          ],
+          [
+            11,
+            2241,
+            69
+          ],
+          [
+            55,
+            136,
+            965
+          ]
+        ],
+        "correct_grouped": 3512,
+        "correct_six_class": 2953,
+        "n": 3857,
+        "grouped_accuracy": 0.9105522426756546,
+        "six_class_accuracy": 0.7656209489240342
+      },
+      "original_sample": {
+        "six_class_matrix": [
+          [
+            1457,
+            7,
+            130,
+            9,
+            1,
+            0
+          ],
+          [
+            10,
+            313,
+            24,
+            72,
+            15,
+            15
+          ],
+          [
+            135,
+            28,
+            518,
+            18,
+            14,
+            4
+          ],
+          [
+            6,
+            30,
+            12,
+            472,
+            12,
+            2
+          ],
+          [
+            3,
+            3,
+            26,
+            2,
+            319,
+            27
+          ],
+          [
+            1,
+            16,
+            13,
+            3,
+            30,
+            110
+          ]
+        ],
+        "group_matrix": [
+          [
+            319,
+            29,
+            32
+          ],
+          [
+            15,
+            2240,
+            66
+          ],
+          [
+            57,
+            66,
+            1033
+          ]
+        ],
+        "correct_grouped": 3592,
+        "correct_six_class": 3189,
+        "n": 3857,
+        "grouped_accuracy": 0.9312937516204304,
+        "six_class_accuracy": 0.8268084003111227
+      }
+    }
+  },
+  "lambda": {
+    "value": 0.05934161890467785,
+    "recipe": "Mean over five annual equal-region/equal-block/equal-valid-centre means of sum(abs(effective weighted contributions))",
+    "quantile_used": false,
+    "reference_years": [
+      2000,
+      2001,
+      2002,
+      2003,
+      2004
+    ],
+    "population_centres": 577,
+    "population_blocks": 30,
+    "population_regions": 10,
+    "baseline_annual_A": [
+      0.06152563724496953,
+      0.05601726163004017,
+      0.05198975610372094,
+      0.05924380788583526,
+      0.06793163165882332
+    ],
+    "baseline_valid_centres": [
+      575,
+      575,
+      566,
+      575,
+      576
+    ],
+    "baseline_valid_centre_years": 2867,
+    "baseline_unique_centres": 576,
+    "baseline_complete_centres": 566,
+    "selection": "3 distinct nonempty fixed-B blocks per region where possible; uniformly sampled 20 fixed-B centres in assigned regional stratum per block; seeded remaining-block fill if needed",
+    "selection_seed": 20261014
+  }
+}

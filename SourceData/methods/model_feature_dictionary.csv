@@ -1,0 +1,23 @@
+group,variable,unit,definition
+dynamic,Urban area exposure,fraction,Urban / (urban + vegetation + unknown).
+dynamic,Urban interface,fraction,Urban contact on the fixed reference interface.
+dynamic,Historical occupation,fraction,Reference habitat lost and currently urban.
+dynamic,Mean temperature,degrees C,Annual mean of daily mean temperature.
+dynamic,High temperature,degrees C,Annual 95th percentile of daily maximum temperature.
+dynamic,Precipitation,mm yr^-1,Annual precipitation total.
+dynamic,Dry-season precipitation,mm,Total over three fixed historically driest months.
+dynamic,Consecutive dry days,days,Longest annual run below 1 mm day$^{-1}$.
+dynamic,Relative sea level,m,Anomaly relative to the historical reference.
+dynamic,Sea-level rate,mm yr^-1,Observed or scenario relative sea-level rate.
+dynamic,Connected landward space,km^2,Available landward connected area.
+dynamic,Landward urban blockage,fraction,Urban-blocked share of the landward context.
+dynamic,Landward class coverage,fraction,Known land-cover support.
+static,EVI baseline,index,2000-2004 local median; at least three valid years.
+static,NDMI baseline,index,2000-2004 local median; at least three valid years.
+static,Capacity baseline,fraction,2000-2004 connected-capacity median.
+static,Longitude,degrees,Fixed centre longitude.
+static,Latitude,degrees,Fixed centre latitude.
+static,Macroregion,code,Ten-region categorical identity.
+static,Relative elevation,m,Neighbourhood median minus reference-habitat median.
+static,Slope,degrees,Local topographic slope.
+static,Baseline direction coverage,fraction,Known support for baseline landward direction.

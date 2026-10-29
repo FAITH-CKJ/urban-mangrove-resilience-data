@@ -1,0 +1,94 @@
+{
+  "identity": "urban-mangrove-resilience-v1.0.0",
+  "endpoint_year": 2100,
+  "pixel_area_km2": 0.0009,
+  "crs": "EPSG:6933, equal-area 30 m grid",
+  "reference_centres": 934814,
+  "reference_area_km2": 841.3326,
+  "forecast_valid_centres_expected": 926220,
+  "matched2025_centres_expected": 925774,
+  "members": [
+    "joint_01",
+    "joint_02",
+    "joint_03",
+    "joint_04",
+    "joint_05",
+    "joint_06",
+    "joint_07",
+    "joint_08",
+    "joint_09",
+    "joint_10",
+    "joint_11",
+    "joint_12",
+    "joint_13",
+    "joint_14",
+    "joint_15"
+  ],
+  "scenarios": [
+    "ssp126",
+    "ssp245",
+    "ssp370",
+    "ssp585"
+  ],
+  "state_negative": "UMRI_growth(2100) < 0, equivalently archived S_growth < 0",
+  "urban_erosion": "UMRI_growth(2100) - UMRI_fixed2025(2100) < 0; monotonic normalization makes this equivalent to S_growth < S_fixed2025",
+  "primary_area_estimand": "Area of reference cells whose within-cell 15-member median state or paired difference is negative",
+  "uncertainty_companion": "Negative area computed separately within each member; report its 17th, 50th and 83rd percentiles",
+  "supports": [
+    "forecast",
+    "matched2025"
+  ],
+  "primary_support": "forecast",
+  "primary_denominator": "All fixed historical reference cells, 934814; invalid or unknown cells remain separately recorded",
+  "secondary_denominator": "Valid evaluated reference cells for the named support",
+  "spatial_semantics": "Area of disjoint central reference grid cells classified by the 500 m neighbourhood index. Do not sum overlapping neighbourhood areas; this is not surviving mangrove area in 2100.",
+  "numerical_semantics": "Strict signs from archived float32 S. State normalization is monotone; pair each member before taking pixelwise medians. Exact stored ties are retained as zero, separate from missing.",
+  "title": "Endpoint evidence at 2100",
+  "support": "Common forecast support, with matched2025 as a companion",
+  "zero_semantics": "Zero means equality at archived float32 score precision. Member effects may differ even where their pixelwise median is zero. Missing cells remain unknown.",
+  "native_habitat": "Spatially average m and C within each branch using valid-centre counts, subtract branches within the same member, multiply by 100 for percentage points, then compute ensemble quantiles.",
+  "avoided_urban_loss": "For each overall paired member at 2100, 100*(UMRI_protected-UMRI_growth)/(UMRI_fixed2025-UMRI_growth); quantiles are taken after computing this ratio. The fraction is relative to additional urban loss, not the total resilience deficit.",
+  "source_archive_precision": {
+    "score": "float32",
+    "area_arithmetic": "float64",
+    "native_block_means": "float64"
+  },
+  "data_files": {
+    "member_area_quantiles_2100.csv": {
+      "bytes": 30656,
+      "sha256": "db4d4c5d6ad05fda77adb71a9b3da7ce6bb6b4261a3b1a5764403c47876f96a0"
+    },
+    "member_negative_area_2100.csv": {
+      "bytes": 416845,
+      "sha256": "bf3febe769286a203ce9d982cd743e45478137fd71b287efcac6266708b59987"
+    },
+    "paired_habitat_2100_member.csv": {
+      "bytes": 100052,
+      "sha256": "9b43d8400533ca9e31c3f0d4505176709922cf6badc3794fe6a1b27b71068ce8"
+    },
+    "paired_habitat_2100_summary.csv": {
+      "bytes": 10903,
+      "sha256": "4e2bf8e7a7be91fc7fef23ca248da278e46756004756397f3f492cc92105a247"
+    },
+    "pixelwise_median_negative_area_2100.csv": {
+      "bytes": 37710,
+      "sha256": "59e7a377c9251dc253428ab38fc298c939874e61daa62a4c686705602b328182"
+    },
+    "protection_avoided_loss_2100_member.csv": {
+      "bytes": 3426,
+      "sha256": "29951232e7d40816ab5f4c751e655ad67f51fa36beea379f26eec7ccd2ff2750"
+    },
+    "protection_avoided_loss_2100_summary.csv": {
+      "bytes": 1229,
+      "sha256": "2c64d7e4b2e0eb51cd7a21a854f32cebb5ba9054f51a7a35af6fa6619ef84e31"
+    },
+    "regional_endpoint_2100.csv": {
+      "bytes": 22034,
+      "sha256": "7141c03cc6f1d2da264ca632bac4342c4b66caf0654a292d00801415a5e272c2"
+    },
+    "regional_negative_counts_2026_2100.csv": {
+      "bytes": 15560,
+      "sha256": "a4fead0348e4853e09caadc152a5e5e13982f4cd84e7c0c487fdf73ad9210f12"
+    }
+  }
+}

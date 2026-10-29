@@ -1,0 +1,151 @@
+{
+  "description": "Analytical habitat configurations for the positive-growth slice and a fixed-pressure reconnection illustration.",
+  "weights": {
+    "d": 0.25,
+    "r": 0.15,
+    "g": 0.1,
+    "h": 0.25,
+    "T": 0.25
+  },
+  "settings": [
+    {
+      "id": "eroded",
+      "m": 0.7,
+      "C": 0.5,
+      "C0": 0.8,
+      "h": -0.1,
+      "historical_patch_fractions": [
+        0.3,
+        0.4
+      ]
+    },
+    {
+      "id": "reconnected",
+      "m": 0.7,
+      "C": 0.7,
+      "C0": 0.8,
+      "h": -0.1,
+      "historical_patch_fractions": [
+        0.7
+      ]
+    }
+  ],
+  "urban_pressure_support": [
+    0,
+    1
+  ],
+  "positive_greenness_upper_bound": 1,
+  "gate": "1 + min(0,h,T)",
+  "structural_trajectory": "(C-C0)/(C+C0)",
+  "pressure_note": "p is maximum three-channel urban exposure; it is not constrained to 1-m.",
+  "displayed_settings": [
+    "eroded",
+    "reconnected"
+  ],
+  "reconnection": {
+    "from_setting": "eroded",
+    "to_setting": "reconnected",
+    "m": 0.7,
+    "C": 0.7,
+    "C0": 0.8,
+    "h": -0.1,
+    "r": 0.2,
+    "g_positive": 0.1,
+    "historical_patch_fractions": [
+      0.7
+    ],
+    "historical_cells": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ]
+    ],
+    "current_before": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        1
+      ]
+    ],
+    "new_link_cells": [
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "held_fixed": [
+      "historical retention",
+      "urban pressure",
+      "canopy moisture",
+      "recovered stock",
+      "positive greenness"
+    ],
+    "continuous_curve": "Conditional parameter function, not the temporal course of the discrete bridge event",
+    "urban_pressure_p": 0.2,
+    "UMRI_unit": "UMRI"
+  },
+  "normalization_lambda": 0.05934161890467785
+}

@@ -1,0 +1,78 @@
+{
+  "figure": "Supplementary Fig. 5",
+  "definition": "Two regional comparisons where protection and urban-growth branches realize equal cumulative construction in 2026–2100.",
+  "source_files": [
+    "reporting/primary_paired_contributions_UMRI_annual.csv",
+    "main_figures/Fig5_allocation_regional_annual.csv",
+    "main_figures/Fig5_protection_paired_annual.csv"
+  ],
+  "selection": "Australia and New Zealand under SSP2–4.5; Eastern Asia under SSP5–8.5; year 2100; pooled centres; paired protection-minus-growth effects.",
+  "cases": [
+    {
+      "scenario": "ssp245",
+      "region_id": 1,
+      "region": "Australia / NZ",
+      "year": 2100,
+      "construction_unprotected_km2": 54.1818,
+      "construction_protected_km2": 54.1818,
+      "unserved_km2": 0.0,
+      "mean_UMRI_benefit_UMRI": 0.0302351549959865,
+      "urban_pressure_mean_UMRI": 0.028295025556548673,
+      "ecological_mean_UMRI": 0.0019401294394378226,
+      "urban_pressure_share_percent": 93.58319995483613,
+      "ecological_share_percent": 6.416800045163853,
+      "median_UMRI_benefit_UMRI": 0.0214967377418213,
+      "q17_UMRI_benefit_UMRI": 0.0199536612917823,
+      "q83_UMRI_benefit_UMRI": 0.045418327848359,
+      "members": 15
+    },
+    {
+      "scenario": "ssp585",
+      "region_id": 4,
+      "region": "Eastern Asia",
+      "year": 2100,
+      "construction_unprotected_km2": 39.2121,
+      "construction_protected_km2": 39.2121,
+      "unserved_km2": 0.0,
+      "mean_UMRI_benefit_UMRI": 0.0873169906961773,
+      "urban_pressure_mean_UMRI": 0.0686696353677411,
+      "ecological_mean_UMRI": 0.01864735532843617,
+      "urban_pressure_share_percent": 78.644070094765,
+      "ecological_share_percent": 21.35592990523498,
+      "median_UMRI_benefit_UMRI": 0.08223779935066461,
+      "q17_UMRI_benefit_UMRI": 0.0700647221957282,
+      "q83_UMRI_benefit_UMRI": 0.1102606723659648,
+      "members": 15
+    }
+  ],
+  "display": {
+    "component_budget": "Arithmetic mean of exact within-member UMRI component contributions",
+    "pressure_component": "d",
+    "ecological_components": [
+      "r",
+      "g",
+      "h",
+      "T"
+    ],
+    "median": "Separate median of 15 paired protection-minus-growth effects",
+    "construction": "Protected and unprotected allocations have equal total construction.",
+    "format": "Tabulated total construction, median and 17th-83rd percentile benefits, mean benefits, pressure and ecological contribution shares.",
+    "figure": "All 30 paired members, their relative connected-capacity gains and within-member component shares.",
+    "table": "Mean budgets and median benefits remain separately reported in Supplementary Table 7."
+  },
+  "reproduction": "SupplementarySoftware/code/figure5_equal_construction.py --source-data <SourceData> --output <output> --verify-published",
+  "panels": [
+    "a",
+    "b",
+    "c"
+  ],
+  "evidence_location": "Supplementary Fig. 5b,c and Supplementary Table 7",
+  "source_table": "supplementary/equal_construction_2100.csv",
+  "table_reproduction": "SupplementarySoftware/code/reproduce_supplementary.py --tables-only",
+  "source_sha256": {
+    "reporting/primary_paired_contributions_UMRI_annual.csv": "c0cd963a2242b0276aebfa531973b0ba63a0a20d56f9889ef9fd812a47534be2",
+    "main_figures/Fig5_allocation_regional_annual.csv": "79e298773d6229d223dfef3894b93c39122b0a0168a6f82181cc0b55e4863127",
+    "main_figures/Fig5_protection_paired_annual.csv": "663104e9d6012564956f2a0557eaab03d4f3b9fafec01aea2ebf5516b0edae93",
+    "supplementary/equal_construction_2100.csv": "fabcb49c5c2d2d60821c8766bc95c915b55eccb1ecd9c70b600f95f7d2884c5c"
+  }
+}

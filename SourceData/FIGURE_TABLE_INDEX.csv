@@ -1,0 +1,125 @@
+display,file,role
+Figure 1,FIELD_DEFINITIONS.txt,Conceptual diagram; no empirical observations
+Figure 2a,main_figures/Fig2_global_mangrove_context_2025_005deg.csv,Displayed values and definitions
+Figure 2a,main_figures/Fig2_reference_distribution_1deg.csv,Displayed values and definitions
+Figure 2a,main_figures/Fig2_reference_footprint_005deg.csv,Displayed values and definitions
+Figure 2a,urban_coverage/reference_cells.npz,"Underlying observations, members or spatial populations"
+Figure 2a,urban_coverage/global_baseline_cells.npz,"Underlying observations, members or spatial populations"
+Figure 2a,urban_coverage/urban_buffers.gpkg,"Underlying observations, members or spatial populations"
+Figure 2b-l,main_figures/Fig2_history_matched2025.csv,Displayed values and definitions
+Figure 2b-l,main_figures/Fig2_future_growth_matched2025.csv,Displayed values and definitions
+Figure 2b-l,methods/historical_block_annual.csv,"Underlying observations, members or spatial populations"
+Figure 2b-l,reporting/primary_member_annual.parquet,"Underlying observations, members or spatial populations"
+Figure 2b-l,supplementary/future_absolute_annual.csv,"Underlying observations, members or spatial populations"
+Figure 3a,main_figures/Fig3_historical_contributions.csv,Displayed values and definitions
+Figure 3a,methods/historical_block_annual.csv,"Underlying observations, members or spatial populations"
+Figure 3b,figure_story/historical_native_endpoints.csv,Displayed values and definitions
+Figure 3b,figure_story/historical_native_block_sums.csv,Displayed values and definitions
+Figure 3b,figure_story/historical_endpoint_comparison.csv,Displayed values and definitions
+Figure 3b,figure_story/historical_structural_endpoints.csv,Displayed values and definitions
+Figure 3c,figure_story/historical_centre_distribution_2025.csv,Displayed values and definitions
+Figure 3c,figure_story/retention_reconnection_limit.csv,Displayed values and definitions
+Figure 3c,figure_story/historical_endpoint_comparison.csv,Displayed values and definitions
+Figure 3c,figure_story/individual_neighbourhoods_2025.parquet,"Underlying observations, members or spatial populations"
+Figure 4a,figure_story/Fig4_local_urban_effect_1deg.csv,Displayed values and definitions
+Figure 4b,main_figures/Fig4_urban_paired_annual.csv,Displayed values and definitions
+Figure 4b,main_figures/Fig4_urban_paired_cumulative.csv,Displayed values and definitions
+Figure 4b,reporting/primary_paired_member_annual.parquet,"Underlying observations, members or spatial populations"
+Figure 4b,reporting/paired_cumulative_2026_2100.csv,"Underlying observations, members or spatial populations"
+Figure 4c,figure_story/Fig4_loss_intensity_exceedance.csv,Displayed values and definitions
+Figure 4c,figure_story/Fig4_loss_intensity_summary.csv,Displayed values and definitions
+Figure 4c,endpoint_2100/pixelwise_median_negative_area_2100.csv,Displayed values and definitions
+Figure 4d-e,figure_story/Fig4_relative_habitat_2100.csv,Displayed values and definitions
+Figure 4d-e,figure_story/Fig4_relative_contributions_2100.csv,Displayed values and definitions
+Figure 4d-e,main_figures/Fig3_urban_UMRI_contributions_2100.csv,Displayed values and definitions
+Figure 4d-e,endpoint_2100/paired_habitat_2100_summary.csv,Displayed values and definitions
+Figure 4d-e,endpoint_2100/paired_habitat_2100_member.csv,"Underlying observations, members or spatial populations"
+Figure 4d-e,reporting/primary_paired_contributions_UMRI.parquet,"Underlying observations, members or spatial populations"
+Figure 5a,figure_story/Fig5_spatial_example.npz,Displayed values and definitions
+Figure 5a,figure_story/Fig5_spatial_example.json,Displayed values and definitions
+Figure 5a,figure_story/Fig5_example_flows.csv,Displayed values and definitions
+Figure 5b-c,main_figures/Fig5_loss_members_annual.csv,Displayed values and definitions
+Figure 5b-c,main_figures/Fig5_loss_summary_annual.csv,Displayed values and definitions
+Figure 5b-c,main_figures/Fig5_allocation_overall_annual.csv,Displayed values and definitions
+Figure 5b-c,main_figures/Fig5_paired_native_annual.csv,Displayed values and definitions
+Figure 5b-c,main_figures/Fig5_displayed_allocation_trajectories.csv,Displayed values and definitions
+Figure 5b-c,reporting/primary_paired_member_annual.parquet,"Underlying observations, members or spatial populations"
+Figure 5b-c,main_figures/Fig5_allocation_regional_annual.csv,"Underlying observations, members or spatial populations"
+Figure 5d,endpoint_2100/paired_habitat_2100_member.csv,Displayed values and definitions
+Figure 5d,figure_story/Fig4_relative_habitat_2100.csv,Displayed values and definitions
+Figure 6,figure_story/Fig6_analytical_fields.npz,Displayed values and definitions
+Figure 6,figure_story/Fig6_three_configurations.csv,Displayed values and definitions
+Figure 6,figure_story/Fig6_reconnection_control.csv,Displayed values and definitions
+Figure 6,figure_story/Fig6_retention_boundary.csv,Displayed values and definitions
+Figure 6,figure_story/Fig6_theory_methods.json,Displayed values and definitions
+Figure 6,methods/figure6_contours.json,Displayed values and definitions
+Supplementary Figure 1,main_figures/Fig3_historical_contributions.csv,Displayed values and definitions
+Supplementary Figure 1,supplementary/historical_fixed_cohorts.csv,Displayed values and definitions
+Supplementary Figure 1,supplementary/historical_coverage.csv,Displayed values and definitions
+Supplementary Figure 1,supplementary/historical_leave_one_out.csv,Displayed values and definitions
+Supplementary Figure 1,city_buffer_sensitivity/buffer_annual.csv,Displayed values and definitions
+Supplementary Figure 1,city_buffer_sensitivity/buffer_comparison_table.csv,Displayed values and definitions
+Supplementary Figure 1,methods/historical_block_annual.csv,"Underlying observations, members or spatial populations"
+Supplementary Figure 2,main_figures/Fig4_urban_paired_annual.csv,Displayed values and definitions
+Supplementary Figure 2,main_figures/Fig5_protection_paired_annual.csv,Displayed values and definitions
+Supplementary Figure 2,reporting/primary_paired_member_annual.parquet,"Underlying observations, members or spatial populations"
+Supplementary Figure 2,reporting/primary_member_annual.parquet,"Underlying observations, members or spatial populations"
+Supplementary Figure 3,figure_story/historical_native_evidence.csv,Displayed values and definitions
+Supplementary Figure 3,figure_story/historical_g_T_histogram.csv,Displayed values and definitions
+Supplementary Figure 3,figure_story/historical_endpoint_comparison.csv,Displayed values and definitions
+Supplementary Figure 3,figure_story/individual_neighbourhoods_2025.parquet,"Underlying observations, members or spatial populations"
+Supplementary Figure 4,main_figures/Fig6_analytical_boundary.csv,Displayed values and definitions
+Supplementary Figure 4,main_figures/Fig6_reconnection_response.csv,Displayed values and definitions
+Supplementary Figure 4,main_figures/Fig6_illustrative_parameters.json,Displayed values and definitions
+Supplementary Figure 5,main_figures/Fig5_allocation_regional_annual.csv,Displayed values and definitions
+Supplementary Figure 5,main_figures/Fig5_protection_paired_annual.csv,Displayed values and definitions
+Supplementary Figure 5,endpoint_2100/paired_habitat_2100_member.csv,Displayed values and definitions
+Supplementary Figure 5,figure_story/Fig4_relative_habitat_2100.csv,Displayed values and definitions
+Supplementary Figure 5,main_figures/Fig5_displayed_regions_2100.csv,Displayed values and definitions
+Supplementary Figure 5,supplementary/equal_construction_2100.csv,Displayed values and definitions
+Supplementary Figure 5,reporting/primary_paired_member_annual.parquet,"Underlying observations, members or spatial populations"
+Supplementary Figure 5,reporting/primary_paired_contributions_UMRI.parquet,"Underlying observations, members or spatial populations"
+Supplementary Table 1,supplementary/regional_population.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 1,urban_coverage/reference_population_by_region.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 1,urban_coverage/reference_cells.npz,"Table values, calculation inputs or definitions"
+Supplementary Table 2,methods/harmonization_coefficients.json,"Table values, calculation inputs or definitions"
+Supplementary Table 3,THIRD_PARTY_SOURCES.txt,"Table values, calculation inputs or definitions"
+Supplementary Table 3,urban_coverage/coverage_protocol.json,"Table values, calculation inputs or definitions"
+Supplementary Table 4,methods/model_feature_dictionary.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 5,supplementary/forecast_holdout_metrics.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 5,methods/model_test_summary.json,"Table values, calculation inputs or definitions"
+Supplementary Table 5,supplementary/model_selection_validation.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 6,main_figures/Fig3_historical_contributions.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 6,supplementary/future_absolute_annual.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 6,reporting/primary_member_annual.parquet,"Table values, calculation inputs or definitions"
+Supplementary Table 7,main_figures/Fig5_allocation_regional_annual.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 7,supplementary/equal_construction_2100.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 7,reporting/primary_paired_contributions_UMRI.parquet,"Table values, calculation inputs or definitions"
+Supplementary Table 7,reporting/primary_paired_member_annual.parquet,"Table values, calculation inputs or definitions"
+Supplementary Table 8,supplementary/future_leave_one_out_2100.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 8,supplementary/historical_leave_one_out.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 9,endpoint_2100/pixelwise_median_negative_area_2100.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 9,endpoint_2100/member_negative_area_2100.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 9,endpoint_2100/member_area_quantiles_2100.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 10,figure_story/historical_structural_endpoints.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 10,figure_story/historical_endpoint_comparison.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 10,figure_story/historical_native_block_sums.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 10,figure_story/historical_native_evidence.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 11,methods/umri_reporting.json,"Table values, calculation inputs or definitions"
+Supplementary Table 11,methods/capacity_support.json,"Table values, calculation inputs or definitions"
+Supplementary Table 11,methods/classification_calibration.json,"Table values, calculation inputs or definitions"
+Supplementary Table 11,FIELD_DEFINITIONS.txt,"Table values, calculation inputs or definitions"
+Supplementary Table 12,city_buffer_sensitivity/buffer_annual.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 12,city_buffer_sensitivity/buffer_comparison_table.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 12,city_buffer_sensitivity/buffer_component_endpoint_UMRI.csv,"Table values, calculation inputs or definitions"
+Supplementary Table 5,supplementary/holdout_evaluation/evaluation_definitions.json,"Holdout error totals, observation counts, paired scores and aggregation definitions"
+Supplementary Table 5,supplementary/holdout_evaluation/holdout_absence_counts_by_block_year.csv,"Holdout error totals, observation counts, paired scores and aggregation definitions"
+Supplementary Table 5,supplementary/holdout_evaluation/holdout_direction_pairs_by_block.csv,"Holdout error totals, observation counts, paired scores and aggregation definitions"
+Supplementary Table 5,supplementary/holdout_evaluation/holdout_score_pairs_by_block_year.csv,"Holdout error totals, observation counts, paired scores and aggregation definitions"
+Supplementary Table 5,supplementary/holdout_evaluation/holdout_state_error_components.csv,"Holdout error totals, observation counts, paired scores and aggregation definitions"
+Supplementary Table 5,supplementary/holdout_evaluation/README.txt,"Holdout error totals, observation counts, paired scores and aggregation definitions"
+Supplementary Figure 6,main_figures/Fig2_history_matched2025.csv,Unsmoothed annual overall and ten-region trajectories
+Supplementary Figure 6,methods/historical_block_annual.csv,Underlying valid-centre counts and score/component block means
+Supplementary Table 9,endpoint_2100/state_and_urban_loss_overlap_2100.csv,Overlap of negative projected UMRI and additional urban loss; same-cell endpoint counts and denominators
+Supplementary Table 9,endpoint_2100/pixelwise_median_endpoints_2100.npz,"Individual endpoint states, paired effects, classification votes and reference-cell identity"
+Supplementary Table 9,endpoint_2100/endpoint_overlap_fields.txt,"Definitions, precision, missing-value treatment and overlap calculation"

@@ -1,0 +1,13 @@
+{
+  "baseline": "Fixed local 2000–2004 EVI and harmonized NDMI baselines",
+  "structural_support": "Same valid reference centres at both 2000 and 2025, with complete-history companion",
+  "canopy_support": "Valid 2025 centres with m>0 and observed index and baseline",
+  "recovery": "Confirmed recovery stock in 2025, divided by valid 2025 centres; not a rate",
+  "units": {
+    "p_m_C_r": "Percent of corresponding local state fraction, centre-weighted",
+    "EVI_NDMI": "Native index difference from local baseline"
+  },
+  "weighting": "Equal-area reference centres; overlapping 500-m neighbourhoods are not added as areas",
+  "unknown": "Excluded from conditional means and retained as support counts; known absence is included as zero in r/m/C but excluded from canopy means",
+  "forecast_identity": "urban-mangrove-resilience-v1.0.0"
+}

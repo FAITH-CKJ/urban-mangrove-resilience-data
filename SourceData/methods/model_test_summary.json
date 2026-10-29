@@ -1,0 +1,201 @@
+{
+  "frozen_family": "LightGBM_state",
+  "frozen_residual_alpha": 0.25,
+  "reporting_units": {
+    "UMRI_MAE": "UMRI",
+    "S_MAE": "UMRI computational-intermediate diagnostic",
+    "ratios_and_accuracy": "dimensionless ratios"
+  },
+  "five_year_test": {
+    "temporal": {
+      "model": {
+        "region_balanced_five_year_S_MAE": 0.00825588848263829,
+        "UMRI_MAE": 0.0386033500582902,
+        "regional_change_direction_accuracy": 0.7,
+        "normalized_mean_state_MAE": 0.026198960607401605,
+        "state_target_MAE": {
+          "reference_retention": 0.03245850508198165,
+          "connected_capacity": 0.030774375803208954,
+          "confirmed_return_fraction": 0.013600472259069457,
+          "EVI": 0.03828032689845482,
+          "NDMI": 0.031762245988586305
+        },
+        "absence_confusion_counts": {
+          "true_absent_pred_absent": 2129,
+          "true_absent_pred_present": 399,
+          "true_present_pred_absent": 1658,
+          "true_present_pred_present": 271114
+        },
+        "valid_rows": 275168,
+        "centres": 55273
+      },
+      "persistence": {
+        "region_balanced_five_year_S_MAE": 0.007967805662119474,
+        "UMRI_MAE": 0.03967740364704208,
+        "regional_change_direction_accuracy": 0.6,
+        "normalized_mean_state_MAE": 0.026392930242031466,
+        "state_target_MAE": {
+          "reference_retention": 0.03195367336121913,
+          "connected_capacity": 0.030137443627368067,
+          "confirmed_return_fraction": 0.013756538603410726,
+          "EVI": 0.040095497444485526,
+          "NDMI": 0.03204299634734778
+        },
+        "absence_confusion_counts": {
+          "true_absent_pred_absent": 2198,
+          "true_absent_pred_present": 330,
+          "true_present_pred_absent": 222,
+          "true_present_pred_present": 272550
+        },
+        "valid_rows": 275168,
+        "centres": 55273
+      },
+      "S_error_relative_reduction": -0.03615585428851742,
+      "UMRI_error_relative_reduction": 0.027069654010285715,
+      "state_error_relative_reduction": 0.007349302743238417
+    },
+    "spatial": {
+      "model": {
+        "region_balanced_five_year_S_MAE": 0.01012066932121812,
+        "UMRI_MAE": 0.03657135641987261,
+        "regional_change_direction_accuracy": 0.7,
+        "normalized_mean_state_MAE": 0.0215175286267671,
+        "state_target_MAE": {
+          "reference_retention": 0.02548419075890237,
+          "connected_capacity": 0.01875999608371085,
+          "confirmed_return_fraction": 0.008122093348352913,
+          "EVI": 0.04130043990854534,
+          "NDMI": 0.0278418460686481
+        },
+        "absence_confusion_counts": {
+          "true_absent_pred_absent": 362,
+          "true_absent_pred_present": 16,
+          "true_present_pred_absent": 45,
+          "true_present_pred_present": 12682
+        },
+        "valid_rows": 12956,
+        "centres": 2625
+      },
+      "persistence": {
+        "region_balanced_five_year_S_MAE": 0.008234573266032375,
+        "UMRI_MAE": 0.03842987978281391,
+        "regional_change_direction_accuracy": 0.8,
+        "normalized_mean_state_MAE": 0.021186470058077805,
+        "state_target_MAE": {
+          "reference_retention": 0.024598949591115485,
+          "connected_capacity": 0.018397894997411686,
+          "confirmed_return_fraction": 0.008265212957857435,
+          "EVI": 0.041822676271455854,
+          "NDMI": 0.025695232945097124
+        },
+        "absence_confusion_counts": {
+          "true_absent_pred_absent": 362,
+          "true_absent_pred_present": 16,
+          "true_present_pred_absent": 3,
+          "true_present_pred_present": 12724
+        },
+        "valid_rows": 12956,
+        "centres": 2625
+      },
+      "S_error_relative_reduction": -0.2290459984084292,
+      "UMRI_error_relative_reduction": 0.04836141495744273,
+      "state_error_relative_reduction": -0.015625942772995005
+    }
+  },
+  "ten_year_terminal_test": {
+    "temporal": {
+      "model": {
+        "region_balanced_five_year_S_MAE": 0.014259608019706332,
+        "UMRI_MAE": 0.05397282842247608,
+        "regional_change_direction_accuracy": 0.5,
+        "normalized_mean_state_MAE": 0.04479917894434988,
+        "state_target_MAE": {
+          "reference_retention": 0.06609676165048994,
+          "connected_capacity": 0.06782915242073188,
+          "confirmed_return_fraction": 0.01940014854158195,
+          "EVI": 0.04920447947956056,
+          "NDMI": 0.04293070525877008
+        },
+        "absence_confusion_counts": {
+          "true_absent_pred_absent": 1946,
+          "true_absent_pred_present": 582,
+          "true_present_pred_absent": 1607,
+          "true_present_pred_present": 271165
+        },
+        "valid_rows": 275168,
+        "centres": 55273
+      },
+      "persistence": {
+        "region_balanced_five_year_S_MAE": 0.015375740441033476,
+        "UMRI_MAE": 0.06588050995301206,
+        "regional_change_direction_accuracy": 0.6,
+        "normalized_mean_state_MAE": 0.047162296265891274,
+        "state_target_MAE": {
+          "reference_retention": 0.07605977476648222,
+          "connected_capacity": 0.07145096034462654,
+          "confirmed_return_fraction": 0.01936335096812685,
+          "EVI": 0.04864094937264117,
+          "NDMI": 0.04059289175515916
+        },
+        "absence_confusion_counts": {
+          "true_absent_pred_absent": 1795,
+          "true_absent_pred_present": 733,
+          "true_present_pred_absent": 145,
+          "true_present_pred_present": 272627
+        },
+        "valid_rows": 275168,
+        "centres": 55273
+      },
+      "S_error_relative_reduction": 0.07259048275480151,
+      "UMRI_error_relative_reduction": 0.18074665085362718,
+      "state_error_relative_reduction": 0.05010607007382828
+    },
+    "spatial": {
+      "model": {
+        "region_balanced_five_year_S_MAE": 0.02836251800442193,
+        "UMRI_MAE": 0.0482026127800361,
+        "regional_change_direction_accuracy": 0.5,
+        "normalized_mean_state_MAE": 0.045304305259126376,
+        "state_target_MAE": {
+          "reference_retention": 0.07455204481287508,
+          "connected_capacity": 0.06419058417328541,
+          "confirmed_return_fraction": 0.01870115331179848,
+          "EVI": 0.047708782569357726,
+          "NDMI": 0.04273792285663034
+        },
+        "absence_confusion_counts": {
+          "true_absent_pred_absent": 189,
+          "true_absent_pred_present": 189,
+          "true_present_pred_absent": 2,
+          "true_present_pred_present": 12725
+        },
+        "valid_rows": 12956,
+        "centres": 2625
+      },
+      "persistence": {
+        "region_balanced_five_year_S_MAE": 0.035940877332356735,
+        "UMRI_MAE": 0.05466868019190587,
+        "regional_change_direction_accuracy": 0.8,
+        "normalized_mean_state_MAE": 0.0539146494235022,
+        "state_target_MAE": {
+          "reference_retention": 0.08935839260871845,
+          "connected_capacity": 0.07593224143224908,
+          "confirmed_return_fraction": 0.0206818798412826,
+          "EVI": 0.060387067121813895,
+          "NDMI": 0.046427332226894005
+        },
+        "absence_confusion_counts": {
+          "true_absent_pred_absent": 178,
+          "true_absent_pred_present": 200,
+          "true_present_pred_absent": 2,
+          "true_present_pred_present": 12725
+        },
+        "valid_rows": 12956,
+        "centres": 2625
+      },
+      "S_error_relative_reduction": 0.21085626980819927,
+      "UMRI_error_relative_reduction": 0.11827736446483894,
+      "state_error_relative_reduction": 0.15970323940606845
+    }
+  }
+}

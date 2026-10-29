@@ -1,0 +1,96 @@
+{
+  "training": {
+    "rows": 42795,
+    "columns": [
+      "system.index",
+      "Landcover",
+      "Year",
+      "red",
+      "green",
+      "blue",
+      "nir",
+      "swir1",
+      "swir2",
+      "lst",
+      "ndvi",
+      "evi",
+      "ndbi",
+      "ndpi",
+      "bsi",
+      "ndwi",
+      "mndwi",
+      "cmri",
+      "mmri",
+      "dtw",
+      ".geo"
+    ],
+    "unique_coordinate_years": 42024,
+    "duplicate_coordinate_year_records": 771,
+    "years": {
+      "2000": 9761,
+      "2010": 8524,
+      "2020": 11404,
+      "2023": 13106
+    },
+    "classes": {
+      "1": 9418,
+      "2": 3485,
+      "3": 12106,
+      "4": 7816,
+      "5": 7174,
+      "6": 2796
+    },
+    "gzip_sha256": "855bd1e00a917987ca6b316479482ca2290551e29690038c559b134dfa855ee5"
+  },
+  "validation": {
+    "rows": 10657,
+    "columns": [
+      "system.index",
+      "Landcover",
+      "Year",
+      "red",
+      "green",
+      "blue",
+      "nir",
+      "swir1",
+      "swir2",
+      "lst",
+      "ndvi",
+      "evi",
+      "ndbi",
+      "ndpi",
+      "bsi",
+      "ndwi",
+      "mndwi",
+      "cmri",
+      "mmri",
+      "dtw",
+      ".geo"
+    ],
+    "unique_coordinate_years": 10465,
+    "duplicate_coordinate_year_records": 192,
+    "years": {
+      "2000": 2432,
+      "2010": 2119,
+      "2020": 2844,
+      "2023": 3262
+    },
+    "classes": {
+      "1": 2352,
+      "2": 860,
+      "3": 3045,
+      "4": 1937,
+      "5": 1781,
+      "6": 682
+    },
+    "gzip_sha256": "232d5a3ad0d1744c4973a5cd7969811cf74b89eb6b54a64786b5759845fdc4f6"
+  },
+  "cross_split_coordinate_year_overlap": 0,
+  "metadata_columns_not_used_as_predictors": [
+    "system.index",
+    "Landcover",
+    "Year",
+    ".geo"
+  ],
+  "validation_role": "Validation for checkpoint selection and final-map evaluation."
+}

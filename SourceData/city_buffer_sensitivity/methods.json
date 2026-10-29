@@ -1,0 +1,20 @@
+{
+  "identity": "urban-mangrove-resilience-v1.0.0",
+  "vary": "City-domain buffer distance only",
+  "fixed": {
+    "cities": "GUB2018 urbanArea >100 km2",
+    "geometry": "EPSG6933; simplify30 m preserve_topology; buffer quad_segs2; polygon interior included; pixel-centre rasterization",
+    "original_study": "Fixed mapped study footprint and region assignments used for the historical analysis",
+    "grid": "30 m EPSG6933 globally aligned, 900 m2 per centre, unique1024x1024 owned cores",
+    "reference": "GMWv4.1.12 annual presence union2000-2004",
+    "local_neighbourhood": "500 m ground radius and four-neighbour geometry; original kernel reused per original block",
+    "formula": "Five-component UMRI definition, weights [0.25,0.15,0.10,0.25,0.25], lambda 0.05934161890467785",
+    "aggregation": "Mean unnormalized S across annual valid unique equal-area reference centres, followed by fixed normalization; the resulting final UMRI score is reported directly",
+    "baseline": "Per centre 2000-2004; same >=3 finite-years rule",
+    "observations": "Annual winner selection, QA, classification ensemble and spectral transformations are identical across buffer distances.",
+    "missing": "Source not acquired differs from annual observation missing; no temporal infill; invalid classes0 are unknown; mapped absence is an ecological zero where formula specifies"
+  },
+  "report": "Annual overall and ten-region UMRI, five weighted component means, valid support, endpoint direction and continuous annual-trajectory comparison.",
+  "scope": "Annual 2000-2025 UMRI under the same selected cities with 1-, 2- and 5-km buffers, intersected with the original mapped study footprint.",
+  "population_relationship": "The 1-km and 2-km domains use the same annual states on their respective reference subsets. The 5-km domain includes the 2-km reference and additional centres, each evaluated with its 500-m neighbourhood."
+}

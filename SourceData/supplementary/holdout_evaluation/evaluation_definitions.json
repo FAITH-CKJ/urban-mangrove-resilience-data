@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "scoring_years": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "normalization_lambda": 0.05934161890467785,
+  "direction_zero_tolerance_S": 1e-08,
+  "state_order": [
+    "reference_retention",
+    "connected_capacity",
+    "confirmed_return_fraction",
+    "EVI",
+    "NDMI"
+  ],
+  "contexts": [
+    {
+      "horizon": "five_year_test",
+      "split": "temporal",
+      "method": "model",
+      "centres": 55273
+    },
+    {
+      "horizon": "five_year_test",
+      "split": "spatial",
+      "method": "model",
+      "centres": 2625
+    },
+    {
+      "horizon": "five_year_test",
+      "split": "temporal",
+      "method": "persistence",
+      "centres": 55273
+    },
+    {
+      "horizon": "five_year_test",
+      "split": "spatial",
+      "method": "persistence",
+      "centres": 2625
+    },
+    {
+      "horizon": "ten_year_terminal_test",
+      "split": "temporal",
+      "method": "model",
+      "centres": 55273
+    },
+    {
+      "horizon": "ten_year_terminal_test",
+      "split": "spatial",
+      "method": "model",
+      "centres": 2625
+    },
+    {
+      "horizon": "ten_year_terminal_test",
+      "split": "temporal",
+      "method": "persistence",
+      "centres": 55273
+    },
+    {
+      "horizon": "ten_year_terminal_test",
+      "split": "spatial",
+      "method": "persistence",
+      "centres": 2625
+    }
+  ],
+  "numerical_comparison_absolute_tolerance": 1e-12,
+  "score_aggregation": "Equal-centre means within block/year, equal-block means within region/year; compute absolute S differences and differences after N(S) at region/year level, average over years within regions, then equally over regions.",
+  "state_aggregation": "For each centre and state, average absolute error over its own observed years; average these centre errors within blocks, then equally across blocks within regions, then equally across regions. The annual normalized-error sums retain the centre-specific valid-year divisors.",
+  "direction_aggregation": "Use centres valid at observed 2020 origin and 2025 endpoint, and a finite predicted origin. Average the four S values within blocks then equally across blocks within regions. The ten-year test uses its recursively predicted 2020 origin for the predicted change.",
+  "absence_aggregation": "Sum the four count categories across the valid retention-observation mask, independently of the joint score mask."
+}

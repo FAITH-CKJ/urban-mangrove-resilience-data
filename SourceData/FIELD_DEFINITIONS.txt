@@ -1,0 +1,97 @@
+Units and spatial populations
+
+The final UMRI score is S/(lambda+abs(S)), with lambda=0.05934161890467785.
+All reported UMRI states, UMRI changes, UMRI component contributions and UMRI
+prediction errors use this common dimensionless scale. States lie in (-1,1); paired differences can lie
+in (-2,2). Cumulative effects are expressed in UMRI-years. Retention m, connected capacity C, recovered habitat r
+and urban pressure p are dimensionless. Multiplication by 100 expresses
+percentages, and their changes are percentage points. EVI and NDMI differences
+retain their original dimensionless index units.
+
+The historical reference comprises 934,814 equal-area centres, each representing
+900 m2, for a total of 841.3326 km2. Full historical estimates use the valid
+observations in each year. The forecast population contains 926,220 centres
+valid across all scenario members and urban branches. The matched2025 population
+contains the 925,774 forecast centres with valid observed scores in 2025;
+Fig. 2b-l uses this population for both periods and retains annual validity.
+region_id 0 denotes all regions pooled; region_id 1-10 follows the population
+table. scheme pooled_centres denotes the primary equal-area estimator.
+
+The endpoint trajectory sensitivity contains 925,579 centres drawn from the
+matched2025 population with valid scores in both 2000 and 2025. The full
+historical comparison of habitat states contains 925,583 centres observed at
+both endpoints. Patch concentration q=C/m additionally requires positive
+retention in both years, giving 921,921 centres. The complete-history
+population contains 876,841 centres, of which 874,224 have valid endpoint q.
+Each endpoint difference uses the same centres in its two years.
+
+Known complete habitat absence contributes zero retention, capacity and
+recovered stock. Canopy observations retain their presence and observation
+masks. Blank and NaN values denote missing or undefined quantities according
+to the stated field definitions. A zero construction target has zero amounts
+and an undefined allocation percentage.
+
+Aggregation and scenario comparisons
+
+UMRI components and the compensation factor are evaluated at each centre.
+Regional and overall estimates average their weighted sum S before applying
+the fixed normalization. The overall mean weights each valid historical
+reference cell equally. Alternative equal-region and equal-block estimates
+are identified by their scheme fields.
+
+The urban contrast is growth minus fixed2025; the protection contrast is
+protected minus growth. Branches are paired within the same climate,
+sea-level and ecological-model member. Quantiles summarize those paired
+differences. The 17th-83rd percentiles describe the range among 15 joint
+members. Cumulative effects sum annual differences from 2026 to 2100 within
+each member before calculating quantiles. Avoided-loss fractions likewise
+divide protection benefit by additional urban loss within each member.
+
+State components sum to the corresponding UMRI state. Change components use
+the common secant of the fixed normalization and sum to the final UMRI change. Historical changes use 2000 as their comparison year. Future mean
+component contributions are averages of within-member decompositions.
+The mean contribution share and the median total effect have distinct
+ensemble definitions. methods/umri_reporting.json defines the final-score
+fields. S and fields named *_contribution are weighted computational
+intermediates; *_state_UMRI and *_change_UMRI are the reported final-score
+components. Their sums equal the corresponding UMRI state or change.
+
+Urban construction is in km2. Each year records cumulative additions since
+2025. The protected-branch target is the construction realized in the
+corresponding unprotected growth branch. Within-source-cell construction,
+nearby relocation and unserved growth sum to that target. Construction
+fractions pool amounts before division and therefore weight source cells
+by their construction targets.
+
+Individual neighbourhood observations
+
+figure_story/individual_neighbourhoods_2025.parquet has 925,801 rows. The pair
+block_id + centre_index identifies each reference neighbourhood. region_id
+identifies one of the ten regions in supplementary/regional_population.csv.
+complete_history is true for 876,841 centres observed throughout 2000-2025.
+m_2025: fraction of historical habitat occupied by mangroves in 2025.
+C_2025: connected capacity in 2025, on the dimensionless [0,1] scale.
+C_baseline: local 2000-2004 baseline connected capacity.
+r_2025: fraction of historical habitat with confirmed recovery in 2025.
+r_2025_pct: 100*r_2025, in percent.
+EVI_2025 and EVI_baseline: dimensionless current and baseline greenness.
+EVI_delta: current minus baseline EVI.
+NDMI_delta: current minus baseline moisture index, dimensionless.
+g_2025: signed canopy-greenness response used by the UMRI definition.
+T_2025: structural trajectory (C_2025-C_baseline)/(C_2025+C_baseline),
+with zero assigned when both capacities are zero.
+Missing canopy differences at the 3,658 centres with known mangrove absence
+remain missing. Habitat absence retains its measured zero habitat state.
+All original observed values are retained at their stored precision.
+
+File formats
+
+CSV files use UTF-8, one header row, commas, decimal points and empty fields
+for missing or undefined values. JSON files describe parameters and definitions.
+Parquet files contain typed tables; use pandas.read_parquet or an equivalent
+Apache Parquet reader. NPZ files contain named NumPy arrays and can be read
+with numpy.load(path, allow_pickle=False). GeoPackage/GeoJSON files contain
+spatial definitions. CRS and grid conventions are given in urban_coverage/.
+FIELD_SCHEMA.csv lists the columns and array names in each numerical file.
+FIGURE_TABLE_INDEX.csv maps all figures and tables to their source files.
+MANIFEST.json provides file sizes and SHA-256 digests.

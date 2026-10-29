@@ -1,0 +1,70 @@
+Spatial overlap of projected resilience deficits and additional urban loss in 2100
+
+The historical reference comprises 934,814 distinct 30-m equal-area cells
+(841.3326 km2). Forecast support contains 926,220 cells; 8,594 remain unknown.
+The matched2025 companion contains the 925,774 forecast cells with valid
+historical UMRI in 2025. All quantities use the UMRI definition
+V = S/(lambda + abs(S)), lambda = 0.05934161890467785.
+
+pixelwise_median_endpoints_2100.npz contains the numerical observations:
+
+blocks: labels for 141 spatial processing blocks.
+block_index: zero-based index into blocks for each reference cell.
+centre_index: the cell identifier within its processing block.
+The pair (blocks[block_index], centre_index) uniquely identifies every cell.
+region_id: region 1-10, following supplementary/regional_population.csv.
+valid: common validity across all forecast members and urban branches.
+matched2025: valid forecast cell with a valid historical UMRI in 2025.
+scenarios: ssp126, ssp245, ssp370, ssp585, in array-row order.
+growth_median_UMRI: within-cell median of the 15 growth-branch UMRI states.
+urban_median_delta_UMRI: within-cell median of the 15 paired growth-minus-
+fixed2025 UMRI differences. Pairing precedes the median.
+state_negative_votes: number of members with negative growth-branch UMRI.
+urban_erosion_votes: number of members with negative growth-minus-fixed2025
+UMRI difference. Eight or more votes correspond to a negative median.
+
+State, difference and vote arrays have shape (4 scenarios, 934814 cells).
+Unknown states and differences are NaN. Votes at unknown cells do not define
+an ecological class; the validity mask is applied before counting.
+Scores are dimensionless final UMRI values, with states in (-1,1) and
+differences in (-2,2). The supplied values retain the precision of the
+archived endpoint medians. Exact stored zero is retained separately from NaN.
+
+state_and_urban_loss_overlap_2100.csv summarizes the same cells:
+
+scenario: pathway identifier.
+support: forecast or matched2025, as defined above.
+region_id: 0 denotes all regions pooled; 1-10 denotes a single region.
+reference_n: all historical reference cells in the stated region.
+valid_n: cells evaluated on the stated support.
+unknown_n: reference_n minus valid_n on that support.
+negative_state_n: cells with growth_median_UMRI < 0.
+additional_urban_loss_n: cells with urban_median_delta_UMRI < 0.
+negative_state_and_urban_loss_n: cells satisfying both inequalities.
+nonnegative_state_and_urban_loss_n: cells with additional urban loss and a
+nonnegative projected state.
+negative_state_without_urban_loss_n: cells with a negative projected state
+and a nonnegative urban difference.
+joint_area_km2: negative_state_and_urban_loss_n multiplied by 0.0009 km2.
+joint_pct_reference: 100 times the joint count divided by reference_n.
+joint_pct_additional_urban_loss: 100 times the joint count divided by
+additional_urban_loss_n.
+joint_pct_negative_state: 100 times the joint count divided by negative_state_n.
+An undefined ratio with a zero denominator is blank, not zero.
+
+The main text and Supplementary Table 9 use support=forecast, region_id=0.
+The overlap describes spatial coincidence of a negative projected state and
+an additional loss due to urban expansion at the same 2100 reference cell.
+The urban difference compares development choices under common future
+climate, relative sea level and ecological-model conditions.
+
+These are areas of distinct historical reference cells classified by the
+500-m-neighbourhood index. Overlapping neighbourhood areas are not summed,
+and the reference area is not the surviving mangrove area in 2100.
+
+Reproduction:
+python SupplementarySoftware/code/derive_endpoint_overlap.py
+
+The script reproduces the negative-state and additional-loss counts in
+pixelwise_median_negative_area_2100.csv, verifies the regional sums, and
+reproduces every overlap count and percentage from the supplied cell arrays.

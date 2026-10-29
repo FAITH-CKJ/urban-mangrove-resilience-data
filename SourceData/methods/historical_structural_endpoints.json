@@ -1,0 +1,18 @@
+{
+  "description": "Supplementary Table 10: equal-centre matched endpoint means of m, C and centre-level q=C/m.",
+  "endpoint_comparison_csv": "figure_story/historical_endpoint_comparison.csv",
+  "endpoint_comparison_sha256": "c2150664a65186e5daad1c680056feb30dd509e81d93e72da426aaf1e697f933",
+  "paired_mask": "valid score in 2000 and 2025; q additionally requires positive m at both endpoints",
+  "complete_mask": "paired mask and valid score in every year 2000–2025",
+  "averaging": "Means of local m, C and q on each row-specific common endpoint mask, multiplied by 100; q is computed per neighbourhood before averaging.",
+  "columns": {
+    "support": "available endpoint pairs or complete_history",
+    "variable": "m, C or q",
+    "n": "reference-centre count",
+    "mean_2000_percent": "100 times mean native state",
+    "mean_2025_percent": "100 times mean native state",
+    "change_percentage_points": "100 times mean paired native change"
+  },
+  "table_csv": "figure_story/historical_structural_endpoints.csv",
+  "table_sha256": "98ce7a96406f091c2c6cf1d5dd5f14f47454d291f93aa586be6c7e9669c6e712"
+}

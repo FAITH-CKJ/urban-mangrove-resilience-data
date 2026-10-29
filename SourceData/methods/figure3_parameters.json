@@ -1,0 +1,107 @@
+{
+  "figure": 3,
+  "source_files": {
+    "main_figures/Fig3_historical_contributions.csv": "1dfe197b70891882a5f00bd1013fa147790904970911dbb26f044571850bc8d6",
+    "figure_story/historical_native_endpoints.csv": "333cb54f4429c77e7a053b3c094f8eb0a891b1480c1d123460598eb4128549c0",
+    "figure_story/historical_endpoint_comparison.csv": "c2150664a65186e5daad1c680056feb30dd509e81d93e72da426aaf1e697f933",
+    "figure_story/historical_native_block_sums.csv": "fe6993305766744897ab1dcdbfb19ae255965528e1fbd5ffe6b1a452e792ab02",
+    "figure_story/historical_centre_distribution_2025.csv": "56e47151bdc4ec78a94a4075533684eae92de7f0847a4a75c2c050641e6b5ed0",
+    "figure_story/retention_reconnection_limit.csv": "2e998571c456c130c6f54b4dc4c91ee5067e450795f5756e7bd5c5de1661e329"
+  },
+  "panel_a": "Exact annual additive UMRI changes for 2000–2025; 10 regional trajectories and 50 regional component endpoints accompany the pooled overall estimate. Annually valid centres are pooled separately for each region and overall.",
+  "panel_b": "Native retention m and capacity C percentages, mean paired change in patch concentration q=C/m in percentage points, and native urban pressure p percentages.",
+  "panel_c": "Means and descriptive centre distributions for recovery and canopy change; C<C0 and m<C0 fractions use the same greener-neighbourhood denominator.",
+  "centre_distribution": {
+    "file": "figure_story/historical_centre_distribution_2025.csv",
+    "rows": 33,
+    "groups": "Overall and 10 regions, each with r_2025_pct, EVI_delta and NDMI_delta.",
+    "fields": [
+      "region_id",
+      "variable",
+      "n",
+      "mean",
+      "q10",
+      "q25",
+      "q50",
+      "q75",
+      "q90",
+      "minimum",
+      "maximum"
+    ],
+    "estimand": "Equal-weight reference-centre distribution of existing 500 m neighbourhood quantities",
+    "quantile_method": "numpy.quantile, method=linear",
+    "support": {
+      "recovery": 925801,
+      "EVI_delta": 922143,
+      "NDMI_delta": 922143
+    },
+    "canopy_mask": "m_2025 > 0 and finite current and local baseline values",
+    "recovery_zero_handling": "All valid 2025 centres, including known local absence and true zeros",
+    "baseline": "Local 2000-2004 baseline; NDMI baseline is the median of at least three valid years",
+    "interpretation": "Descriptive spatial spread; not confidence intervals or independent replication",
+    "identity_keys": [
+      "block_id",
+      "centre_index"
+    ]
+  },
+  "paired_habitat_centres": 925583,
+  "spatial_processing_blocks": 141,
+  "overall_conditional_fraction": {
+    "numerator": 532032,
+    "denominator": 713029,
+    "percent": 74.61575896632536
+  },
+  "reproduction": "SupplementarySoftware/code/reproduce_main_figures.py --figures 3",
+  "verification": "SupplementarySoftware/code/derive_retention_reconnection_limit.py",
+  "patch_concentration_change": {
+    "source_file": "figure_story/historical_endpoint_comparison.csv",
+    "source_field": "delta_q_2000_pp",
+    "definition": "Mean of neighbourhood-level q=C/m differences between 2000 and 2025 on the same valid endpoint support; not the ratio of regional mean C to mean m.",
+    "unit": "percentage points",
+    "support": "Positive retention and valid q at both endpoints",
+    "overall_n": 921921,
+    "overall_change_pp": -3.2303133227330623,
+    "regional_values": {
+      "0": -3.2303133227330623,
+      "5": -2.0127221179405117,
+      "2": -6.123729177078619,
+      "6": -0.36665594784079536,
+      "9": -10.709488259218121,
+      "3": 7.516231386197089,
+      "10": 13.430246933656944,
+      "8": 2.2603086981157587,
+      "7": -5.960564721744661,
+      "4": 2.466419685309896,
+      "1": -0.47617797452316246
+    },
+    "regional_n": {
+      "0": 921921,
+      "5": 287373,
+      "2": 4214,
+      "6": 96806,
+      "9": 117275,
+      "3": 4745,
+      "10": 213,
+      "8": 98617,
+      "7": 220039,
+      "4": 4011,
+      "1": 88628
+    },
+    "interpretation": "Descriptive change in the connected configuration of retained habitat; no independent causal attribution or significance test."
+  },
+  "retention_reconnection_limit": {
+    "source": "figure_story/retention_reconnection_limit.csv",
+    "group": "greener",
+    "support": "available",
+    "markers": "Upper connection glyph: C<C0; lower square: m<C0; both use all greener neighbourhoods as denominator",
+    "overall_n": 713029,
+    "overall_limited_n": 374920,
+    "overall_limited_percent": 52.58131155955789,
+    "method": "methods/retention_reconnection_limit.json"
+  },
+  "ecological_evidence_labels": {
+    "capacity_below_baseline": "Weaker habitat structure",
+    "retention_below_baseline_capacity": "Habitat recovery required",
+    "shared_denominator": 713029
+  }
+}

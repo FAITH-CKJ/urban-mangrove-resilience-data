@@ -1,0 +1,46 @@
+{
+  "identity": "global-historical-habitat-coverage-v1",
+  "global_baseline_centres": 1204702,
+  "global_baseline_area_km2": 1084.2318,
+  "actual_reference_centres": 934814,
+  "actual_reference_area_km2": 841.3326,
+  "reference_inside_global_centres": 934814,
+  "reference_inside_global_area_km2": 841.3326,
+  "reference_outside_global_centres": 0,
+  "coverage_fraction": 0.7759711530320361,
+  "coverage_percent": 77.59711530320361,
+  "exceeds_three_quarters": true,
+  "unrepresented_global_centres": 269888,
+  "unrepresented_global_area_km2": 242.8992,
+  "nonempty_global_blocks": 222,
+  "candidate_blocks": 671,
+  "reference_inside_by_region": [
+    89853,
+    4233,
+    4894,
+    4233,
+    290329,
+    97145,
+    222130,
+    98972,
+    122802,
+    223
+  ],
+  "missing_reference_cells": [],
+  "selected_global_city_count": 1029,
+  "candidate_city_count": 152,
+  "official_global_tile_count": 1696,
+  "tiles_checked": 179,
+  "interpretation": "Mapped 2000-2004 historical mangrove area in the fixed GUB2018 large-city interface; the same projected buffer, equal-area grid, centre rule and baseline years are used for both sides.",
+  "inputs": {
+    "coverage_protocol.json": "c801475e0e8d91078d051900c5b4972868da32b16c34ec9b9760f4f22264bdbb",
+    "urban_buffers.gpkg": "31173dc0e68ff3c4b0be3635c6c836b8eb9460abec81f24d55a77c2adb6ef53f",
+    "reference_cells.npz": "f981898a2aaefc3567a4275d2855eebc557f406571950e66cde6026fac75221a",
+    "gmw_v4112_tiles.geojson": "4f78885878ee39fc5d2b0d5f9f9fa6d8ebd692a518505e1f5b016edae1993fbe"
+  },
+  "outputs": {
+    "global_baseline_cells.npz": "c2f625d92c0da7b780821e5969ae4693d85c311c64dbe4ce62e3ed2977021ed3",
+    "coverage_by_block.csv": "4a475281a1db94094365c330f230a16a1502372f16cae26f43b05534e3c4c3de",
+    "reference_population_by_region.csv": "004e213ee5ee369095d47a6149435b5f712346760941bddf8c32a060d13a7f05"
+  }
+}

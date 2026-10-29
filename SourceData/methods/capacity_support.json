@@ -1,0 +1,18 @@
+{
+  "definition": "C=sqrt(sum_j(n_j^B)^2)/H; m=sum_j(n_j^B)/H",
+  "support": "The identical fixed historical reference inside a 500-m ground-radius neighbourhood; four-neighbour connectivity.",
+  "H": "Number of historical reference pixels in the neighbourhood.",
+  "K_B": "Number of four-neighbour connected components of that fixed reference.",
+  "continuous_lower_bound": "L(m)=max(m/sqrt(H),m/sqrt(K_B+3*H*(1-m)))",
+  "projection": "Clip m to [0,1-occupation], then C to [L(m),m] and r to [0,m]; apply the presence rule; feed the complete constrained state into the next annual step.",
+  "mean_state_justification": "The two lower-bound functions are convex on [0,1] and remain necessary after conditional averaging. The projection enforces these outer support bounds on the predicted mean states.",
+  "absence": "m=0 implies C=r=0. When predicted presence is below 0.5, m=C=r=0.",
+  "recursive_forecast_years": [
+    2026,
+    2100
+  ],
+  "ensemble_members": 15,
+  "branch_scenario_cases": 150,
+  "validation_selection": "LightGBM_state, residual_alpha=0.25",
+  "model_test_metrics": "model_test_summary.json"
+}

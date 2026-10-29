@@ -1,0 +1,16 @@
+{
+  "boundary": "Necessary outer boundary for potential compensation at fixed h and C0 with m>0. Compensation within this domain depends on the joint component values. m=0 follows the absence rule.",
+  "reconnection_total_gain_UMRI": 0.14800039862263709,
+  "additional_gain_dynamic_minus_frozen_UMRI": 0.022446584495549402,
+  "gate_limit_C": 0.6545454545454545,
+  "geometry_component_counts_before": [
+    3,
+    4
+  ],
+  "geometry_component_counts_after": [
+    7
+  ],
+  "new_bridge_cells": 2,
+  "parameter_curve_not_discrete_temporal_path": true,
+  "settings_file": "main_figures/Fig6_illustrative_parameters.json"
+}

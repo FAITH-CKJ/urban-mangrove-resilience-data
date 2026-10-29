@@ -1,0 +1,24 @@
+{
+  "estimand": "Fraction of reference-centred 500-m neighbourhoods whose retained historical habitat m is below their local 2000-2004 median connected capacity C0.",
+  "source": "figure_story/individual_neighbourhoods_2025.parquet",
+  "source_sha256": "17ebdb308ef00b97610b62d31366f4b585359606ab18fc91d526388bafbef3ae",
+  "rows": 925801,
+  "groups": {
+    "all_valid": "All score-valid 2025 centres; known mangrove absence retained.",
+    "greener": "m2025>0, finite annual and baseline EVI, annual EVI>baseline EVI.",
+    "greener_depleted": "Greener and C2025<C0.",
+    "recovery": "Current confirmed re-establishment stock r2025>0.",
+    "recovery_depleted": "Recovery and C2025<C0."
+  },
+  "support": {
+    "available": "2025 valid observations",
+    "complete_history": "Subset valid in all 26 years, 2000-2025"
+  },
+  "condition": "m2025 < C0 - 1e-12",
+  "geometric_reason": "C=mq and 0<=q<=1 imply C<=m. At fixed current retention, even complete reconnection cannot reach C0 where m<C0.",
+  "deficit": "max(C0-m2025,0); a dimensionless capacity gap. Percentage-point summaries multiply by 100.",
+  "interpretation": "Additional occupancy of historical habitat is necessary to reach baseline connected capacity where m<C0. Reconnection feasibility also depends on the spatial arrangement of retained habitat.",
+  "statistics": "Descriptive fractions weight centres equally and summarize spatially overlapping neighbourhoods.",
+  "missingness": "Unknown observations remain missing in the source. Canopy groups require retained mangrove and finite EVI. Zero retention is a known state and is included only in the all-valid group.",
+  "reproduction": "python code/derive_retention_reconnection_limit.py --source-data ../SourceData --output retention_reconnection_limit.csv"
+}

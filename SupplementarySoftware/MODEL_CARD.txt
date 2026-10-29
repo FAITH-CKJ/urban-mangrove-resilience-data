@@ -1,0 +1,91 @@
+MODEL CARD — URBAN MANGROVE RESILIENCE
+
+Study: Urbanization erodes resilience in global mangroves
+Correspondence: Ruili Li (liruili@pkusz.edu.cn)
+Purpose: annual ecological-state prediction within specified climate, sea-level
+and urban-allocation scenarios; reconstruction of UMRI using fixed equations.
+
+ECOLOGICAL FORECASTER
+Architecture: five LightGBM annual-state-increment regressors and one habitat-
+presence classifier. The regressors predict historical habitat retention,
+connected habitat capacity, confirmed recovery, EVI and NDMI. Each ensemble has
+180 estimators, 15 leaves, maximum depth 5, learning rate 0.035, minimum child
+size 50, L2 regularization 3 and random seed 2100. Residual increments are scaled
+by alpha=0.25 before physical-state projection. The presence gate is retained.
+
+Inputs: 137 fitted features comprising a five-year state and mask history,
+13 observed and target-year dynamic drivers, and nine static variables. Static
+H and K_B geometry supports the physical projection. It is not an additional
+fitted predictor. Missing observations retain explicit masks and are filled
+causally from available history. Known habitat absence remains an observed state.
+
+Data: 65,144 centres / 1,693,744 annual rows during 2000-2025. The 57,898 uniform
+centres define evaluation support; 7,246 additional centres enrich rare training
+states. Original providers and versions are in Supplementary Table 3. The
+historical panel, derived from GMW v4.1.12 and the stated satellite/forcing data,
+has 1,683,699 valid score rows, 30,178 known-absent rows and 63,164 missing state
+values. Region-balanced whole-block weights are defined in Supplementary S6.
+
+Splits: training targets 2006-2015, validation targets 2016-2020, final test
+targets 2021-2025; ten complete spatial blocks are excluded during fitting for
+validation/testing. Scaling and fitting weights use training support. Selection
+compares LightGBM, GRU and Temporal Fusion Transformer candidates with persistence
+on the fixed validation partition and a residual grid {0.25,0.50,0.75,1.00}.
+Five- and ten-year recursive tests use the final 2021-2025 comparison period.
+These are temporal and whole-block holdouts; repeated k-fold cross-validation
+and a separately acquired external test dataset are not part of this design.
+
+Evaluation: Supplementary Table 5 reports state MAE, regional additive-
+score and UMRI MAE, direction accuracy and false absences, with persistence as
+baseline. Temporal five-year S MAE is 0.008256 (persistence 0.007968); ten-year
+terminal S MAE is 0.014260 (0.015376). Spatial values are 0.010121 (0.008235)
+and 0.028363 (0.035941). UMRI MAE is lower than persistence in all four tests.
+Regional direction and false-absence diagnostics are reported alongside errors.
+The GMW source product's temporal filtering and geographic/sample support are
+described in Supplementary Methods. No feature-ablation study or independent
+validation of model interpretability was conducted. The exact UMRI component
+decomposition explains the defined ecological score. The temporal and spatial
+holdouts above evaluate the forecasting model's predictive performance.
+
+Production: the selected design is refitted through 2025. The supplied central
+fit and two region-stratified whole-block bootstrap fits (seeds 2101,2102) enter
+15 equally weighted joint members per pathway, balanced across five GCMs and
+three relative-sea-level quantile paths. Paired urban branches share the same
+member assignment. The 17th-83rd percentiles summarize this scenario ensemble.
+Scenario trajectories describe the specified forcings and allocation rules.
+The model does not predict a complete future classified pixel map.
+
+COASTAL LAND-COVER CLASSIFIER
+The archived ensemble contains six class-specific MLPs and one all-class MLP.
+Each has two hidden layers of 256 ReLU units and six output scores. The 17-band
+feature recipe and checkpoint-specific subsets are in Supplementary Method S2.
+The final decision rule starts with the all-class assignment and then applies
+water, mangrove, tidal-flat and aquaculture overrides in that order. The archive
+preserves the original train/test tables and seven checkpoint files. Those
+archived partitions are distinct from the temporal/spatial forecaster split.
+
+Classification input transfer was assessed on the same 3,857 usable archived
+records using original and reconstructed inputs. The three-group accuracy for
+reconstructed inputs is 91.0552%; the six-class accuracy is 76.5621%. The sample
+contains 3,783 distinct pixel-years, including 11 pixel-years overlapping the
+archived training set. Supplementary Method S2 and Source Data report all exclusions,
+duplicate records and the original-input comparison. These data evaluate input
+transfer on an archived labelled sample. The original-feature training recipe
+is retained for classification; harmonized reflectance supplies canopy indices.
+
+REPRODUCIBILITY AND ACCESS
+The software package contains source code, three ecological checkpoints, seven
+land-cover checkpoints, real forecast inputs and expected outputs, classifier
+sample tables, versioned requirements and installation/run instructions.
+Full geospatial production uses the source archives listed in Methods. The
+curated Source Data dataset is deposited at
+https://github.com/FAITH-CKJ/urban-mangrove-resilience-data.
+The complete dataset is openly available under CC BY 4.0, without registration,
+to enable verification, reuse and further research. The accompanying Source
+Data attachment contains the values underlying the displayed summaries,
+individual distribution and scatter values, and annual time points. Its
+figure-table index links to the complete numerical records and larger
+spatial inputs in the repository.
+Hardware, tested versions, demo runtime and licences are in README.txt and
+DEMO_RUNTIME.txt. Checkpoints are trusted study artefacts and should be loaded
+only from their supplied, checksum-verified files.

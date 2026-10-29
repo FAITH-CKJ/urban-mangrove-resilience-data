@@ -1,0 +1,20 @@
+Data, trained parameters and metadata — CC BY 4.0
+
+Copyright (c) 2026 Kangjie Cao, Xiaoxue Shen, Xin Luo, Wei Li and Ruili Li.
+
+The authors' sample tables, derived land-cover mosaics, trained model
+parameters and descriptive metadata are licensed under the Creative Commons
+Attribution 4.0 International licence:
+https://creativecommons.org/licenses/by/4.0/
+Legal terms: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Dataset: Global Urban Mangrove Landcover Mosaics 2000–2023.
+This model and training reference package was assembled on 2026-10-13.
+Retain the author attribution and licence link and indicate changes when
+reusing or modifying these materials.
+
+The checkpoint and fixed input-table bytes are preserved. Documentation,
+relative paths, runtime import order and raster mask handling are prepared
+for standalone use. New-training output directories protect the supplied
+checkpoint files. Original third-party material retains its original terms.
+Software is covered separately by LICENSE_CODE.txt (MIT).

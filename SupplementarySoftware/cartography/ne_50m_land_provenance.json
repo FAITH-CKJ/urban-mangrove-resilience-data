@@ -1,0 +1,35 @@
+{
+  "source_url": "https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip",
+  "source_page": "https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/",
+  "purpose": "Higher-detail land context for the Northern America map inset",
+  "downloaded_utc": "2026-10-19T07:14:19.004162+00:00",
+  "bytes": 457183,
+  "sha256": "0b8e670cf80dce9cbebe2a193bc44ba5602758c22e1fa603980553646d7ff162",
+  "files": [
+    {
+      "file": "ne_50m_land.cpg",
+      "bytes": 5,
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+    },
+    {
+      "file": "ne_50m_land.dbf",
+      "bytes": 69709,
+      "sha256": "d082add78c82e01b9bf422df3143ad6fbe43ca1bcb798d12a334f9e001b67bc0"
+    },
+    {
+      "file": "ne_50m_land.prj",
+      "bytes": 143,
+      "sha256": "98aaf3d1c0ecadf1a424a4536de261c3daf4e373697cb86c40c43b989daf52eb"
+    },
+    {
+      "file": "ne_50m_land.shp",
+      "bytes": 1050332,
+      "sha256": "140d1419f7ace66bf0ea8ceb068cab544d413170f4e8c48e0a11bde6c978b319"
+    },
+    {
+      "file": "ne_50m_land.shx",
+      "bytes": 11460,
+      "sha256": "c1b93ee40fe83d6322197251517c141c2c91970915ac61d7bf7a4821fc2a68d7"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "figure": 5,
+  "source": "reporting/primary_paired_member_annual.parquet",
+  "filter": {
+    "scheme": "pooled_centres",
+    "support": "forecast",
+    "region_id": 0,
+    "scenarios": [
+      "ssp245",
+      "ssp585"
+    ],
+    "years": [
+      2026,
+      2100
+    ]
+  },
+  "native_rows": 4500,
+  "paired_member_years": 2250,
+  "members_per_scenario_year": 15,
+  "annual_summaries": 150,
+  "annual_allocation_positions": 150,
+  "endpoint_pairs": 30,
+  "regional_benefits": 20,
+  "defined_regional_unserved_percentages": 19,
+  "formulas": {
+    "L": "-delta_UMRI[urban_growth_minus_fixed]",
+    "B": "delta_UMRI[protection_minus_growth]",
+    "R": "L - B",
+    "avoided_percent": "100 * B / L if L != 0; missing otherwise"
+  },
+  "aggregation": "Calculate all contrasts and ratios within member before taking 17th, 50th and 83rd percentiles with linear interpolation.",
+  "units": "Final dimensionless UMRI=N(S) for states, losses, benefits and their components. Avoided loss and construction shares are percentages.",
+  "construction_account": "Cumulative since 2025. Accommodated equals within-cell plus relocated. The gap between the unprotected target and accommodated area equals unserved area.",
+  "zero_target": "Central America under SSP5–8.5 has a true zero protection benefit and no construction target. Its unserved percentage is undefined.",
+  "fully_accommodated_positive_target_regions": {
+    "ssp245": 4,
+    "ssp585": 3
+  },
+  "positive_target_regions": {
+    "ssp245": 10,
+    "ssp585": 9
+  },
+  "map": "Native 30-m class pixels; identical UTM extent; rows 26:108, columns 45:147 of the supplied spatial example.",
+  "reproduction": "SupplementarySoftware/code/reproduce_main_figures.py --figures 5",
+  "derivation": "SupplementarySoftware/code/derive_figure5_annual.py",
+  "verification": "SupplementarySoftware/code/verify_figure_story.py",
+  "panels": [
+    "a",
+    "b",
+    "c",
+    "d"
+  ],
+  "panel_units": {
+    "b": "accommodated percent and avoided-loss percent",
+    "c": "year and square kilometres",
+    "d": "relative percent and relative percent"
+  },
+  "regional_evidence": "Supplementary Fig. 5a and Supplementary Table 7",
+  "habitat_relative_formula": "100 * (protected - growth) / growth after branchwise spatial averaging",
+  "source_sha256": {
+    "main_figures/Fig5_paired_native_annual.csv": "cd960b867057b4bd6992e5e667077ef784693eb85ed302f7ad234633d4a08d8a",
+    "main_figures/Fig5_loss_members_annual.csv": "5f9655fe4b08564566dd6b0fef98b81ae9672d2d5cc7cf0fbe04248bdab0cee7",
+    "main_figures/Fig5_loss_summary_annual.csv": "1182f2d7c96e1ac6eb262ccf6d978df7273683cde56dffc88a44296e8966cac1",
+    "main_figures/Fig5_displayed_allocation_trajectories.csv": "c3bb728305397c64054e04d1583919422940b6c820a476c765e96dcf85bf99c2",
+    "main_figures/Fig5_displayed_regions_2100.csv": "15a2ab9aa8131999ae04e5fa6a947a2d5e3ca199f8090957e51d49f7c01d9468"
+  }
+}
